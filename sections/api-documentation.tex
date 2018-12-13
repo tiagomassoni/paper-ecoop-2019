@@ -1,0 +1,128 @@
+\section{Background on Documentation Approaches}
+\label{sec:example}
+
+In this section, we discuss the existing problems and benefits in documenting programs. For concreteness,
+we exemplify documentation approaches for the Java language.
+
+\subsection{A Running Example}
+
+Figures~\ref{Fig-JML-Bank} and~\ref{Fig-Javadoc-Bank} illustrate
+a simple bank account class, documented with JML and Javadoc respectively. For simplicity, we consider only the {\lstinline!withdraw!} method.
+
+In the JML specifications (Figure~\ref{Fig-JML-Bank}), preconditions
+are defined by the clause {\lstinline!requires!} and (normal) postconditions by {\lstinline!ensures!}. The specification
+denoted by the {\lstinline!signals!} clause
+is an exceptional postcondition, which says that
+the {\lstinline!balance!} should be unchanged, when the exception
+\texttt{TransactionExcep\-tion} is thrown.
+The invariant defined in class {\lstinline!BankAccount!} restricts the account's balance
+to be always greater than or equal to zero.
+In the Javadoc side (Figure~\ref{Fig-Javadoc-Bank}), the precondition is
+informally written with the tag \lstinline!@param!, normal postcondition with
+\lstinline!@return!, and exceptional postcondition with \lstinline!@throws!.
+And the invariant within a Javadoc block comment
+above \lstinline!balance!'s declaration.
+
+\begin{figure*}
+\centering
+\begin{subfigure}{.48\textwidth}
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi]
+class BankAccount {
+ double balance;
+ //@ invariant balance >= 0;
+
+ //@ requires amt > 0 && amt <= balance;
+ //@ ensures balance == \old(balance - amt);
+ //@ ensures \result == balance;
+ //@ signals (TransactionException) 
+ //@   balance == \old(balance);
+ double withdraw(double amt) 
+   throws TransactionException {...}
+ // ...
+}
+\end{lstlisting}
+\caption{The JML specifications for the bank account.}
+\label{Fig-JML-Bank}
+\end{subfigure}%
+\begin{subfigure}{.48\textwidth}
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi]
+class BankAccount {
+ /**
+  * The overall balance should be
+  * greater than or equal to zero
+  */
+ double balance;
+
+ /**
+  * @param amt  the amount value to withdraw, where
+  *             'amt' should be greater than zero and
+  *             less than or equal to 'balance'
+  * @return     current 'balance' after withdraw
+  * @throws     TransactionException 'balance' 
+  *             remains unchanged
+  *
+  */
+ double withdraw(double amt) 
+   throws TransactionException {...}
+ // ...
+}
+\end{lstlisting}
+\caption{The Javadoc documentation for the bank account.}
+\label{Fig-Javadoc-Bank}
+\end{subfigure}
+\caption{JML and Javadoc documentation for the bank account.}
+\label{fig:test}
+\end{figure*}
+
+
+\subsection{Natural Language Approach}
+
+Often natural language documentation
+is found in the source code, as in Javadocs
+(see Figure~\ref{Fig-Javadoc-Bank}).
+Consistency between documentation and code cannot be automatically enforced, as there is
+no formal connection between the comments and the code.
+The lack of formality leads to imprecision, ambiguity, and verbosity (to explain the constraints).
+This poses translation problems to use natural language description for automated tools, such as in testing or debugging.
+
+On the other hand, natural language documentation does have its advantages.
+It does not require special training -- although training may be needed to effectively communicate
+ideas about programs in a natural language, such as English -- and allows a high
+of freedom to a programmer structure the documentation. Furthermore, client's programs may benefit from the available documentation about the program usage.
+
+
+\subsection{Specification/Contract Language Approach}
+
+Contracts are a popular tool for specifying the functional behavior of software.
+A method's contracts, unlike natural approaches, precisely and unambiguously describe
+what must be true when the method is called (precondition), what must be true when the method
+return (normal postcondition) or when it returns abnormally (exceptional postcondition).
+In addition for object-oriented languages, contracts can describe object invariants that must
+hold for an object in all of its visible states.
+
+Nevertheless, a formal specification language, like JML, can require some level of training,
+hence becoming, to some extent, hard to read and write, and hence is often used
+sparingly~\cite{Chalin06,Polikarpova-etal09,typeContracts}.
+In addition, assuming the code in Figure~\ref{Fig-JML-Bank} as within a library, -- where the source code
+is unavailable -- we need the specification to reason about the library's usage. But, usually, the
+specifications like the ones in Figure~\ref{Fig-JML-Bank} are only available for the implementor, thus
+becoming not useful for its clients~\cite{Parnas2011}.
+
+
+\subsection{The Documentation Dilemma}
+
+It is clear that we face a dilemma with respect to program documentation.
+If we use JML to provide formal documentation for contracts, the result is a
+more precise documentation, with the possibility of automatic checks. However,
+also results in a less flexible documentation in terms of using natural language to structure it.
+In addition, formal specifications are more interesting for the implementor/maintainer of the Java program
+(Section~\ref{sec:experiment}).
+
+If we go back to a more flexible and informal documentation approach such as Javadoc, we face the
+lack of precision and potential ambiguity, even though Javadoc comments are more useful for third-party
+libraries users. This dilemma leads us to the following research question: Is it possible to have
+the best of both worlds? That is, can we mix informal documentation and contract specification within a unified approach?
+
+In the following, we discuss how \contractjdoc{} provides means to combine the benefits
+% and overcome the main limitations 
+of the existing documentation approaches discussed previously.

@@ -1,0 +1,114 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Java programmers tend to consider writing Javadoc comments as a good practice,
+specially when these comments enhance public interfaces designed as third-party
+libraries for client programs.
+%
+Despite its recognized value and practice in Java community, 
+as discussed by ~\cite{liveAPI},
+understanding how to use third-party libraries can be difficult.
+This mainly occurs when the source of documentation is only natural language 
+comments that can be incomplete and ambiguous. In addition, a well-known problem is that
+documentation and implementation tend to diverge over time~\cite{Estler-etal14}; 
+a Java programmer may forget to update the Javadoc documentation after performing 
+an implementation change.
+
+%
+On the other hand, embedding contracts (with pre- and postconditions as executable assertions) has
+long been advocated by formal methods pioneers to precisely express code behavior. 
+However, only a small amount of code has such contracts~\cite{Polikarpova-etal09}. 
+Part of the reason is notational, for example, in Java there is
+no built-in support for contracts, besides \texttt{assert} statements.
+To this end, we need an external contract framework like the Java Modeling Language (JML)~\cite{jml}
+to express the full power of behavioral specifications.
+%
+There is evidence that programmers are more likely to use contracts in languages that support them
+natively~\cite{Chalin06}, such as Microsoft's Code Contracts~\cite{codeContractsPaper} and Eiffel~\cite{eiffel}.
+%
+Another problem is that contracts expressed by
+the existing contract languages may be useful for programmers (internal documentation), 
+but it does not meet the needs of other
+readers (separate/external documentation), such as third-party libraries~\cite{Leavens10,Parnas2011}. 
+To use those libraries, a programmer should not need to look in the code to 
+find out how to use it. 
+%
+Therefore, to maximize benefits, 
+she must use the combination of such techniques (e.g., Javadoc and JML).
+
+%
+We propose a Javadoc-like language, called \contractjdoc{}, allowing Java programmers to add
+contract specifications (pre- and postconditions), in a straightforward way, into Javadoc comments.
+%
+Only a few extensions are needed to allow contracts,
+such as invariants.
+%
+To enable the power of contracts, the \contractjdoc{} compiler
+translates the documented contracts into corresponding JML specifications. 
+Then, these JML specifications, equipped with pre- and postconditions, are  
+compiled into runtime conformance checks.
+%
+
+% how we evaluate
+We evaluate our approach by performing three studies:
+we first apply \contractjdoc{} to \totalSystems{} Javadoc-annotated open source
+systems in order to analyse \contractjdoc{}'s applicability.
+A number of previously-undetected inconsistencies between Javadoc and actual behaviour were found in some of the studied systems.
+% \item %experimental study
+Next, we report a study which observed 24 developers programming for Java interfaces with behaviour
+documented by the conventional Javadoc, JML~\cite{jml}, and
+\contractjdoc{}, within a controlled environment.
+As result, developers found it easier to implement an interface with contracts
+than writing a client for that interface. Also, in general pure Javadoc was straightforward to understand, but \contractjdoc{} performed better than JML, as we expected.
+% \item %survey
+Last, we investigate the readability of these three documentation approaches
+for specifying behavior in a Java interface -- Javadoc, JML and \contractjdoc{}, by
+means of a survey with 142 Java developers.
+%results
+Survey results did not significantly differ for \contractjdoc{} and Javadoc, which
+is promising, as contracts are usually regarded as hard to read.
+
+In summary, the main contributions of this paper are:
+\begin{itemize}
+\item A new approach for documenting source code -- \contractjdoc{} (Section~\ref{sec:approach});
+\item A case study applying \contractjdoc{} to \totalSystems{} Javadoc-annotated open source
+systems (Section~\ref{sec:caseStudy});
+\item An empirical study with 24 developers programming for Java interfaces with behavior
+documented by the conventional Javadoc, JML, and \contractjdoc{} (Section~\ref{sec:experiment});
+\item A comprehensibility survey with 142 Java developers investigating the
+readability of three documentation approaches for specifying behavior in a Java
+interface: Javadoc, JML and \contractjdoc{} (Section~\ref{sec:survey}).
+\end{itemize}
+
+
+\subsection{Research Questions}
+\label{sec:researchQuestions}
+
+Our specifc research questions are the following:
+
+\noindent\textbf{Q1.} Is the preciseness of \contractjdoc{}, when compared to Javadoc, useful for contract verification?\\
+We collected a few open source systems based on their use of Javadoc, applied \contractjdoc{}
+to each system and evaluated results in terms of detected conformance errors.
+
+\noindent\textbf{Q2.} What is the cost of applying \contractjdoc{} into systems with Javadoc?\\
+We discuss the problems faced when applying \contractjdoc{} in the described context.
+
+\noindent\textbf{Q3.} With respect to the task performed by each developer, how
+difficult is the required task?\\
+We ask the developers to perform a task based on a given documented interface.
+Then, we ask them to evaluate the difficulty by means of a Likert-type scale.
+
+\noindent\textbf{Q4.} Regarding the documenting approach used by the developer,
+how difficult it is for a developer to perform the required task by using the
+available documented interface?\\
+By using a Likert-type scale, we measure the difficulty for each approach
+considered in this experiment.
+  
+\noindent\textbf{Q5.} Concerning the experience of the Java developers, how
+difficult is it for a developer to perform the required task?\\  
+By using a Likert-type scale, we measure the difficulty for each experience level
+considered in this experiment.
+
+\noindent\textbf{Q6.} In the developer's opinion, which approach, among Javadoc,
+\contractjdoc{} and JML, is the most effective in communicating a routine's
+behavior? \\

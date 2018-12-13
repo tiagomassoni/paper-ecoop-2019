@@ -1,0 +1,26 @@
+\section{Conclusions}
+\label{sec:conclusions}
+
+In this work, we present a new approach for writing comments and an
+application of this approach for Java context. The approach
+allows the use of Design by Contract~\cite{dbc} in a format closer to
+traditional Javadoc comments. When evaluating \contractjdoc{} we found the
+approach almost as understandable as traditional Javadoc comments, with the
+advantage of being able to check behavior at runtime.
+When comparing JML with \contractjdoc{}, the latter features less specification
+constructs, although results indicate programmers may feel more comfortable with
+it when writing precise behavior for methods. In addition, we found evidence
+that \contractjdoc{} is more readable than JML.
+
+% advantages
+\contractjdoc{} contracts enable runtime checking by using a language similar to the traditional Javadoc,
+and our compiler (\contractjdocCompiler{}) supports new constructs of Java language, such as the
+features from the Java 8, such as lambda expressions.
+Furthermore, as JML contracts, contracts in \contractjdoc{} may be used in place of defensive
+programming, by specifying valid inputs for the methods and shortening the source code.
+
+% future work
+As future work, we plan to leverage \contractjdoc{} for
+supporting autocomplete when writing the Javadoc comment. For this purpose, we
+can use the Jaro-Winkler~\cite{jaro,winkler99} string distance for
+autocompleting the comments.

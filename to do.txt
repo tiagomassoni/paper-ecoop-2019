@@ -1,0 +1,11 @@
+[] colocar orcids dos autores
+[x] verificar comentários dos revisores
+[] colocar nos sites especializados os artefatos
+[] reescrever resumo - ajustar foco e terminologia (não é apenas JML; geral para outras linguagens de especificação)
+" provide a near natural language interface to write contracts."
+[] research questions na introducao
+[] metodologia - usar modelo dos outros papers
+[] resultado/discussão: reorganizar graficos, discutir com mais cuidado
+[] ameaças - usar modelo dos outros papers
+[] relacionados - ecoop 2017, journal, todos do meyer
+[] introdução e conclusão

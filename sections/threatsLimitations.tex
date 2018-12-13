@@ -1,0 +1,48 @@
+\section{Limitations and Threats to validity}
+\label{sec:CaseStudyThreats}
+
+External validity refers to generalization. Due to its size, results from the
+case study cannot be generalized; its purpose is evaluating applicability and relative usefulness.
+%represetantive sample
+The sample is not representative, since there is no available estimate of the Javadoc-rich project
+population in GitHub, then probability sample is impossible.
+Our approach is as systematic as feasible in selecting the evaluated project -- manual translation
+does not scale, then the sample contains only \totalSystems{} projects.
+Therefore, those systems may not be representative of the real use of Javadoc in real systems; however, we were able
+to detect inconsistencies between Javadoc comments and source code, as occurred in
+\texttt{Utilities} class (\texttt{ABC-Music-Player} experimental unit) in which the comment for a
+parameter of the methods is the right opposite of the expected behavior in the source code.
+
+Another risk is that only 24 developers participated in the experimental study
+and 142 in the survey and those samples are not representative for the community
+of Java developers. Furthermore, we used only two similar data structure interfaces (queue and stack). In other domains with more complex structures, the results
+may vary. In addition, the survey used only one data structure interface:
+\texttt{Stack}, for asking about the comprehensibility of the interface behavior.
+In other domains with more complex structures, the results can vary considerably.
+
+
+Internal validity refers to causation: are changes in the dependent variable
+necessarily the result of manipulations to treatments? All material for the
+empirical study and the survey study is available only in English, therefore,
+the experience of the Subject with English can have affected their
+comprehensibility of the behavior of the provided interface.
+
+%webprotege much bigger
+Construct validity refers to correctly measuring the
+dependent variable. \texttt{Dishevelled} and
+\texttt{WebProt\'{e}g\'{e}} sizes set them apart from the other systems.
+For instance, \texttt{Dishevelled} is more than 56 times bigger than \texttt{ABC-Music-Player}, 43
+times bigger than \texttt{Jenerics}, 313 times bigger than \texttt{OOP Aufgabe3}, and 234 times
+bigger than \texttt{SimpleShop}.
+In order to reduce the threat on the manually-defined contracts,
+all systems were annotated and reviewed by three researchers, separately.
+
+The order in which we display the documented
+interfaces on the survey form, the questions used for evaluating
+comprehensibility, the kind of questions used, and the absence of opened questions
+can also threat the construct validity. For dealing with these threats we
+perform a pilot before applying the survey and used the results from the pilot
+to improve the survey structure. In addition, the answers from developers may not be
+representative of their real opinion on difficulty perception; to overcome this
+threat we made a space for comments available along with the Likert-scale
+questions, which are taken into account when collecting the answers.
