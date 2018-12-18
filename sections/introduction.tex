@@ -84,31 +84,19 @@ interface: Javadoc, JML and \contractjdoc{} (Section~\ref{sec:survey}).
 \subsection{Research Questions}
 \label{sec:researchQuestions}
 
-Our specifc research questions are the following:
+%intro paragraph
+This research work investigates what is the impact of integrating contract expressions with Javadoc comments in public interfaces, in terms of applicability and usability. We first examine the impact of diverse contract documentation approaches with tasks related to the specification of data structure interfaces; as a follow-up, we inquired developers regarding understandability of contract examples. Second, we emulate the application of contract expressions to Javadoc-rich open source systems and analyzed results from runtime checking. In particular, we intend to answer the following research questions:  
 
-\noindent\textbf{Q1.} Is the preciseness of \contractjdoc{}, when compared to Javadoc, useful for contract verification?\\
-We collected a few open source systems based on their use of Javadoc, applied \contractjdoc{}
-to each system and evaluated results in terms of detected conformance errors.
+\noindent\emph{RQ1. What is the success rate of public interface implementors and users in tasks, using three forms of public interface contracts?}\\
+We report and discuss results from a lab study with Java developers over development tasks involving a documented data structure interface.
 
-\noindent\textbf{Q2.} What is the cost of applying \contractjdoc{} into systems with Javadoc?\\
-We discuss the problems faced when applying \contractjdoc{} in the described context.
-
-\noindent\textbf{Q3.} With respect to the task performed by each developer, how
-difficult is the required task?\\
-We ask the developers to perform a task based on a given documented interface.
-Then, we ask them to evaluate the difficulty by means of a Likert-type scale.
-
-\noindent\textbf{Q4.} Regarding the documenting approach used by the developer,
-how difficult it is for a developer to perform the required task by using the
-available documented interface?\\
-By using a Likert-type scale, we measure the difficulty for each approach
-considered in this experiment.
   
-\noindent\textbf{Q5.} Concerning the experience of the Java developers, how
-difficult is it for a developer to perform the required task?\\  
-By using a Likert-type scale, we measure the difficulty for each experience level
-considered in this experiment.
+\noindent\emph{RQ2. What are the perceived difficulty in using three forms of public interface contracts?}\\
+By means of a lab study with assigned tasks and a developer survey, we discuss quantitative and qualitative reports from developers regarding the forms of contract expressions that are preferred for implementation tasks.
 
-\noindent\textbf{Q6.} In the developer's opinion, which approach, among Javadoc,
-\contractjdoc{} and JML, is the most effective in communicating a routine's
-behavior? \\
+
+\noindent\emph{RQ3. Can we uncover inconsistencies in Java systems if using runtime-checkable contract expressions?}\\
+We collected a few open source systems based on their use of Javadoc, applied contract expressions
+to each system and evaluated results in terms of detected conformance errors. Also, we discuss the problems faced when replacing Javadoc comments by contract expressions in the described context.
+
+%TO DO: ver se é interessante colocar contribuições aqui.

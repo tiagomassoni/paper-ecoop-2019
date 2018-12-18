@@ -62,7 +62,7 @@
 \usepackage{microtype}%if unwanted, comment out or use option "draft"
 \bibliographystyle{plainurl}
 
-\title{Semi-formal Javadoc for API Documentation: Trade-offs between Dynamic Checking and Comprehension}
+\title{Design-by-Contract Javadoc for API Documentation: Trade-offs between Dynamic Checking and Understandability}
 
 \titlerunning{Semi-formal Javadoc for API Documentation}%optional, please use if title is longer than one line
 
@@ -104,7 +104,7 @@
 
 \begin{abstract}
 %context
-Documenting API routines counts as a key benefit from applying the Design by Contract (DBC) methodology. 
+Documenting API routines counts as a key benefit from applying the Design by Contract (DbC) methodology. 
 In this context, DBC's pre- and post-conditions are used as part of the routine's public interface, for establishing call conditions and expected results, respectively, which could be then checked at runtime for detecting invalid calls or non-conforming implementations.
 %
 % problem
@@ -116,14 +116,14 @@ In this paper, we report results from empirical studies on integrating contract 
 For this purpose, we designed a small tag-based extension to Javadoc to express pre- and post-conditions among other standard tags.
 %
 %studies
-The studies consisted in (1) evaluating understandability of contract expressions within API Javadoc, either for API developers or API users, by means of a experimental study and a follow-up survey, and (2) assessing its efficacy with a case study in which we manually formalized english contracts from open source Java systems into contract expressions, then checking conformance in runtime.    
+The studies consisted in (1) evaluating understandability of contract expressions within API Javadoc, either for API developers or API users, by means of a experimental study and a follow-up survey, and (2) assessing its efficacy with a case study in which we manually formalized English contracts from open source Java systems into contract expressions, then checking conformance in runtime.    
 %
 %results
-Both quantitative and qualitative data show no significant difference between Javadoc english text and contract expressions, regarding either correctness of performed tasks or contract readability. 
-Also, elementary translation of open source APIs  to contract expressions were able to find a number of conformance problems between API contracts and implementation, embodying evidence on the usefulness of contract expressions for uncovering errors regarding the relationship between documentation and actual behavior.
+Both quantitative and qualitative data show no significant difference between Javadoc English text and contract expressions, regarding either correctness of performed tasks or contract readability. 
+Also, a straightforward translation of open source APIs to contract expressions was able to find a number of conformance problems between API contracts and implementation, embodying evidence on the usefulness of contract expressions for uncovering errors regarding the relationship between documentation and actual behaviour.
 %
 %consequences
-These results are promising to research over the adoption of contract languages for API documentation.
+These results are promising to research the adoption of contract languages for API documentation.
 \end{abstract}
 
 %(2) an empirical study
