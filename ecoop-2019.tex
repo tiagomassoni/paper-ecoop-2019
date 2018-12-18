@@ -103,30 +103,36 @@
 \maketitle
 
 \begin{abstract}
-Doc comments counts as best practice for API documentation, but does not compel
-programmers to provide a precise or complete behaviour of a routine.
+%context
+Documenting API routines counts as a key benefit from applying the Design by Contract (DBC) methodology. 
+In this context, DBC's pre- and post-conditions are used as part of the routine's public interface, for establishing call conditions and expected results, respectively, which could be then checked at runtime for detecting invalid calls or non-conforming implementations.
 %
-This is, on the other hand, the very essence of contracts, but programmers are resistant to use contracts in their modules.
-%, as it does not meet the need of usual readers, such as third-party library users.
+% problem
+It is well known, however, that programmers, despite this convenience, are resistant to use contracts -- for Java programs, in particular, Javadoc natural text and tags are the dominant medium for documenting APIs. 
+As a result, verification assistance is unavailable.
 %
-In this scenario, we propose
-% a Javadoc-like language for integrating contracts,
-an approach for documenting code by means of contracts into brackets associated
-with tag comments, called \contractjdoc{}, and apply the approach to the Java context.
-%In support of the research contributions, 
-This paper presents three empirical studies:
-(1) we manually applied \contractjdoc{} to two real Javadoc-rich open source
-systems and four toy projects, in which we detected inconsistencies between
-the existing Javadoc and the corresponding source code; (2) an empirical study
-with 24 programmers using three different documenting approaches, including
-\contractjdoc{}, whose results did not significantly differ, and (3) we surveyed 142 Java programmers regarding \contractjdoc{}'s
-readability in contrast to other two approaches (Javadoc and JML), in which
-results did not significantly differ for \contractjdoc{} and Javadoc, which is
-promising, since contracts are regarded as hard to read.
-% conclusions?
-Therefore, \contractjdoc{} is an approach that can foster contracts adoption,
-helping to improve software quality.
+% solution
+In this paper, we report results from empirical studies on integrating contract expressions into Javadoc comments used as external API documentation. 
+For this purpose, we designed a small tag-based extension to Javadoc to express pre- and post-conditions among other standard tags.
+%
+%studies
+The studies consisted in (1) evaluating understandability of contract expressions within API Javadoc, either for API developers or API users, by means of a experimental study and a follow-up survey, and (2) assessing its efficacy with a case study in which we manually formalized english contracts from open source Java systems into contract expressions, then checking conformance in runtime.    
+%
+%results
+Both quantitative and qualitative data show no significant difference between Javadoc english text and contract expressions, regarding either correctness of performed tasks or contract readability. 
+Also, elementary translation of open source APIs  to contract expressions were able to find a number of conformance problems between API contracts and implementation, embodying evidence on the usefulness of contract expressions for uncovering errors regarding the relationship between documentation and actual behavior.
+%
+%consequences
+These results are promising to research over the adoption of contract languages for API documentation.
 \end{abstract}
+
+%(2) an empirical study
+%with 24 programmers using three different documenting approaches, including
+%\contractjdoc{}, whose results did not significantly differ, and (3) we surveyed 142 Java programmers regarding \contractjdoc{}'s
+%readability in contrast to other two approaches (Javadoc and JML), in which
+%results did not significantly differ for \contractjdoc{} and Javadoc, which is
+%promising, since contracts are regarded as hard to read.
+
 
 \input{sections/introduction}
 \input{sections/api-documentation.tex}
