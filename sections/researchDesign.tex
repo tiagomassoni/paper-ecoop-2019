@@ -1,8 +1,205 @@
 \section{Methodology}
 \label{sec:researchDesign}
 
-In this section, we explain the research design of each study performed for
-evaluating the proposed approach.
+In the following subsections we discuss data collection and analysis for the performed studies. For naming the studies, we follow the terminology for Software Engineering research strategies from Stol and Fitzgerald~\cite{Stol2015}.
+
+
+%nomenclatura
+
+%Experimental simulation
+%Judgement task
+%Field Study
+
+
+\subsection{Experimental Simulation}
+\label{sec:experiment}
+
+%GQM
+In this study, we investigate the use of contract expressions -- in particular, the Javadoc extension showed in Section\ref{sec:approach} -- in simulated programming tasks, with respect to applicability and usability, from the point of view of Java developers. 
+
+\subsubsection{Participants}
+\label{sec:expPart}
+
+%recruitment
+We selected participants among professional developers assigned to projects in the context of an major R\&D Institute in Brazil. Recruitment was carried out by invitation; from estimated 150 invited professionals, 24 of them accepted the call and then, later, received the assignment by e-mail. The only requirement was previous experience with Java. From the 24 recruited developers, 10 of them had computer science (or related) degrees, while the remaining were carrying out undergraduate studies in the field. 
+
+\subsubsection{Study Design}
+\label{sec:studyDesign}
+
+%factors
+Our experiment was designed to assess the effect of a given documentation approach on implementation tasks which depend on documented APIs. 
+%factor 1
+Participants are assigned to use a single documentation approach (Factor 1) from the following: plain Javadoc natural language, our Javadoc extension and formal contracts. Table~\ref{tab:factorsEmpStudy} displays the treatments for those two factors.
+%factor 2
+For each of those approaches, two kinds of task are considered (Factor 2): a \textit{Supplier} task, in which the participant must program the implementation of a Java API class, and a \textit{Client} task, which demands development of a client code for the API.
+%factor 3
+An additional variation we included regards the particular API assigned to an arbitrary participant (Factor 3): \textit{Stack} or \textit{Queue}. We chose to use simple and well-known interfaces trying to avoid the confounding effect that lack of knowledge could bring to the study.
+
+
+\begin{table}[ht]
+\caption{Factors and treatments of the empirical study.}
+\label{tab:factorsEmpStudy}
+\centering
+\begin{tabular}{ll} \toprule
+\bfseries Factors & \bfseries Treatments \\
+\hline
+
+\multirow{2}{*}{\textbf{Task}} & Client \\
+& Supplier \\ \hline 
+
+\multirow{3}{*}{\textbf{Approach}} & Javadoc extension \\
+ & Javadoc \\
+& formal contracts \\ \bottomrule
+\end{tabular}
+\end{table}
+
+%design
+We use a factorial design~\cite{wohlin}, randomly assigning participants to each combination of treatments; each triple
+$<$approach, task, API$>$ is called a trial.
+Since there are three documenting approaches, two tasks and two Java interfaces, there are 12 possible trials, so each of them was carried out by two participants, resulting in a balanced design. 
+The assignment Participant -- Trial is performed by using a
+completely randomized design in order to minimize bias.
+
+
+\subsubsection{Experimental Procedure}
+\label{sec:expProcedure}
+
+The experiment was performed offline, i.e., participants received the experimental package via an online Survey
+platform\footnote{An instance of the platform used is
+available online: \url{https://www.formpl.us/form/5671648952844288}} that we use to collect the results.
+% double blind process 
+% An example of survey sent to the
+% participants can be found online.\footnote{\url{https://goo.gl/forms/ySTsYfKSRcotLayk1}} 
+
+The experimental package consisted of (i) a statement of consent, (ii) a pretest
+questionnaire, (iii) instructions and materials to perform the experiment, and (iv) a post-test
+questionnaire. 
+The instructions contained what we expected from the participants: they were asked to perform an implementation task (a supplier or a client code) for the
+provided API. Each participant received one of the following tasks: create a supplier code for
+an API or a client code using the API methods.
+We also asked each participant to fulfill a
+pre-study questionnaire reporting their programming experience (with respect to Java and contract-based programming experience). 
+%After filling in the questionnaire, we randomly assign a task.
+
+During the assignment, participants were allowed to review additional information -- part of the experimental package -- about the assigned documentation approach. 
+%the tasks 1
+For \textit{Supplier} tasks, participants should have implemented variations of well-known stack or queue operations whose intended behaviour was documented as external contracts. The following example shows the contract for \lstinline!Queue.add!, written in plain Javadoc commentary.
+%example
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi, frame=lines, mathescape=true]
+/**
+   * Inserts the specified account into the queue 
+   * if it is possible to do so 
+   * immediately without violating capacity 
+   * restrictions, returning true upon 
+   * success and throwing an AccountQueueException 
+   * if no space is currently available.
+   * @param acc - the account to be added. 
+   *     Must not be null.
+   * @return true if the operation occurs with success.
+   * @throws AccountQueueException - if the queue is 
+   *     full or the account is null.
+   */
+  public boolean add(Account acc) throws AccountQueueException;
+\end{lstlisting}
+
+%the tasks 2
+Differently, \textit{Client} tasks were carried out based on textual descriptions, although any call to API should fulfill its external contracts, also presented using one of the three documentation options. Implementation of the API were provided as binaries, so, as a result, participants were not given access to the source code.
+%post-study
+Before sending the results back, we asked the participants to answer a a post-experiment questionnaire, in which we collected qualitative information about the developers' view of each task.
+
+We performed a pilot with three developers in order to fit the questionnaires' structure.
+%the way in which we make the data available for the developers. 
+As a result, we changed the way of making the artifacts available to participants. 
+At first, we were making the documented interface available in a link and the working dataset in another. 
+Pilot participants highlighted this fact, indicating that a single package containing all Java classes should be located in a single URL.
+
+\subsubsection{Research Method}
+label{sec:labmethod}
+
+%method for checking correctness
+Each program sent by the participants were subjected to test suites specially implemented for checking whether every single contract was fulfilled 
+%numbers of those tests?
+
+%method for analysing questionnaire info
+Regarding answers from the post-study questionnaire, 
+
+
+
+\subsection{Judgment Survey}
+\label{sec:survey}
+
+We conducted an exploratory study that involved data collection through a survey with Java
+development professionals. 
+%This section describes the survey design, participants, results and discussion.
+%goal, question, metric
+The goal of the survey is to compare three documentation approaches (Javadoc,
+\contractjdoc{}, and JML) with respect to comprehensibility, from the point of view of developers. 
+
+\subsubsection{Design}
+\label{sec:surveyDes}
+
+%survey method
+For this study, we followed a quantitative method based on a web-based survey instrument, suited to
+measure opinions and behaviors in response to specific questions~\cite{refSurvey}, in a non
+threatening way. 
+%web-based survey
+% double blind
+% The questions were available as an online form\footnote{http://goo.gl/forms/XcEqvPH0Eq920jaA3}. 
+
+%survey structure
+The survey
+instrument\footnote{\url{https://goo.gl/forms/8W9jUMGCavkkzDj12}} begins with a
+purpose of clarification along with a consent term.
+Then, a characterization of the
+respondent is conducted by some questions related to Java experience and experience with
+contract-based programming. Next, the survey is presented: links for three Java interfaces with each
+one documented in a different approach is showed, then some questions related to the understanding
+of the behavior of a class implementing the interfaces based on the comments available is asked. 
+
+%likert scale
+We used Likert-scale questions. In two questions we ask the developers to
+choose the most understandable documentation approach: one specific -- related
+to the provided interface; and one general, concerning the use of the approach in a general
+context.
+
+%pilot study
+We also conducted a pilot concerning the
+questions and the structure of the programs being used. The pilot consists in asking three Java
+developers to test the setup for the survey.
+The pilot allowed us to validate the survey's questions and structure.
+We did not have to change anything. The developers who participated did not reported issues on the structure that we
+used for presenting the needed data for the participation in the study.
+
+
+\subsubsection{Survey Participants}
+\label{sec:surveyPart}
+
+%who to survey - convenience sample
+The survey participants are also extracted by means of a 
+non-probability sampling technique -- convenience
+sampling~\cite{wohlin}: the nearest and most convenient persons are selected as subjects. We send
+the survey link to academic and professional mailing lists.
+%snowball approach - contacts
+In addition, our contacts made a snowball approach, sending the survey to their respective
+contact lists, increasing the sample and the number of participants in our study.
+%number
+The survey was open for three weeks (from June to July 2016) and received 142
+answers (from an estimated total of 700 who received the link, 20\% response
+rate). From the 142, 51 are professionals and 91 are students.
+
+\subsection{Statistical Methods}
+\label{sec:statisticalMethods}
+
+In our experiment, we applied Wilcoxon rank sum test~\cite{statistical} and Kruskal-Wallis rank sum test~\cite{statistical} for comparing the results according to our treatments. For the survey results, we applied Oneway ANOVA test~\cite{statistical}, The Tukey HSD~\cite{statistical} and pairwise comparisons using t tests
+with Bonferroni correction~\cite{statistical}; in addition, we applied Wilcoxon rank sum test with continuity correction
+tests.
+
+
+
+
+
+
+
 
 \subsection{Case Study}
 \label{sec:caseStudy}
@@ -148,175 +345,3 @@ evaluate the effort related to adding contracts to existing systems.
 In addition, we enhanced the compiler and added features in order to simplify
 the process of applying \contractjdoc{} in existing projects.
 
-\subsection{Empirical Study}
-\label{sec:experiment}
-
-The goal of the empirical study is to investigate
-\contractjdoc{}, for the purpose of evaluation with respect to readability and understandability, from the point of view of
-developers in the context of Java programming language. The study presents two factors: the task performed by the
-developer (task), and the documenting approach (approach).
-% , and the experience level of the developer (experience level)
-Those factors have the following treatments: client and supplier\footnote{By client, we mean a class calling the methods provided by an interface, and by supplier, we mean a class implementing the
-interface.} -- for task; and Javadoc,
-\contractjdoc{}, and JML -- for approach (see Table~\ref{tab:factorsEmpStudy}).
-
-\begin{table}[ht]
-\caption{Factors and treatments of the empirical study.}
-\label{tab:factorsEmpStudy}
-\centering
-\begin{tabular}{ll} \toprule
-\bfseries Factors & \bfseries Treatments \\
-\hline
-
-\multirow{2}{*}{\textbf{Task}} & Client \\
-& Supplier \\ \hline 
-
-\multirow{3}{*}{\textbf{Approach}} & \contractjdoc{} \\
- & Javadoc \\
-& JML \\ \bottomrule
-\end{tabular}
-\end{table}
-
-\subsubsection{Participants Recruitment}
-\label{sec:expPart}
-
-The subjects who took part in this experiment (called Participants
-henceforth) were industry professionals and students from Brazil. Professionals
-those who work or already have worked with programming to industry. Students those who have only academic
-experience.
-
-The recruitment was done in a convenience sample by the authors: we invited
-professionals and students from our network. In total there were 24 participants
-in the experiment: 10 industry professionals and 14 students. All participants'
-experience includes a good knowledge of Java.
-
-
-\subsubsection{Study Design}
-\label{sec:studyDesign}
-
-We addressed two factors: approach for commenting
-source code, task to be performed; with the following treatments: Javadoc, \contractjdoc{}, and JML
--- for approach, and client and supplier -- for the task.
-Moreover, we use two Java equivalent interfaces in this experiment: Stack and Queue.
-We use a factorial design~\cite{wohlin},  randomly assigning subjects to each combination of the
-treatments. For the purpose of this experiment, each triple
-$<$approach, task, interface$>$ is called a trial (a combination of treatments).
-Since there are three documenting approaches, two tasks and two Java interfaces,
-the experiment counts with 12 trials. The assignment Participant --- trial is performed by using a
-completely randomized design in order to not bias the results.
-% 
-% We balance the number of people in each trial because balancing simplifies and strengthens the statistical analysis of data
-The experiment uses a balanced design, which means there is the same number of
-participants in each trial~\cite{wohlin} -- two in our case.
-
-\subsubsection{Experimental Procedure}
-\label{sec:expProcedure}
-
-The experiment was performed offline, i.e., participants received the
-experimental material via an online Survey
-platform\footnote{An instance
-of the platform used is
-available online: \url{https://www.formpl.us/form/5671648952844288}} that we use
-to collect the results.
-% double blind process 
-% An example of survey sent to the
-% participants can be found online.\footnote{\url{https://goo.gl/forms/ySTsYfKSRcotLayk1}} 
-Each
-participant received an experiment package, consisting of (i) a statement of consent, (ii) a pretest
-questionnaire, (iii) instructions and materials to perform the experiment, and (iv) a post-test
-questionnaire. Before the study, we explained to participants what we expected them to do during the
-experiment: they were asked to perform an implementation task (a supplier or a client code) for the
-provided interface. Each participant received one of the following tasks: create a supplier code for
-an interface or a client code for using the interface methods.
-
-Before starting the experiment, we asked each participant to fulfill a
-pre-study questionnaire reporting their programming experience (with respect to Java and contract-based programming
-experience). After filling in the questionnaire, we randomly selected a task for
-each of them.
-
-The first part of the experiment consists
-on the following activities: (i) apply a questionnaire pre-experiment -- in order to collect
-information on developers experience; (ii) give some kind of training on the documenting approach,
-such as JML and \contractjdoc{}; (iii) ask them to execute the tasks -- for each developer will be
-given one task for one approach with one Java interface; (iv) apply a post-experiment 
-questionnaire -- in order to collect qualitative information about the developers' view of each task.
-
-\subsubsection{Instrumentation}
-\label{sec:expInstrumentation}
-
-We performed a pilot with three Java developers in order to fit the
-questions structure, the way in which we make the data
-available for the developers. As a result, we changed the way of making the
-working dataset available to the participants. Initially we were making the documented interface available in a link and the working dataset in another. The
-answers to the pilot highlighted this fact and we decided to create a single package containing all
-Java classes (all classes needed to the compilation of the code) related to the experiment in a
-single URL.
-
-\subsection{Comprehensibility Survey}
-\label{sec:survey}
-
-We conducted an exploratory study that involved data collection through a survey with Java
-development professionals. 
-%This section describes the survey design, participants, results and discussion.
-%goal, question, metric
-The goal of the survey is to compare three documentation approaches (Javadoc,
-\contractjdoc{}, and JML) with respect to comprehensibility, from the point of view of developers. 
-
-\subsubsection{Design}
-\label{sec:surveyDes}
-
-%survey method
-For this study, we followed a quantitative method based on a web-based survey instrument, suited to
-measure opinions and behaviors in response to specific questions~\cite{refSurvey}, in a non
-threatening way. 
-%web-based survey
-% double blind
-% The questions were available as an online form\footnote{http://goo.gl/forms/XcEqvPH0Eq920jaA3}. 
-
-%survey structure
-The survey
-instrument\footnote{\url{https://goo.gl/forms/8W9jUMGCavkkzDj12}} begins with a
-purpose of clarification along with a consent term.
-Then, a characterization of the
-respondent is conducted by some questions related to Java experience and experience with
-contract-based programming. Next, the survey is presented: links for three Java interfaces with each
-one documented in a different approach is showed, then some questions related to the understanding
-of the behavior of a class implementing the interfaces based on the comments available is asked. 
-
-%likert scale
-We used Likert-scale questions. In two questions we ask the developers to
-choose the most understandable documentation approach: one specific -- related
-to the provided interface; and one general, concerning the use of the approach in a general
-context.
-
-%pilot study
-We also conducted a pilot concerning the
-questions and the structure of the programs being used. The pilot consists in asking three Java
-developers to test the setup for the survey.
-The pilot allowed us to validate the survey's questions and structure.
-We did not have to change anything. The developers who participated did not reported issues on the structure that we
-used for presenting the needed data for the participation in the study.
-
-
-\subsubsection{Survey Participants}
-\label{sec:surveyPart}
-
-%who to survey - convenience sample
-The survey participants are also extracted by means of a 
-non-probability sampling technique -- convenience
-sampling~\cite{wohlin}: the nearest and most convenient persons are selected as subjects. We send
-the survey link to academic and professional mailing lists.
-%snowball approach - contacts
-In addition, our contacts made a snowball approach, sending the survey to their respective
-contact lists, increasing the sample and the number of participants in our study.
-%number
-The survey was open for three weeks (from June to July 2016) and received 142
-answers (from an estimated total of 700 who received the link, 20\% response
-rate). From the 142, 51 are professionals and 91 are students.
-
-\subsection{Statistical Methods}
-\label{sec:statisticalMethods}
-
-In our experiment, we applied Wilcoxon rank sum test~\cite{statistical} and Kruskal-Wallis rank sum test~\cite{statistical} for comparing the results according to our treatments. For the survey results, we applied Oneway ANOVA test~\cite{statistical}, The Tukey HSD~\cite{statistical} and pairwise comparisons using t tests
-with Bonferroni correction~\cite{statistical}; in addition, we applied Wilcoxon rank sum test with continuity correction
-tests.
