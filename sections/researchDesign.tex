@@ -15,13 +15,19 @@ In the following subsections we discuss data collection and analysis for the per
 \label{sec:experiment}
 
 %GQM
-In this study, we investigate the use of contract expressions -- in particular, the Javadoc extension showed in Section\ref{sec:approach} -- in simulated programming tasks, with respect to applicability and usability, from the point of view of Java developers. 
+In this study, we investigate the use of
+external contract expressions -- in particular, \contrajdoc{}, as showed in Section\ref{sec:approach} -- in simulated programming tasks, with respect to applicability and understandability, from the point of view of Java developers. 
 
 \subsubsection{Participants}
 \label{sec:expPart}
 
 %recruitment
 We selected participants among professional developers assigned to projects in the context of an major R\&D Institute in Brazil. Recruitment was carried out by invitation; from estimated 150 invited professionals, 24 of them accepted the call and then, later, received the assignment by e-mail. The only requirement was previous experience with Java. From the 24 recruited developers, 10 of them had computer science (or related) degrees, while the remaining were carrying out undergraduate studies in the field. 
+
+%number of participants
+Although the number of participants may seem too small for generalizing any conclusions, we expect the observations to be considered as an exploratory theory to be checked by future studies with larger samples.
+For experimental simulations, our participant set is within the expected size~\cite{}.
+
 
 \subsubsection{Study Design}
 \label{sec:studyDesign}
@@ -83,7 +89,7 @@ pre-study questionnaire reporting their programming experience (with respect to 
 
 During the assignment, participants were allowed to review additional information -- part of the experimental package -- about the assigned documentation approach. 
 %the tasks 1
-For \textit{Supplier} tasks, participants should have implemented variations of well-known stack or queue operations whose intended behaviour was documented as external contracts. The following example shows the contract for \lstinline!Queue.add!, written in plain Javadoc commentary.
+For \textit{Supplier} tasks, participants should have implemented variations of well-known stack or queue operations whose intended behaviour was documented as \contractjdoc{} expressions. The following example shows the contract for \lstinline!Queue.add!, written in plain Javadoc commentary.
 %example
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi, frame=lines, mathescape=true]
 /**
