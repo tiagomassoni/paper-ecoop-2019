@@ -15,6 +15,12 @@
 \usepackage{lmodern}
 \usepackage{url}
 \usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage{tabularx}
+\usepackage{adjustbox}
+
 
 %% Some recommended packages.
 \usepackage{booktabs}   %% For formal tables:
@@ -25,6 +31,12 @@
 \definecolor{mygreen}{rgb}{0.0, 0.5, 0.0}
 \definecolor{myred}{rgb}{0.5,0.0,0.2}
 \definecolor{LightGray}{gray}{0.9}
+
+\newcommand{\greencheck}{{\color{mygreen}\checkmark}}
+\newcommand{\redcross}{{\color{myred}$\times$}}
+
+
+
 
 %*************************************************
 \input{jml-listings}
@@ -139,6 +151,7 @@ These results are promising to research the adoption of contract languages for A
 \input{sections/approach}
 \input{sections/researchDesign}
 \input{sections/resultsAnalysis}
+\input{sections/discussion}
 \input{sections/threatsLimitations}
 \input{sections/relatedWork}
 \input{sections/conclusions}
