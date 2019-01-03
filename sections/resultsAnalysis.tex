@@ -92,24 +92,6 @@ p20                                        & Queue                             &
 After they sent their code back, we asked participants about understandability of the API specifications, using a Likert-like scale which ranges from 1 (less understandable) to 5 (very understandable). The results for 24 answers are summarized in Figure~\ref{fig:ExpAnswersTotal}, where we can see assessments are split between 3 to 5. Most participants evaluated understandability as 4 (58\%).
 
 
-
-%TO FINISH
-% difficulty
-Concerning the task performed by the developers, we present in
-Figure \ref{fig:tasksEmpirical}
-answers on difficulty grouped by the task performed.
-The implementation of the documented interface (Supplier task) seemed to be easier
-than the task of creating a Client class, however, this difference is not
-statistically significant as presented by a Wilcoxon rank sum test~\cite{statistical}
-(p-value = 0.07, confidence level of 95\%).
-
-% documenting approach
-When grouped by documenting approach (see Figure \ref{fig:approachesEmpirical}),
-the Kruskal-Wallis rank sum test showed no difference between the approaches
-(p-value = 0.15).
-
-
-
 \begin{figure*}
 \centering
 \begin{subfigure}{.32\textwidth}
@@ -131,17 +113,58 @@ the Kruskal-Wallis rank sum test showed no difference between the approaches
 \label{fig:empiricalResults}
 \end{figure*}
 
-% , the results present Javadoc as the easiest approach to be understood (see Figures \ref{fig:empiricalResults}(c),
-% \ref{fig:empiricalResults}(d), and \ref{fig:empiricalResults}(e)). This is
-% expected since Javadoc is a well established approach for documenting Java code. In addition, \contractjdoc{} was perceived as easier than JML: there are three answers \textit{Very easy} for \contractjdoc{} whereas
-% there is no answer \textit{Very easy} for JML.
+%perspectives
+Assuming a distinct perspective, we grouped understandability assessments by the assigned documentation approach and task -- Figures~\ref{fig:approachesEmpirical} and~\ref{fig:tasksEmpirical}, respectively, depict their distribution using boxplots.
+%doc approach
+Visually, the assessments for Javadoc APIs are all above the median ($4$), while \contractjdoc{} assessments fluctuate around that median value. Formal contracts, in turn, were all assessed as $3$ or $4$.  
+% stats
+Nevertheless, statistical tests (in this case, Kruskal-Wallis non-parametric test) showed no difference between the groups (p-value = $0.15$, 95\% confidence level).
+
+%task
+Concerning the task performed by the developers, higher understandability is reported by participants assigned to supplier tasks, at least visually. Still, the Wilcoxon rank sum test~\cite{statistical} reported no significant difference (p-value = 0.07, for confidence level of 95\%).
 
 %qualitative results
-Furthermore, we asked the participants, with an open-ended question, to provide comments on the activies.
+Furthermore, we asked the participants, with an open-ended question, to provide comments on their tasks. 
+We used \emph{open coding}~\cite{openCoding} to analyze the collected answers, by inspecting them quote by quote and detecting categories, representing the key ideas in the data.
+The quotes were organized in 11 categories, which are presented in Table~\ref{tab:categories}, in conjunction with the number of quotes. One quote might classified in more than one category -- three participants did not provide any answer.
 
+%on the results
+%seven
+We found that most quotes either value the specifications or suggest the contracts should have been stronger (seven each). As an example of the latter, p6, which was assigned an \contractjdoc{} API, wrote "I hesitated over the \texttt{pop} method, due to its exception; there should be more information about the exception to be thrown in each case". 
+%four
+Others made explicit suggestions on how the specification should be, from their previous understanding of Queue and Stack APIs.
+%other
+Interestingly, we found a few quotes that expressed total trust in the contracts, dismissing defensive programming as advocated by the Design by Contract methodology ~\cite{dbc}.
+Another category encompasses quotes that remark how the Javadoc text around the contract expressions helped them to understand the API specification. 
 
-
-
+\begin{table}
+\centering
+\caption{Categories in Participants' quotes}
+\label{tab:categories}
+\begin{tabular}{|l|r|} 
+\hline
+\textbf{Category description}                & \multicolumn{1}{l|}{\textbf{\#quotes}}  \\ 
+\hline\hline
+Specifications were clear and understandable & 7                                       \\ 
+\hline
+Specifications were vague                    & 7                                       \\ 
+\hline
+Suggestions to change the specification      & 4                                       \\ 
+\hline
+The surrounding text helped understanding    & 2                                       \\ 
+\hline
+Total trust in the contracts                 & 2                                       \\ 
+\hline
+Contracts were ignored                       & 1                                       \\ 
+\hline
+Hard to read the logic                       & 1                                       \\ 
+\hline
+Questions about the task                     & 1                                       \\ 
+\hline
+Text was confusing                           & 1                                       \\
+\hline
+\end{tabular}
+\end{table}
 
 
 \subsection{Judgment Survey}
@@ -178,6 +201,9 @@ While only 11 (7\%) chose formal contracts as the most understandable approach a
 \end{figure}
 
 
+
+
+
 % TO FINISH
 The survey results provided us statistical difference when comparing the the
 comprehensibility of the documentation approaches evaluated (see
@@ -187,6 +213,15 @@ approaches (p-value $<$ 0.05).
 The Tukey HSD~\cite{statistical} and pairwise comparisons using t tests
 with Bonferroni correction~\cite{statistical} produced the following p-values:
 Javadoc-ContractJDoc = 0.012, JML-ContractJDoc = 0.000, and JML-Javadoc = 0.000.
+
+
+When analyzing data grouped by experience (Figures~\ref{fig:javadocExp} to
+~\ref{fig:jmlExp}) by means of Wilcoxon rank sum test with continuity correction
+tests, only for JML we found no statistical difference between Professionals and
+Students (p-value = 0.17). For both Javadoc and \contractjdoc{}, Professionals
+had perceived the approaches as being easier for comprehensing than Students
+(p-value = 0.012 and p-value = 0.004, respectively).
+
 
 
 
@@ -199,35 +234,12 @@ Javadoc-ContractJDoc = 0.012, JML-ContractJDoc = 0.000, and JML-Javadoc = 0.000.
 \caption{All approaches}
 \label{fig:allApproaches}
 \end{subfigure}
-\begin{subfigure}{.48\textwidth}
-\includegraphics[width=1\linewidth]{figs/boxPlotJavadocXExperience}
-\caption{Javadoc}
-\label{fig:javadocExp}
-\end{subfigure}
-\\[1ex]
-\begin{subfigure}{.48\textwidth}
-\includegraphics[width=1\linewidth]{figs/boxplotContractJDocXExperience.png}
-\caption{\contractjdoc{}}
-\label{fig:contractjdocExp}
-\end{subfigure}
-\begin{subfigure}{.48\textwidth}
-\includegraphics[width=1\linewidth]{figs/boxplotJMLXExperience.png}
-\caption{JML}
-\label{fig:jmlExp}
-\end{subfigure}
+
 \caption{Subjects' answers to the individual evaluation of comprehensibility for
 each documentation approach. And answers grouped by experience for each
 approach.}
 \label{fig:surveyResults}
 \end{figure*}
-
-When analyzing data grouped by experience (Figures~\ref{fig:javadocExp} to
-~\ref{fig:jmlExp}) by means of Wilcoxon rank sum test with continuity correction
-tests, only for JML we found no statistical difference between Professionals and
-Students (p-value = 0.17). For both Javadoc and \contractjdoc{}, Professionals
-had perceived the approaches as being easier for comprehensing than Students
-(p-value = 0.012 and p-value = 0.004, respectively).
-
 
 
 
