@@ -6,14 +6,20 @@ We start by describing the results for each study in detail, before proceeding t
 \subsection{Experimental Simulation}
 \label{sec:expResults}
 
-In Table~\ref{tab:results} we summarize the results from the 24 trials. Those participants mixed graduates working in industry (41.6\%) and graduates during their M.Sc. and Ph.D. studies (58.4\%).
+%demographics
+Participants mixed graduates working in industry (41.6\%) and graduates during their M.Sc. and Ph.D. studies (58.4\%).
+%table
+In Table~\ref{tab:results} we summarize the results from the 24 trials, from which five -- 21\% -- were delivered with at least one fault detected by our test cases.
+%individual results
+All participants assigned to textual specifications in Javadoc delivered correct programs.
+By contrast, half of the programs delivered by participants using APIs with formal contracts were faulty (four out of eight).
+One faulty program was delivered by a participant from the \contractjdoc{} group.
+%task
+Regarding task, faulty programs were mostly present in implementing in API implementations -- four of them, if compared with only one in API clients.
+
 
 % source code correct
-Javadoc and \contractjdoc{} were the only documenting approaches in
-which all participants were able to produce a code satisfying the oracle
-(respecting the restrictions available in the comments). On the other hand,
-there was one case developed by following the JML documenting approach in which
-the contract is not satisfied by the implementation.
+%Javadoc and \contractjdoc{} were the only documenting approaches in which all participants were able to produce a code satisfying the oracle (respecting the restrictions available in the comments). On the other hand, there was one case developed by following the JML documenting approach in which the contract is not satisfied by the implementation.
 
 
 
@@ -27,22 +33,25 @@ the contract is not satisfied by the implementation.
 \hline
 \uline{DataStr}      & \uline{Task} & Part & Res                              & Part & Res                                & Part & Res                             \\ 
 \hline\hline
-\uline{Queue}        & \uline{Cli}  & p9   & \greencheck       & p11  & \redcross                                    & p7   & \greencheck                                 \\
-                     & \uline{Cli}  & p10  & \greencheck                                 & p12  & \redcross                                    & p8   & \redcross                                \\
+\uline{Queue}        & \uline{Cli}  & p9   & \greencheck       & p11  & \greencheck                                    & p7   & \greencheck                                 \\
+                     & \uline{Cli}  & p10  & \greencheck                                 & p12  & \greencheck                                    & p8   & \greencheck                                \\
                      & \uline{Sup}  & p21  & \greencheck                                 & p23  & \greencheck                                    & p19  &  \greencheck                               \\
-                     & \uline{Sup}  & p22  & \redcross                                 & p24  & \greencheck                                    & p20  &  \redcross                               \\ 
+                     & \uline{Sup}  & p22  & \greencheck                                 & p24  & \greencheck                                    & p20  &  \redcross                               \\ 
 \hline\hline
-\uline{Stack}        & \uline{Cli}  & p3   & \redcross                                 & p5   & \redcross                                    & p1   & \redcross                                 \\
-                     & \uline{Cli}  & p4   & \redcross                                 & p6   & \redcross                                    & p2   & \greencheck                                 \\
+\uline{Stack}        & \uline{Cli}  & p3   & \greencheck                                 & p5   & \greencheck                                    & p1   & \redcross                                 \\
+                     & \uline{Cli}  & p4   & \greencheck                                 & p6   & \greencheck                                    & p2   & \greencheck                                 \\
                      & \uline{Sup}  & p15  & \greencheck                                 & p17  & \redcross                                    & p13  & \redcross                                \\
                      & \uline{Sup}  & p16  & \greencheck                                 & p18  & \greencheck                                    & p14  & \redcross                                \\
 \hline
 \end{tabular}
 \end{table}
 
-
-
-Table~\ref{tab:faults} details the faults that were found in the participants' code.
+%faults
+Table~\ref{tab:faults} details the faults detected by the test cases. After detailed analysis of the programs, we classified each fault in terms of the violated contract. 
+%clients
+All clients fulfilled the specified pre-conditions for calling the API methods -- p1's API client raise an exception which was incompatible with the method's postcondition.
+%suppliers
+All four faults unveiled in API implementations resulted from failure in satisfying the specified post-condition in methods removing data from the given structure (two on \texttt{Stack.pop} and two on \texttt{Queue.remove}).
 
 \begin{table}
 \centering
@@ -51,37 +60,19 @@ Table~\ref{tab:faults} details the faults that were found in the participants' c
 \begin{adjustbox}{width=\textwidth}
 \begin{tabular}{|l|l|l|l|} 
 \hline
-\multicolumn{4}{|l|}{\textbf{Javadoc} }                                                                                                                                                                         \\ 
-\hline
-p22                                        & Queue                             & Sup                                & Code error (method \texttt{add})                                         \\ 
-\hline
-p3                                         & Stack                             & Cli                                & Contract Failure (invariant on all methods)                                               \\ 
-\hline
-p4                                         & Stack                             & Cli                                & Contract Failure (does not fulfil several post-conditions)                                \\ 
-\hline
 \multicolumn{4}{|l|}{\textbf{ContractJDoc }}                                                                                                                                                                    \\ 
 \hline
-p11                                        & Queue                             & Cli                                & Unfinished task                                                                           \\ 
-\hline
-p12                                        & Queue                             & Cli                                & Unfinished task                                                                           \\ 
-\hline
-p5                                         & Stack                             & Cli                                & Contract Failure (pre-condition on method \texttt{consumeService})       \\ 
-\hline
-p6                                         & Stack                             & Cli                                & Code error (internal manipulation)                                                        \\ 
-\hline
-p17                                        & Stack                             & Sup                                & Contract Failure (invariant unfulfilled in the stack)                                     \\ 
+p17                                        & Stack                             & Sup                                & Post-condition violation on method \texttt{remove}                                    \\ 
 \hline
 \multicolumn{4}{|l|}{\textbf{Formal contracts} }                                                                                                                                                                \\ 
 \hline
-p8                                         & Queue                             & Cli                                & Contract Failure (invariant on all methods)                                               \\ 
+p1                                         & Stack                             & Cli                                & Post-condition violation on method \texttt{removeAccountTop})    \\ 
 \hline
-p1                                         & Stack                             & Sup                                & Contract Failure (post-condition on method \texttt{removeAccountTop})    \\ 
+p13                                        & Stack                             & Sup                                & Post-condition violation on method \texttt{pop})     \\ 
 \hline
-p13                                        & Stack                             & Sup                                & Contract Failure (post-condition unfulfilled on method \texttt{pop})     \\ 
+p14                                        & Stack                             & Sup                                & Post-condition violation on method \texttt{pop})     \\ 
 \hline
-p14                                        & Stack                             & Sup                                & Contract Failure (post-condition unfulfilled on method \texttt{pop})     \\ 
-\hline
-p20                                        & Queue                             & Sup                                & Contract Failure (post-condition unfulfilled on method \texttt{remove})  \\ 
+p20                                        & Queue                             & Sup                                & Post-condition violation on method \texttt{remove})  \\ 
 \hline\hline
 \multicolumn{1}{|c|}{\textbf{Part}} & \multicolumn{1}{c|}{\textbf{API}} & \multicolumn{1}{c|}{\textbf{Task}} & \multicolumn{1}{c|}{\textbf{Type of~Fault}}                                               \\
 \hline
@@ -90,7 +81,6 @@ p20                                        & Queue                             &
 \end{table}
 
 After they sent their code back, we asked participants about understandability of the API specifications, using a Likert-like scale which ranges from 1 (less understandable) to 5 (very understandable). The results for 24 answers are summarized in Figure~\ref{fig:ExpAnswersTotal}, where we can see assessments are split between 3 to 5. Most participants evaluated understandability as 4 (58\%).
-
 
 \begin{figure*}
 \centering
