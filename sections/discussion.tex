@@ -133,6 +133,13 @@ This scenario also occurred in \texttt{Dishevelled} unit, the comments turned
 in \contractjdoc{} contracts also enable us to detect some tests
 that do not respect the restrictions available in the Javadoc comments.
 
+
+% conformance errors
+When applying \contractjdoc{} to \texttt{ABC-Music-Player}, we found inconsistencies between Javadoc comments and the source code. The problems occurred in the class \texttt{Utilities} (package
+\texttt{sound}) because there are comments concerning a parameter declaring that the value of
+this parameter must not be greater than or equal to zero; however in the body of the methods there
+is an if-clause that throws exceptions when the value received by the parameter is negative.
+
 As a proof of concept, \contractjdoc{} and its compiler (\contractjdocCompiler{}) enabled us to write runtime
 checkable code for third-party systems based on the comments in natural
 language.

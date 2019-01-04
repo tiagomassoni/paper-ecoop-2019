@@ -163,7 +163,7 @@ Text was confusing                           & 1                                
 %survey description
 As a follow-up for the lab study, we showed three versions of the Stack API as a web survey, asking questions about those approaches to contract specifications; we suggested respondents to play the client role of the API, as if they were about to instantiate it and call its methods.
 %questions
-Respondents were asked to assess understandability of each approach (again, using a 1--5 scale), in addition to providing a verdict asking which approach they think is the most understandable as an API specification. For this, they were given three options -- one for each approach -- and a fourth, neutral option.
+Respondents were asked to assess understandability of each approach (again, using a 1--5 Likert scale), in addition to providing a verdict asking which approach they think is the most understandable as an API specification. For this, they were given three options -- one for each approach -- and a fourth, neutral option.
 
 %general results
 From the universe of developers who received the invitation, answers from 142 Java developers were considered valid.
@@ -191,115 +191,104 @@ While only 11 (7\%) chose formal contracts as the most understandable approach a
 \end{figure}
 
 
+% individual answers to each approach
+After being presented with three versions of the same API, the distribution of assessments for each documentation approach is showed in Figure~\ref{fig:allApproaches}.
+%explain visual
+Answers for Javadoc and \contractjdoc{} were distributed around a median of $4.0$; for the first, assessments range from $3$ to $5$, while assesments for the latter were no higher than $4$.
+Likewise, formal contracts were evaluated with $4$ the highest, however with $3$ with center value. 
 
-
-
-% TO FINISH
-The survey results provided us statistical difference when comparing the the
-comprehensibility of the documentation approaches evaluated (see
-Figure~\ref{fig:allApproaches}). By performing an Oneway ANOVA test~\cite{statistical} and
-a corresponding post hoc analysis we were able to distinguish the three
-approaches (p-value $<$ 0.05).
-The Tukey HSD~\cite{statistical} and pairwise comparisons using t tests
-with Bonferroni correction~\cite{statistical} produced the following p-values:
-Javadoc-ContractJDoc = 0.012, JML-ContractJDoc = 0.000, and JML-Javadoc = 0.000.
-
-
-When analyzing data grouped by experience (Figures~\ref{fig:javadocExp} to
-~\ref{fig:jmlExp}) by means of Wilcoxon rank sum test with continuity correction
-tests, only for JML we found no statistical difference between Professionals and
-Students (p-value = 0.17). For both Javadoc and \contractjdoc{}, Professionals
-had perceived the approaches as being easier for comprehensing than Students
-(p-value = 0.012 and p-value = 0.004, respectively).
-
-
-
-
-
-
-\begin{figure*}
+\begin{figure}
 \centering
-\begin{subfigure}{.48\textwidth}
-\includegraphics[width=1\linewidth]{figs/boxplotApproachesSurveyStudy}
-\caption{All approaches}
-\label{fig:allApproaches}
-\end{subfigure}
-
-\caption{Subjects' answers to the individual evaluation of comprehensibility for
-each documentation approach. And answers grouped by experience for each
-approach.}
+\includegraphics[width=0.7\linewidth]{figs/boxplotApproachesSurveyStudy}
+\caption{Surveyed Assessment for Each Documentation Approach.}
 \label{fig:surveyResults}
-\end{figure*}
+\end{figure}
 
+
+%statistical results
+Differently from the experimental simulation from Section~\ref{sec:expResults}, statistical tests show significant difference between the assessments. The application of One-way ANOVA, which is robust enough for non-normal distributions~\cite{statistical}, detected distinction between the three groups of answers (p-value $<$ 0.05). A corresponding post hoc analysis -- Tukey HSD 
+%and pairwise comparisons using t tests
+with Bonferroni correction~\cite{statistical} produced the following p-values for each pairwise comparison: Javadoc-ContractJDoc = 0.012, JML-ContractJDoc = 0.000, and JML-Javadoc = 0.000. The results then express significant difference between all approaches.
+
+%When analyzing data grouped by experience (Figures~\ref{fig:javadocExp} to~\ref{fig:jmlExp}) by means of Wilcoxon rank sum test with continuity correctiontests, only for JML we found no statistical difference between Professionals and Students (p-value = 0.17). For both Javadoc and \contractjdoc{}, Professionals had perceived the approaches as being easier for comprehensing than Students (p-value = 0.012 and p-value = 0.004, respectively).
 
 
 \subsection{Case Study}
 
-Table~\ref{tab:caseStudyResults} presents the results of applying \contractjdoc{} to each system.
-Column \#Clauses displays the number of clauses manually added in each system.
-Column \#Errors presents the number of errors detected by the systems test suite after compiling the source code enhanced with contracts in
-\contractjdoc{} approach. Column Time reveals the time (in seconds) needed for compiling the whole
-project with its dependencies after applying \contractjdoc{} contracts. Columns \#Com.Case to \#Repet.
-show the contract clauses added in each system grouped by type (following the
-definitions from ~\cite{typeContracts}).
+Table~\ref{tab:caseStudyResults} exhibits the results of translating real Javadoc specifications to \contractjdoc{} in each system.
 
-\begin{table*}[h]
-\caption{Case study Results.}
-\label{tab:caseStudyResults}
+Column \textbf{Faults} presents the failures raised by the original test suite, after running the source code enhanced with \contractjdoc{}, while Column \textbf{Time} measures the seconds spent in compiling the system before running the test cases. 
+\textbf{Clauses} displays how many contract clauses were added, which are classified -- according to XXX et al.~\cite{typeContracts} -- in Columns \textbf{Com.Case}, \textbf{AppSpec} and \textbf{Repet.}.
+
+\begin{table}
 \centering
-\begin{tabular}{l l l l l l l l}
+\caption{Results from Study Replacing Javadoc with \contractjdoc{}.}
+\label{tab:caseStudyResults}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{lrrrrrrr} 
 \hline
- \bfseries System &
- \bfseries \#Clauses & 
- \bfseries \#Errors & 
- \bfseries Time (s) &
- \bfseries \#Tests &
- \bfseries \#Com.Case &
- \bfseries \#AppSpec. &
- \bfseries \#Repet. \\ \hline
-ABC-Music-Player & 115 & 2 & 14 & 30 & 42 & 11 & 62 \\
-Dishevelled & 2,655 & 381 & 434 & 2,643 & 1,536 & 151 & 968 \\
-Jenerics & 190 & 7 & 20 & 44 & 156 & 0 & 34 \\
-OOP Aufgabe3 & 54 & 1 & 4 & 11 & 16 & 30 & 8 \\
-SimpleShop & 50 & 0 & 5 & 0 & 30 & 11 & 9 \\
-Webprot\'{e}g\'{e} & 930 & 0 & 713 & 0 & 717 & 79 & 133 \\ \hline
-
- \bfseries Total & 
- \bfseries \totalClauses{} & 
- \bfseries 391 &
- \bfseries 1,185 &
- \bfseries 2,728 &
- \bfseries 2,497 &
- \bfseries 282 &
- \bfseries 1,214
-\\
+\textbf{ System } & \multicolumn{1}{l}{\textbf{Faults}} & \multicolumn{1}{l}{\textbf{ Time (s) }} & \multicolumn{1}{l}{\textbf{TCs}} & \multicolumn{1}{l}{\textbf{Clauses}}      & \multicolumn{1}{l}{\textbf{Com.Case }} & \multicolumn{1}{l}{\textbf{AppSpec }} & \multicolumn{1}{l}{\textbf{Repet }}  \\ 
+\hline
+Dishevelled       & 381                                 & 434                                     & 2,643                            & 2,655                                     & 1,536                                  & 151                                    & 968                                   \\
+Webprotégé      & 0                                   & 713                                     & 0                                & 930                                       & 717                                    & 282                                    & 1,214                                 \\
+ABC-Music-Player  & 2                                   & 14                                      & 30                               & 115                                       & 42                                     & 11                                     & 62                                    \\
+Jenerics          & 7                                   & 20                                      & 44                               & 190                                       & 156                                    & 0                                      & 34                                    \\
+OOP Aufgabe3      & 1                                   & 4                                       & 11                               & 54                                        & 16                                     & 30                                     & 8                                     \\
+SimpleShop        & 0                                   & 5                                       & 0                                & 50                                        & 30                                     & 11                                     & 9                                     \\
+\bottomrule
+\textbf{ Total }  & \textbf{391}                      & \textbf{1,185}                        & \textbf{ 2,728 }                 & \textbf{\totalClauses{}} & \textbf{ 2,497 }                       & \textbf{ 282 }                         & \textbf{ 1,214}                       \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{adjustbox}
+\end{table}
 
-% Jenerics: 8 - 6 failures, 1 error.
+
+% \begin{table*}[h]
+% \caption{Results from Applying \contractjdoc{} Replacing Javadoc.}
+% \label{tab:caseStudyResults}
+% \centering
+% \begin{tabular}{l l l l l l l l}
+% \hline
+%  \bfseries System &
+%  \bfseries \#Clauses & 
+%  \bfseries \#Errors & 
+%  \bfseries Time (s) &
+%  \bfseries \#Tests &
+%  \bfseries \#Com.Case &
+%  \bfseries \#AppSpec. &
+%  \bfseries \#Repet. \\ \hline
+% ABC-Music-Player & 115 & 2 & 14 & 30 & 42 & 11 & 62 \\
+% Dishevelled & 2,655 & 381 & 434 & 2,643 & 1,536 & 151 & 968 \\
+% Jenerics & 190 & 7 & 20 & 44 & 156 & 0 & 34 \\
+% OOP Aufgabe3 & 54 & 1 & 4 & 11 & 16 & 30 & 8 \\
+% SimpleShop & 50 & 0 & 5 & 0 & 30 & 11 & 9 \\
+% Webprot\'{e}g\'{e} & 930 & 0 & 713 & 0 & 717 & 79 & 133 \\ \hline
+
+%  \bfseries Total & 
+%  \bfseries \totalClauses{} & 
+%  \bfseries 391 &
+%  \bfseries 1,185 &
+%  \bfseries 2,728 &
+%  \bfseries 2,497 &
+%  \bfseries 282 &
+%  \bfseries 1,214
+% \\
+% \bottomrule
+% \end{tabular}
+% \end{table*}
+
+
+%commentary on the table
+
+
 
 % results for contract types
 Concerning the kind of contracts, the only unit in which we wrote more
 application-specific contracts was \texttt{OOP Aufgabe3} system (55\% of the
-written contracts are application-specific). On the other hand, in \texttt{ABC-Music-Player}, more than 90\% of the contracts remains between common-case and
-repetitive code: verifications that strings are not blank, collections are not
-empty, or that a method returns a field.
-For \texttt{Dishevelled}, the majority of the written contracts is classified as common-case
-(57.51\%), other 36.92\% are repetitive with code and only 5.57\% are application-specific.
+written contracts are application-specific). On the other hand, in \texttt{ABC-Music-Player}, more than 90\% of the contracts remains between common-case and repetitive code: verifications that strings are not blank, collections are not empty, or that a method returns a field.
+For \texttt{Dishevelled}, most contracts are classified as common-case (57.51\%), other 36.92\% are repetitive with code and only 5.57\% are application-specific.
 In addition, all contracts written for \texttt{Jenerics} are related to
 verification of nullity from parameters or the return value, thus all contracts
-remains between common-case and repetitive code. In \texttt{SimpleShop}, the
-written contracts are distributed in the following manner: common-case 60\%, repetitive code 19\%, and application-specific 21\%; again the number of common-case and repetitive code outperforms application-specific contracts. Finally,
-in \texttt{WebProt\'{e}g\'{e}}, the distribution is: common-case 77.51\%, repetitive code 14.38\%, and application-specific 8.11\%.  
-
-% conformance errors
-When applying \contractjdoc{} to \texttt{ABC-Music-Player}, we found inconsistencies between Javadoc
-comments and the source code. The problems occurred in the class \texttt{Utilities} (package
-\texttt{sound}) because there are comments concerning a parameter declaring that the value of
-this parameter must not be greater than or equal to zero; however in the body of the methods there
-is an if-clause that throws exceptions when the value received by the parameter is negative.
-
-
-
+remains between common-case and repetitive code. 
+In \texttt{SimpleShop}, the written contracts are distributed in the following manner: common-case 60\%, repetitive code 19\%, and application-specific 21\%; again the number of common-case and repetitive code outperforms application-specific contracts. Finally, in \texttt{WebProt\'{e}g\'{e}}, the distribution is: common-case 77.51\%, repetitive code 14.38\%, and application-specific 8.11\%.  
 
