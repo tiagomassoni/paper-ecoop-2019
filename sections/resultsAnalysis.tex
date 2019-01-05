@@ -216,9 +216,10 @@ with Bonferroni correction~\cite{statistical} produced the following p-values fo
 \subsection{Case Study}
 
 Table~\ref{tab:caseStudyResults} exhibits the results of translating real Javadoc specifications to \contractjdoc{} in each system.
-
-Column \textbf{Faults} presents the failures raised by the original test suite, after running the source code enhanced with \contractjdoc{}, while Column \textbf{Time} measures the seconds spent in compiling the system before running the test cases. 
-\textbf{Clauses} displays how many contract clauses were added, which are classified -- according to XXX et al.~\cite{typeContracts} -- in Columns \textbf{Com.Case}, \textbf{AppSpec} and \textbf{Repet.}.
+%columns
+Column \textbf{Faults} presents the failures raised by the original test suite (whose size is showed in Column \textbf{TCs}), with source code enhanced by \contractjdoc{}, while Column \textbf{Time} measures the seconds spent in compiling the system instrumented with \contractjdoc{} before running the test cases. 
+%MASSONI: confirmar isso acima.
+\textbf{Clauses} displays how many contract clauses were translated into contract expressions, which are classified -- according to XXX et al.~\cite{typeContracts} -- in Columns \textbf{CommCase}, \textbf{AppSpec} and \textbf{Repet}.
 
 \begin{table}
 \centering
@@ -227,14 +228,15 @@ Column \textbf{Faults} presents the failures raised by the original test suite, 
 \begin{adjustbox}{width=\textwidth}
 \begin{tabular}{lrrrrrrr} 
 \hline
-\textbf{ System } & \multicolumn{1}{l}{\textbf{Faults}} & \multicolumn{1}{l}{\textbf{ Time (s) }} & \multicolumn{1}{l}{\textbf{TCs}} & \multicolumn{1}{l}{\textbf{Clauses}}      & \multicolumn{1}{l}{\textbf{Com.Case }} & \multicolumn{1}{l}{\textbf{AppSpec }} & \multicolumn{1}{l}{\textbf{Repet }}  \\ 
+\multicolumn{1}{l}{\textbf{System}} & \textbf{Faults} & \textbf{Time(s)} & \textbf{TCs}     & \textbf{Clauses}                          & \textbf{CommCase} & \textbf{AppSpec} & \textbf{Repet}  \\ 
 \hline
 Dishevelled       & 381                                 & 434                                     & 2,643                            & 2,655                                     & 1,536                                  & 151                                    & 968                                   \\
 Webprotégé      & 0                                   & 713                                     & 0                                & 930                                       & 717                                    & 282                                    & 1,214                                 \\
 ABC-Music-Player  & 2                                   & 14                                      & 30                               & 115                                       & 42                                     & 11                                     & 62                                    \\
 Jenerics          & 7                                   & 20                                      & 44                               & 190                                       & 156                                    & 0                                      & 34                                    \\
 OOP Aufgabe3      & 1                                   & 4                                       & 11                               & 54                                        & 16                                     & 30                                     & 8                                     \\
-SimpleShop        & 0                                   & 5                                       & 0                                & 50                                        & 30                                     & 11                                     & 9                                     \\
+%MASSONI: ELIMINEI SimpleShop
+% SimpleShop        & 0                                   & 5                                       & 0                                & 50                                        & 30                                     & 11                                     & 9                                     \\
 \bottomrule
 \textbf{ Total }  & \textbf{391}                      & \textbf{1,185}                        & \textbf{ 2,728 }                 & \textbf{\totalClauses{}} & \textbf{ 2,497 }                       & \textbf{ 282 }                         & \textbf{ 1,214}                       \\
 \bottomrule
@@ -279,16 +281,24 @@ SimpleShop        & 0                                   & 5                     
 
 
 %commentary on the table
+From the selection of open source systems, only \emph{WebProtégé}'s test suites were unavailable; we translated their clauses nonetheless due to the richness of its Javadoc specification.
+The size of the available test suites is proportional to the system size.
+\emph{Dishevelled} is much larger than the other selected systems, naturally presenting a higher rate of nonconformances, which provided us a profuse source of analysis about the differences between specification and implementation. 
+%MASSONI: temos o tempo que cada sistema usou pra compilar SEM A INSTRUMENTACAO?
+About the time...
 
 
 
 % results for contract types
 Concerning the kind of contracts, the only unit in which we wrote more
-application-specific contracts was \texttt{OOP Aufgabe3} system (55\% of the
-written contracts are application-specific). On the other hand, in \texttt{ABC-Music-Player}, more than 90\% of the contracts remains between common-case and repetitive code: verifications that strings are not blank, collections are not empty, or that a method returns a field.
-For \texttt{Dishevelled}, most contracts are classified as common-case (57.51\%), other 36.92\% are repetitive with code and only 5.57\% are application-specific.
-In addition, all contracts written for \texttt{Jenerics} are related to
-verification of nullity from parameters or the return value, thus all contracts
-remains between common-case and repetitive code. 
-In \texttt{SimpleShop}, the written contracts are distributed in the following manner: common-case 60\%, repetitive code 19\%, and application-specific 21\%; again the number of common-case and repetitive code outperforms application-specific contracts. Finally, in \texttt{WebProt\'{e}g\'{e}}, the distribution is: common-case 77.51\%, repetitive code 14.38\%, and application-specific 8.11\%.  
+application-specific contracts was \emph{OOP Aufgabe3} system (55\% of the
+written contracts are application-specific). On the other hand, in \emph{ABC-Music-Player}, more than 90\% of the contracts remains between common-case and repetitive code: verifications that strings are not blank, collections are not empty, or that a method returns a field.
+For \emph{Dishevelled}, most contracts are classified as common-case (57.51\%) -- 
+%other 36.92\% are repetitive with code and 
+only 5.57\% are application-specific.
+Similarly, all contracts written for \emph{Jenerics} are related to verification of nullity from parameters or the return value, thus all contracts
+remains between common-case and repetitive code.
+For \emph{WebProt\'{e}g\'{e}}  common-case contract expressions amount to 77.51\%.  
+
+%In \emph{SimpleShop}, the written contracts are distributed in the following manner: common-case 60\%, repetitive code 19\%, and application-specific 21\%; again the number of common-case and repetitive code outperforms application-specific contracts. 
 
