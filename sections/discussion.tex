@@ -170,53 +170,49 @@ detect and correct inconsistencies and missing expressions between source code a
 \subsection{Limitations and Threats to validity}
 \label{sec:CaseStudyThreats}
 
-%external validity
-External validity refers to generalization. Due to its size, results from the
-case study cannot be generalized; its purpose is evaluating applicability and relative usefulness.
-%represetantive sample
-The sample is not representative, since there is no available estimate of the Javadoc-rich project
-population in GitHub, then probability sample is impossible.
-Our approach is as systematic as feasible in selecting the evaluated project -- manual translation
-does not scale, then the sample contains only \totalSystems{} projects.
-Therefore, those systems may not be representative of the real use of Javadoc in real systems; however, we were able
-to detect inconsistencies between Javadoc comments and source code, as occurred in
-\texttt{Utilities} class (\texttt{ABC-Music-Player} experimental unit) in which the comment for a
-parameter of the methods is the right opposite of the expected behavior in the source code.
-
-
-%external
-Another risk is that only 24 developers participated in the experimental study
-and 142 in the survey and those samples are not representative for the community
-of Java developers. Furthermore, we used only two similar data structure interfaces (queue and stack). In other domains with more complex structures, the results
-may vary. In addition, the survey used only one data structure interface:
-\texttt{Stack}, for asking about the comprehensibility of the interface behavior.
-In other domains with more complex structures, the results can vary considerably.
-
-
-%internal
-Internal validity refers to causation: are changes in the dependent variable
-necessarily the result of manipulations to treatments? All material for the
-empirical study and the survey study is available only in English, therefore,
-the experience of the Subject with English can have affected their
-comprehensibility of the behavior of the provided interface.
+Decisions about the design of our studies were taken specifically to mitigate threats to validity. However, other threats remain.
 
 %construct
 Construct validity refers to correctly measuring the
-dependent variable. \texttt{Dishevelled} and
+dependent variable -- for our experimental simulation, correctness of the implementation and understandability of API specifications.
+There is always the risk that participants present respondent bias~\cite{},  due to their knowledge about the experiment and the researchers (…we tried to give as less information about the study as possible).
+
+Understandability assessment is specially dependent on the experience…our demographics questionnaire as answered by 27 developers, we discarded three because of experience level being discrepant.
+For the judgment survey, we have made similar arrangements for recruiting developers with comparable levels of experience, although uniformity is harder to achieve in that case.
+The order in which we display the documented
+interfaces on the survey form and the absence of open-ended questions can also threat the construct validity. For dealing with these threats we
+perform a pilot before applying the survey and used the results from the pilot to improve the survey structure. 
+
+%In addition, the answers from developers may not be representative of their real opinion on difficulty perception; to overcome this threat we made a space for comments available along with the Likert-scale questions, which are taken into account when collecting the answers.
+
+For the case study, \texttt{Dishevelled} and
 \texttt{WebProt\'{e}g\'{e}} sizes set them apart from the other systems.
 For instance, \texttt{Dishevelled} is more than 56 times bigger than \texttt{ABC-Music-Player}, 43
-times bigger than \texttt{Jenerics}, 313 times bigger than \texttt{OOP Aufgabe3}, and 234 times
-bigger than \texttt{SimpleShop}.
-In order to reduce the threat on the manually-defined contracts,
-all systems were annotated and reviewed by three researchers, separately.
+times bigger than \texttt{Jenerics}, and 313 times bigger than \texttt{OOP Aufgabe3}.
+Therefore, results on those two systems are much more critical to the measurement of the dependent variable (number of nonconformances).
 
 
-The order in which we display the documented
-interfaces on the survey form, the questions used for evaluating
-comprehensibility, the kind of questions used, and the absence of opened questions
-can also threat the construct validity. For dealing with these threats we
-perform a pilot before applying the survey and used the results from the pilot
-to improve the survey structure. In addition, the answers from developers may not be
-representative of their real opinion on difficulty perception; to overcome this
-threat we made a space for comments available along with the Likert-scale
-questions, which are taken into account when collecting the answers.
+%internal
+Internal validity refers to causation: are changes in the dependent variables necessarily the result of manipulations to treatments? A possible problem in our experimental design is that it is hard to determine the faults were introduced due to the assigned documentation approach. We tried to mix qualitative data with the experimental outcomes in order to have clearer view of task performing, but, despite our encouragement, developers provided less commentary than what we expected. Our speculations about the results certainly demand more experiments for inferring a causation relationship between faults and documentation approach.
+Also, all experimental and survey material was available only in English, but a large part of the respondents are likely to not have English as their first language, which may have affected their
+submissions and answers.
+
+%internal - case study
+For the case study, our translation of Javadoc comments into contract expressions may be inaccurate, which could compromised the detected nonconformances. For that, two of the authors of this paper split the task of translating the comments, and one of them reviewed the translations carried out by other. 
+
+
+
+%external validity
+External validity refers to generalization. 
+Conducting the experimental simulation on small APIs, with simple methods, may not be representative. Moreover, the fact that the authors defined the APIs contains the risk of bias. Still, we employed a factorial design using two participants for each treatment, varying the task (Client or Implementation) and the API (Queue or Stack), and observed a range of behaviours. 
+
+Likewise, due to its size, results from the case study cannot be generalized; its purpose is evaluating applicability of contract expressions.
+%represetantive sample
+The sample is not representative, since there is no available estimate of the Javadoc-rich project
+population in GitHub, then probability sample is impossible. 
+Our approach is as systematic as feasible in selecting the evaluated project -- manual translation
+does not scale, then the sample contains only \totalSystems{} projects.
+Therefore, those systems may not be representative of the real use of Javadoc in real systems; however, we were able to detect actual inconsistencies between Javadoc comments and source code.
+
+
+
