@@ -1,46 +1,32 @@
 \section{Discussion}
 \label{discussion}
 
-We go by research question:
+This section comprises discussion on the results from our empirical studies: experimental simulation, judgment survey and case study -- using, as basis, the aforementioned research questions, and threats to validity.
 
-\subsection{RQ1. What is the success rate in implementation tasks, using three forms of public interface contracts?}
+
+\subsection{RQ1. What is the Effect of the API Documentation Approach on API Usage and Implementation Tasks?}
 \label{rq1}
 
+%code correctness, each approach
+Concerning code correctness, all participants assigned to Javadoc APIs produced code
+in accordance with the contracts -- our manually-produced test cases did not detect any contract violation. One \contractjdoc{} API implementation was delivered with a single fault, while half of the participants assigned to API with formal contracts presented at least one fault.
+%problems in understanding formal contracts
+These results may suggest participants had trouble understanding API formal contracts, assuming their self-reported experience in Java programming and their intention to complete the assignment correctly.
+%no test cases
+Since we did not provide our test cases, participants were asked to test at their discretion, and failure in fulfilling contracts as specified was not detected by them.
+%at least one example
+For example, we established the following postcondition for \texttt{Queue.remove}, using a JML-like notation
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi, frame=lines, mathescape=true]
+/**
+   
+\end{lstlisting}
+p20's submission presented an implementation to \texttt{remove} \ldots 
 
 
 
-We proceed with the discussion over the research questions.
-
-% task
-\textbf{Q2.} We ask each developer to perform one task:
-either implement a given interface or implement a client code for using the
-methods provided by an interface -- such the use of an API (Client). 
-Although developers have assigned more \emph{Very Easy} and \textit{Easy} for
-the supplier task than to the client (see Figure~\ref{fig:empiricalResults}(a)),
-the statistical test did not provide evidences for a significant difference
-between the difficulty perceived by developers when performing the required
-task.
 
 
-% approach
-\textbf{Q3.}  Although not supported by statistical tests since Kruskal-Wallis
-rank sum test showed no difference between the approaches (p-value = 0.15), Javadoc and
-\contractjdoc{} were perceived as being easier than JML (see Figure~\ref{fig:approachesEmpirical}).
-This result indicates \contractjdoc{} as an approach in an intermediate level
-between Javadoc and JML, with both providing runtime conformance checking. Therefore, the
-proposed approach is promising: \contractjdoc{} is easy to understand
-(create a code based on the comments) -- 75\% of the developers answers for
-difficulty remains between \textit{Easy} and \textit{Very easy} -- and enables
-the runtime checking of the comments by means of \contractjdocCompiler{}
-compiler.
 
-%code correctness
-\textbf{Q4.} Concerning the code correctness, all Participants using
-interfaces documented with Javadoc and \contractjdoc{} produced code
-in accordance with the contracts available in the interfaces. Only one
-developer using an interface with JML contracts was not able to
-satisfy all the contracts: in one method the source code produced is not in
-conformance with the contracts. 
 
 % kind of task
 Even though the developers have been perceived the supplier task as less
@@ -63,6 +49,28 @@ they are writing a supplier code (implementing a given interface).
 \label{rq2}
 
 
+
+% task
+\textbf{Q2.} We ask each developer to perform one task:
+either implement a given interface or implement a client code for using the
+methods provided by an interface -- such the use of an API (Client). 
+Although developers have assigned more \emph{Very Easy} and \textit{Easy} for
+the supplier task than to the client (see Figure~\ref{fig:empiricalResults}(a)),
+the statistical test did not provide evidences for a significant difference
+between the difficulty perceived by developers when performing the required
+task.
+
+% approach
+\textbf{Q3.}  Although not supported by statistical tests since Kruskal-Wallis
+rank sum test showed no difference between the approaches (p-value = 0.15), Javadoc and
+\contractjdoc{} were perceived as being easier than JML (see Figure~\ref{fig:approachesEmpirical}).
+This result indicates \contractjdoc{} as an approach in an intermediate level
+between Javadoc and JML, with both providing runtime conformance checking. Therefore, the
+proposed approach is promising: \contractjdoc{} is easy to understand
+(create a code based on the comments) -- 75\% of the developers answers for
+difficulty remains between \textit{Easy} and \textit{Very easy} -- and enables
+the runtime checking of the comments by means of \contractjdocCompiler{}
+compiler.
 
 According to the statistical tests performed, Javadoc is the most
 understandable documentation approach, and \contractjdoc{} is intermediate between JML and
@@ -149,3 +157,51 @@ detect and correct inconsistencies and missing expressions between source code a
 
 
 
+\subsection{Limitations and Threats to validity}
+\label{sec:CaseStudyThreats}
+
+External validity refers to generalization. Due to its size, results from the
+case study cannot be generalized; its purpose is evaluating applicability and relative usefulness.
+%represetantive sample
+The sample is not representative, since there is no available estimate of the Javadoc-rich project
+population in GitHub, then probability sample is impossible.
+Our approach is as systematic as feasible in selecting the evaluated project -- manual translation
+does not scale, then the sample contains only \totalSystems{} projects.
+Therefore, those systems may not be representative of the real use of Javadoc in real systems; however, we were able
+to detect inconsistencies between Javadoc comments and source code, as occurred in
+\texttt{Utilities} class (\texttt{ABC-Music-Player} experimental unit) in which the comment for a
+parameter of the methods is the right opposite of the expected behavior in the source code.
+
+Another risk is that only 24 developers participated in the experimental study
+and 142 in the survey and those samples are not representative for the community
+of Java developers. Furthermore, we used only two similar data structure interfaces (queue and stack). In other domains with more complex structures, the results
+may vary. In addition, the survey used only one data structure interface:
+\texttt{Stack}, for asking about the comprehensibility of the interface behavior.
+In other domains with more complex structures, the results can vary considerably.
+
+
+Internal validity refers to causation: are changes in the dependent variable
+necessarily the result of manipulations to treatments? All material for the
+empirical study and the survey study is available only in English, therefore,
+the experience of the Subject with English can have affected their
+comprehensibility of the behavior of the provided interface.
+
+%webprotege much bigger
+Construct validity refers to correctly measuring the
+dependent variable. \texttt{Dishevelled} and
+\texttt{WebProt\'{e}g\'{e}} sizes set them apart from the other systems.
+For instance, \texttt{Dishevelled} is more than 56 times bigger than \texttt{ABC-Music-Player}, 43
+times bigger than \texttt{Jenerics}, 313 times bigger than \texttt{OOP Aufgabe3}, and 234 times
+bigger than \texttt{SimpleShop}.
+In order to reduce the threat on the manually-defined contracts,
+all systems were annotated and reviewed by three researchers, separately.
+
+The order in which we display the documented
+interfaces on the survey form, the questions used for evaluating
+comprehensibility, the kind of questions used, and the absence of opened questions
+can also threat the construct validity. For dealing with these threats we
+perform a pilot before applying the survey and used the results from the pilot
+to improve the survey structure. In addition, the answers from developers may not be
+representative of their real opinion on difficulty perception; to overcome this
+threat we made a space for comments available along with the Likert-scale
+questions, which are taken into account when collecting the answers.
