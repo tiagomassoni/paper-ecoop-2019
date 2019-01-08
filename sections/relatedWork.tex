@@ -2,52 +2,41 @@
 \label{sec:relatedWork}
 
 \textbf{Contracts.} 
-As discussed, each contract-based approach choo\-ses 
-a different trade-off
-between expressivity/preciseness, verbosity, freedom, and tooling (e.g., runtime checking).
+As discussed, each contract-based approach choo\-ses a different trade-off between expressivity/preciseness, verbosity, freedom, and tooling (e.g., runtime checking).
 This is the case of JML~\cite{jml} and Microsoft's Code Contracts~\cite{codeContractsPaper}.
 Both enable one to provide full behavioral specifications and their runtime checking.
 Nevertheless, they lack support to allow informal specifications or to be available at third-party
-library clients~\cite{Parnas2011}. They differ in the way they are written. 
-The former is written as Java comments in code, whereas the latter is syntax-based 
-and therefore often verbose. Without tool support to extract meaningful specifications
-the contracts provided by Code Contracts are even less interesting for third-party 
-libraries since they are embedded in C\# programs. Differently from these languages, the contracts expressed in \contractjdoc{} are already embedded in Javadoc comments, which are the standard approach to documenting Java programs and more likely to be available to third-party libraries.
+library clients~\cite{Parnas2011}. They differ in the way they are written; the former is written as Java comments in code, whereas the latter is syntax-based and therefore often verbose. 
+Without tool support to extract meaningful specifications the contracts provided by Code Contracts are even less interesting for third-party libraries, since they are embedded in C\# programs. Differently from these languages, the contracts expressed in \contractjdoc{} are already embedded in Javadoc comments, which are the standard approach to documenting Java programs and more likely to be available to third-party libraries.
+
+%ecoop2017
+Recent work by Dietrich et al.~\cite{} catalogued 25 techniques, found within the code of 170 open-source systems, that are considered contracts. They include specialized constructs such as the ones offered by JUnit (e.g., \texttt{assertNotNull}), java asserts within the code itself, \emph{ad hoc} methods with exceptions (e.g., Java \texttt{IllegalArgumentException}), in addition to external contract libraries, such as Guava). 
+Their approach is based on the assumption that developers are more likely to adopt simpler forms of contracts, such as type annotations and assertions. The notion of contracts respects "the general assume-guarantee principle and follows the \emph{Design by Contract} viewpoint promoted by Meyer, where contracts are viewed as lightweight specifications."~\cite{} 
+
+Regardless of their use as lightweight runtime assertions, software designers may as well apply contracts as specification assets for APIs. Several applications of contracts promote them as relevant pieces of information for routines' users~\ cite{}. For instance, Java asserts cannot be used as preconditions. Most constructs considered as lightweight contracts (runtime exceptions, Guava, Apache and Spring APIs, Java asserts) can only be found within methods' implementations, thus not amenable for API documentation, as we focus on this paper.
+
+In consonance with our studies, the authors observe a prevalence of pre-conditions over post-conditions; suggested reasons for this result include library code reuse, in which modern libraries have to provide defensive APIs to deal with unknown clients. Given a large portion of the sample projects consists of APIs, most of the contracts are likely to be found in Javadoc commentary, which means that \contractjdoc{}, if used, could increase this number considerably.
 
 \textbf{Javadoc Comments.}
-@TCOMMENT~\cite{atComment} is an approach for testing Javadoc comments, specifically
-method properties about null values and related exceptions. The approach consists of two components. The first component takes as input
-source files for a Java project and automatically analyzes the English text in Javadoc comments to
-infer a set of likely properties for a method in the files. The second component generates random
-tests for these methods, checks the inferred properties, and reports inconsistencies. By using
-\contractjdoc{}, a developer is able to write contracts richer than those for checking null values and
-exceptions (as presented in Section~\ref{sec:caseStudy}).
+@TCOMMENT~\cite{atComment} is an approach for testing Javadoc comments, specifically method properties about null values and related exceptions. The approach consists of two components: the first component takes as input source files for a Java project and automatically analyzes the English text in Javadoc comments to
+infer a set of likely properties for a method in the files; the second component generates random tests for these methods, checks the inferred properties, and reports inconsistencies. By using
+\contractjdoc{}, a developer is able to write contracts richer than those for checking null values and exceptions (as presented in Section~\ref{sec:caseStudy}).
 
-Zhai et al.~\cite{docAnalysis} present a technique that builds models for Java API functions
-by analyzing the documentation. Their models are simpler implementations in Java compared to the
-original ones and hence easier to analyze. More importantly, they provide the same functionalities
-as the original functions. They argue that API documentation, like Javadoc and .NET documentation,
-usually contains wealthy information about the library functions, such as the behavior and exceptions they may throw. Thus it is feasible to generate models for library functions from such API documentation. In this context, the comments in \contractjdoc{} approach can be used as input for the technique in order to improve model generation.
+Zhai et al.~\cite{docAnalysis} present a technique that builds models for Java API functions by analyzing the documentation. Their models are simpler implementations in Java compared to the original ones and hence easier to analyze. More importantly, they provide the same functionalities as the original functions. They argue that API documentation, like Javadoc and .NET documentation, usually contains wealthy information about the library functions, such as the behavior and exceptions they may throw. Thus it is feasible to generate models for library functions from such API documentation. In this context, the comments in \contractjdoc{} approach can be used as input for the technique in order to improve model generation.
 
-\textbf{Testing.}
-Clousot~\cite{clousot} statically checks C\#/Code
-Contracts programs. The approach is based on abstract interpretation and analyzes annotated programs
-to infer facts (including loop invariants), and it uses this information to discharge proof
-obligations. 
-AutoTest~\cite{autotest} is a collection of tools that automate the testing process for
-Eiffel programs. In AutoTest, contracts are used as oracles to expected outputs for conformance checking of the programs; furthermore, AutoTest uses a randomly-guided tests generation (ARTOO~\cite{artoo}) and
-supports mixing manual and automated test. 
-\jmloktool{}~\cite{jmlok2} is a tool for dynamically detecting and classifying nonconformances in contract-based programs, applying randomly-generated tests (RGT) for detecting nonconformances, and a heuristics-based approach for nonconformance classification. 
-These tools are for contract-based languages; in contrast, we propose and implement an approach for writing contracts in the same language as the source code, such as available in JML and Eiffel, improving documentation.
+% \textbf{Testing.}
+% Clousot~\cite{clousot} statically checks C\#/Code
+% Contracts programs. The approach is based on abstract interpretation and analyzes annotated programs
+% to infer facts (including loop invariants), and it uses this information to discharge proof
+% obligations. 
+% AutoTest~\cite{autotest} is a collection of tools that automate the testing process for
+% Eiffel programs. In AutoTest, contracts are used as oracles to expected outputs for conformance checking of the programs; furthermore, AutoTest uses a randomly-guided tests generation (ARTOO~\cite{artoo}) and
+% supports mixing manual and automated test. 
+% \jmloktool{}~\cite{jmlok2} is a tool for dynamically detecting and classifying nonconformances in contract-based programs, applying randomly-generated tests (RGT) for detecting nonconformances, and a heuristics-based approach for nonconformance classification. 
+% These tools are for contract-based languages; in contrast, we propose and implement an approach for writing contracts in the same language as the source code, such as available in JML and Eiffel, improving documentation.
 
 \textbf{Empirical Studies.}
 There are three main related empirical studies about contract usage~\cite{typeContracts,Estler-etal14,Chalin06}.
-One common conclusion about is that, in practice, developers use simple and short
-contracts~\cite{typeContracts,Estler-etal14}. For instance,
-\cite{typeContracts} showed that 75\% of the projects' Code Contracts are checks for the presence of data (e.g., non-null checks).
-In our case study (Section~\ref{sec:caseStudy}), almost 93\% (3,711 contract
-clauses out of 3,994) of the contracts we wrote remains between checks for the
-presence of data and statements repeating the method's return. Chalin studied 84 Eiffel~\cite{eiffel} projects
-and pointed out that developers are more likely to use contracts in languages that support them natively, like Eiffel~\cite{eiffel} or Code Contracts~\cite{codeContractsPaper}.
-To support both conclusions, to write simple contracts in a native manner, \contractjdoc{} allows a Java programmer
-to write those contracts as usual Javadoc comments.
+One common conclusion about is that, in practice, developers use simple and short contracts~\cite{typeContracts,Estler-etal14}. For instance, \cite{typeContracts} shows that 75\% of the projects' Code Contracts are checks for the presence of data (e.g., non-null checks).
+In our case study (Section~\ref{sec:caseStudy}), almost 93\% (3,711 contract clauses out of 3,994) of the contracts we wrote remains between checks for the presence of data and statements repeating the method's return. 
+Also, Chalin studied 84 Eiffel~\cite{eiffel} projects and pointed out that developers are more likely to use contracts in languages that support them natively, like Eiffel~\cite{eiffel} or Code Contracts~\cite{codeContractsPaper}. To support both conclusions, \contractjdoc{}could be used to write simple contracts natively, as usual Javadoc comments.

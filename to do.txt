@@ -8,10 +8,11 @@
 [x] ameaças - usar modelo dos outros papers
 [x] doc. approaches
 [x] contractjdoc section
-[] related ecoop 2017, journal, todos do meyer
-[] intro and conclusion
+[x] related ecoop 2017, journal, todos do meyer
+[] introduction 
+[] conclusion
 [] anonymous paper
-[] study understandability (define)
+[] term understandability (define)
 [] complete research method for experiment
 [] eliminar simple shop, and invariants
 [] eliminate JML references, explain JML-like formal contracts
