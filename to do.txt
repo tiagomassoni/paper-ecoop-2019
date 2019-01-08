@@ -6,7 +6,8 @@
 [x] metodologia - usar modelo dos outros papers
 [x] resultado/discussão: reorganizar graficos, discutir com mais cuidado
 [x] ameaças - usar modelo dos outros papers
-[] doc. approaches
+[x] doc. approaches
+[] contractjdoc section
 [] related ecoop 2017, journal, todos do meyer
 [] intro and conclusion
 [] anonymous paper
