@@ -1,0 +1,26 @@
+
+
+Terminology
+
+
+
+contractJDoc: contract expressions amid Javadoc textual
+
+invariants, pre-conditions, post-conditions
+
+experimental simulation
+
+judgement survey
+
+case study
+
+APIs (queue e stack)
+
+API contracts / external contracts
+
+API specifications
+
+
+understandability (precisa citação ou definição)
+
+formal contracts (not JML)

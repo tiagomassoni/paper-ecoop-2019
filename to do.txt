@@ -1,11 +1,29 @@
-[] colocar orcids dos autores
-[x] verificar comentários dos revisores
-[] colocar nos sites especializados os artefatos
-[] reescrever resumo - ajustar foco e terminologia (não é apenas JML; geral para outras linguagens de especificação)
-" provide a near natural language interface to write contracts."
-[] research questions na introducao
-[] metodologia - usar modelo dos outros papers
-[] resultado/discussão: reorganizar graficos, discutir com mais cuidado
-[] ameaças - usar modelo dos outros papers
-[] relacionados - ecoop 2017, journal, todos do meyer
-[] introdução e conclusão
+[] verificar comentários dos revisores
+[] colocar nos sites especializados os artefatos, e referenciar o repositório, with anonymous references
+[x] reescrever resumo - ajustar foco e terminologia (não é apenas JML; geral para outras linguagens de especificação)
+[] INTRO: " provide a near natural language interface to write contracts."
+[x] research questions na introducao
+[x] metodologia - usar modelo dos outros papers
+[x] resultado/discussão: reorganizar graficos, discutir com mais cuidado
+[x] ameaças - usar modelo dos outros papers
+[] doc. approaches
+[] related ecoop 2017, journal, todos do meyer
+[] intro and conclusion
+[] anonymous paper
+[] study understandability (define)
+[] complete research method for experiment
+[] eliminar simple shop, and invariants
+[] eliminate JML references, explain JML-like formal contracts
+[] #CCs/Pre/Post to results, change table 2 and table results
+[] Time for compilation, before and after
+[] include more citations into discussions
+[] effect sizes (new table with statistical results)
+[] explain why types of contract (pre,post) are more often in each project
+[] ncs by pre or post
+[] ncs by contract type
+[] examples for nonconformances found
+[] anomalies instead of nonconformances
+
+
+
+
