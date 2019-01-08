@@ -7,7 +7,7 @@
 [x] resultado/discussão: reorganizar graficos, discutir com mais cuidado
 [x] ameaças - usar modelo dos outros papers
 [x] doc. approaches
-[] contractjdoc section
+[x] contractjdoc section
 [] related ecoop 2017, journal, todos do meyer
 [] intro and conclusion
 [] anonymous paper
