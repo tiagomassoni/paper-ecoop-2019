@@ -70,23 +70,25 @@
 \usepackage{microtype}%if unwanted, comment out or use option "draft"
 \bibliographystyle{plainurl}
 
-\title{Design-by-Contract Javadoc for API Documentation: Trade-offs between Dynamic Checking and Understandability}
+\title{Design-by-Contract Javadoc for API Documentation: Trade-offs between Automatic Checking and Understandability}
 
-\titlerunning{Semi-formal Javadoc for API Documentation}%optional, please use if title is longer than one line
+\titlerunning{Design-by-Contract Javadoc for API Documentation}%optional, please use if title is longer than one line
 
-\author{Alysson Milanez}{Department of Systems and Computing, UFCG, Brazil}{alyssonfilgueira@copin.ufcg.edu.br}{}{}
+\author{ }{ }{ }{ }{ }
 
-\author{Tiago Massoni}{Department of Systems and Computing, UFCG, Brazil}{massoni@dsc.ufcg.edu.br}{}{}
+% \author{Alysson Milanez}{Department of Systems and Computing, UFCG, Brazil}{alyssonfilgueira@copin.ufcg.edu.br}{}{}
 
-\author{Henrique Reb\^{e}lo}{Informatics Center, UFPE, Brazil}{hemr@cin.ufpe.br}{}{}
+% \author{Tiago Massoni}{Department of Systems and Computing, UFCG, Brazil}{massoni@dsc.ufcg.edu.br}{}{}
 
-\author{Rohit Gheyi}{Department of Systems and Computing, UFCG, Brazil}{rohit@dsc.ufcg.edu.br}{}{}
+% \author{Henrique Reb\^{e}lo}{Informatics Center, UFPE, Brazil}{hemr@cin.ufpe.br}{}{}
 
-\author{Gary Leavens}{Department of Computer Science, UCF, USA}{leavens@cs.ucf.edu}{}{}
+% \author{Rohit Gheyi}{Department of Systems and Computing, UFCG, Brazil}{rohit@dsc.ufcg.edu.br}{}{}
 
-\authorrunning{A., Milanez et al.}
+% \author{Gary Leavens}{Department of Computer Science, UCF, USA}{leavens@cs.ucf.edu}{}{}
 
-\Copyright{Alysson Milanez and Tiago Massoni and Henrique Reb\^{e}lo and Rohit Gheyi and Gary Leavens}%mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
+% \authorrunning{A., Milanez et al.}
+
+% \Copyright{Alysson Milanez and Tiago Massoni and Henrique Reb\^{e}lo and Rohit Gheyi and Gary Leavens}%mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
 
 
 \subjclass{
@@ -97,10 +99,10 @@
 
 %\category{}%optional, e.g. invited paper
 %\relatedversion{}%optional, e.g. full version hosted on arXiv, HAL, or other respository/website
-\supplement{TBD}%optional, e.g. related research data, source code, ... hosted on a repository like zenodo, figshare, GitHub, ...
+%\supplement{TBD}%optional, e.g. related research data, source code, ... hosted on a repository like zenodo, figshare, GitHub, ...
 %\funding{}%optional, to capture a funding statement, which applies to all authors. Please enter author specific funding statements as fifth argument of the \author macro.
 
-\acknowledgements{I want to thank \dots}%optional
+%\acknowledgements{I want to thank \dots}%optional
 
 \nolinenumbers %uncomment to disable line numbering
 %\hideLIPIcs  %uncomment to remove references to LIPIcs series (logo, DOI, ...), e.g. when preparing a pre-final version to be uploaded to arXiv or another public repository
@@ -112,7 +114,7 @@
 
 \begin{abstract}
 %context
-Documenting API routines counts as a key benefit from applying the Design by Contract (DbC) methodology. 
+Documenting API methods counts as a key benefit from applying the Design by Contract (DbC) methodology. 
 In this context, DBC's pre- and post-conditions are used as part of the routine's public interface, for establishing call conditions and expected results, respectively, which could be then checked at runtime for detecting invalid calls or non-conforming implementations.
 %
 % problem
@@ -120,13 +122,13 @@ It is well known, however, that programmers, despite this convenience, are resis
 As a result, verification assistance is unavailable.
 %
 % solution
-In this paper, we report results from empirical studies on integrating contract expressions into Javadoc comments used as external API documentation. 
+In this paper, we report results from empirical studies on integrating contract expressions into Javadoc comments used as API contracts. 
 For this purpose, we designed a small tag-based extension to Javadoc to express pre- and post-conditions among other standard tags.
 %
 %studies
-The studies consisted in (1) evaluating understandability of contract expressions within API Javadoc, either for API developers or API users, by means of a experimental study and a follow-up survey, and (2) assessing its efficacy with a case study in which we manually formalized English contracts from open source Java systems into contract expressions, then checking conformance in runtime.    
+The studies consisted in (1) evaluating understandability of contract expressions within API Javadoc, either for API developers or API users, by means of a experimental study and a judgment survey, and (2) assessing its efficacy with a case study in which we manually formalized English contracts from open source Java systems into contract expressions, then checking conformance in runtime.
 %
-%results
+%results (REWRITE IN THE END)
 Both quantitative and qualitative data show no significant difference between Javadoc English text and contract expressions, regarding either correctness of performed tasks or contract readability. 
 Also, a straightforward translation of open source APIs to contract expressions was able to find a number of conformance problems between API contracts and implementation, embodying evidence on the usefulness of contract expressions for uncovering errors regarding the relationship between documentation and actual behaviour.
 %

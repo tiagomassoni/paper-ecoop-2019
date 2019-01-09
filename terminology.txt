@@ -8,6 +8,8 @@ contractJDoc: contract expressions amid Javadoc textual
 
 invariants, pre-conditions, post-conditions
 
+public contract/specification styles
+
 experimental simulation
 
 judgement survey

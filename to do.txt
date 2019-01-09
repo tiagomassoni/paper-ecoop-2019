@@ -25,6 +25,9 @@
 [] ncs by contract type
 [] examples for nonconformances found
 [] anomalies instead of nonconformances
+[] analyze if API is a correct term
+[] eliminate invariants, but explain in section 2 they are harder to find in public class members
+[] section summary in the introduction
 
 
 

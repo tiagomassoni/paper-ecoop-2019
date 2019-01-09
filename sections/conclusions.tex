@@ -1,26 +1,86 @@
 \section{Conclusions}
 \label{sec:conclusions}
 
-In this work, we present a new approach for writing comments and an
-application of this approach for Java context. The approach
-allows the use of Design by Contract~\cite{dbc} in a format closer to
-traditional Javadoc comments. When evaluating \contractjdoc{} we found the
-approach almost as understandable as traditional Javadoc comments, with the
-advantage of being able to check behavior at runtime.
-When comparing JML with \contractjdoc{}, the latter features less specification
-constructs, although results indicate programmers may feel more comfortable with
-it when writing precise behavior for methods. In addition, we found evidence
-that \contractjdoc{} is more readable than JML.
 
-% advantages
-\contractjdoc{} contracts enable runtime checking by using a language similar to the traditional Javadoc,
-and our compiler (\contractjdocCompiler{}) supports new constructs of Java language, such as the
-features from the Java 8, such as lambda expressions.
-Furthermore, as JML contracts, contracts in \contractjdoc{} may be used in place of defensive
-programming, by specifying valid inputs for the methods and shortening the source code.
+
+%context - tradeoffs are clear
+It is well known that software developers are resistant to use formal contracts for API specifications; for Java programs, for example, textual Javadoc prevail for documenting API behavior~\cite{}.
+Javadoc's use is widespread, serves for relevant purposes -- tools for generating documentation -- but lacks, of course, automatic checking of the program against its specification.
+%what we have done
+The trade-off between the pragmatics of textual descriptions and formal contracts amenability to automatic analysis is explored in this paper, by three empirical studies.
+%evaluation of styles
+We evaluated the effect on API usage and implementation tasks of three different API contract approaches in Java programs: textual Javadoc, JML-like formal contracts, and a third option, a small tag-based extension to Javadoc to express pre- and post-conditions among text and other standard tags, which we call \contractjdoc{}.
+
+
+%studies
+The first and second studies evaluated the effect of specification styles on the efficacy and understandability of contract expressions, either for API implementors or users, by means of a experimental simulation with 24 recruited participants, and a judgment survey with more than a hundred Java developers.
+In the third study, we evaluated the potential of detecting anomalies by manually formalizing textual Javadoc contracts from open source Java systems into contract expressions, then checking conformance in runtime.
+
+
+%first question - effect on the programming task
+Participants of our experimental simulation submitted programs either using or implementing one among two simple APIs. A factorial design assigned one of the three specification styles for the API's behaviour -- for repetition purposes, two participants were subject to a single ($spec style,usage or implementation task,API$) treatment.
+Javadoc and \contractjdoc{} groups were more sucessful in submitting anomaly-free programs, while half of the formal contract group violated at least one contract clause. 
+We speculate, by this outcome and by analyzing the qualitative data provided by the participants, that developers, despite their awareness of the specified behaviour, were having trouble in interpreting the expressions.  
+Moreover, all anomalies happenned with post-conditions, which matches conclusions from previous research~\cite{} perceiving the discomfort when dealing with this kind of contract, in comparison with pre-conditions. 
+
+
+%second question - effect on understandability
+We also used the experimental setting for assessing understandability~\cite{} of the three  specification styles. 
+In the answers, Javadoc contracts were regarded as the most understandable, followed by the mixed \contractjdoc{} style and, as the least understandable; nevertheless, those differences were not statistically significant. As a follow-up study, we carried out a judgement survey with 142 Java developers with at least one-year experience, in which the results were the same, this time with significant pairwise-difference effect sizes between all three styles.
+This outcome is expected, as developers tend to favour informal styles for documentation~\cite{}. It remains to be investigated whether an intermediate approach such as \contractjdoc{} is understandable enough for fostering the use of DBC in API specifications.
+
+%third question - can we find anomalies?
+Finally, our case study applying contract expressions in open source systems resulted in finding 381 anomalies in a single Javadoc-rich system (\emph{Dishevelled}) and ten more in other three toy systems (\emph{ABC/-Music/-Player, Jenerics and OOP Aufgabe3}), showing the potential of using contract expressions in existing Javadoc specifications.
+Other interesting findings about those systems include their preference for post-conditions over pre-conditions, although most contracts were classified as \emph{common case} -- enforcing expected program properties, such as nullable variables.
 
 % future work
+%hypothesis for future work
+Despite their limitations, we believe the studies presented in this paper prompt the research community to further investigate a few hypothesis with future enquiry. 
+%h: relate perceiving understandability and correct, conforming implementation 
+
+%h: how freedom to neglect defensive programming could be bad for conforming implementations 
+
+%h: how developers react to pre- and post-conditions; pre-conditions are a relief, post-conditions are neglected?
+
+%h: what are the reasons for not adopting contracts? one evidence is that they are hard to maintain in sync
+
+%autocomplete?
 As future work, we plan to leverage \contractjdoc{} for
 supporting autocomplete when writing the Javadoc comment. For this purpose, we
 can use the Jaro-Winkler~\cite{jaro,winkler99} string distance for
 autocompleting the comments.
+
+
+
+
+
+
+% %the language extension
+% \contractjdoc{} contracts enable runtime checking by using a language similar to the traditional Javadoc,
+% and our compiler (\contractjdocCompiler{}) supports new constructs of Java language, such as the
+% features from the Java 8, such as lambda expressions.
+% The approach allows the use of Design by Contract~\cite{dbc} in a format closer to
+% traditional Javadoc comments. 
+
+
+
+
+
+
+
+
+
+
+
+% When evaluating \contractjdoc{} we found the
+% approach almost as understandable as traditional Javadoc comments, with the
+% advantage of being able to check behavior at runtime.
+% When comparing JML with \contractjdoc{}, the latter features less specification
+% constructs, although results indicate programmers may feel more comfortable with
+% it when writing precise behavior for methods. 
+% In addition, we found evidence
+% that \contractjdoc{} is more readable than JML.
+% advantages
+% Furthermore, as JML contracts, contracts in \contractjdoc{} may be used in place of defensive
+% programming, by specifying valid inputs for the methods and shortening the source code.
+
