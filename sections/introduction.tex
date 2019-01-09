@@ -1,102 +1,74 @@
 \section{Introduction}
 \label{sec:introduction}
 
+%context
 Java programmers tend to consider writing Javadoc comments as a good practice,
-specially when these comments enhance public interfaces designed as third-party
-libraries for client programs.
-%
-Despite its recognized value and practice in Java community, 
-as discussed by ~\cite{liveAPI},
-understanding how to use third-party libraries can be difficult.
-This mainly occurs when the source of documentation is only natural language 
-comments that can be incomplete and ambiguous. In addition, a well-known problem is that
-documentation and implementation tend to diverge over time~\cite{Estler-etal14}; 
-a Java programmer may forget to update the Javadoc documentation after performing 
-an implementation change.
+specially when these comments enhance public methods -- this case is especially important for API callers and implementors.
+Despite its recognized value and practice in Java community~\cite{liveAPI},
+understanding how to use public routines.
+%problem 1
+This mainly occurs when the source of documentation is often textual comments, potentially incomplete and ambiguous. In addition, a well-known problem is that documentation and implementation tend to diverge over time~\cite{Estler-etal14}; 
+a Java programmer may forget to update the Javadoc documentation after performing an implementation change. Such scenario may produce faults related to requirements that could go unnoticed until late in the software process.
 
+%problem 2
+On the other hand, embedding contracts that follow the Design-by-Contract methodology (DbC) -- pre- and postconditions as checkable assertions for defining a public method's behaviour, which we refer as \emph{public contracts} -- has
+long been advocated by formal methods pioneers to solve issues in making programs satisfy specifications~\cite{}. 
+However, their adoption is limited~\cite{Polikarpova-etal09}. 
+Part of the reason is notational, for example, in Java there is no built-in support for public contracts.
+To this end, developers might use contract frameworks like the Java Modeling Language (JML)~\cite{jml} to express the full power of behavioral specifications.
 %
-On the other hand, embedding contracts (with pre- and postconditions as executable assertions) has
-long been advocated by formal methods pioneers to precisely express code behavior. 
-However, only a small amount of code has such contracts~\cite{Polikarpova-etal09}. 
-Part of the reason is notational, for example, in Java there is
-no built-in support for contracts, besides \texttt{assert} statements.
-To this end, we need an external contract framework like the Java Modeling Language (JML)~\cite{jml}
-to express the full power of behavioral specifications.
-%
-There is evidence that programmers are more likely to use contracts in languages that support them
-natively~\cite{Chalin06}, such as Microsoft's Code Contracts~\cite{codeContractsPaper} and Eiffel~\cite{eiffel}.
-%
-Another problem is that contracts expressed by
-the existing contract languages may be useful for programmers (internal documentation), 
-but it does not meet the needs of other
-readers (separate/external documentation), such as third-party libraries~\cite{Leavens10,Parnas2011}. 
-To use those libraries, a programmer should not need to look in the code to 
-find out how to use it. 
-%
-Therefore, to maximize benefits, 
-she must use the combination of such techniques (e.g., Javadoc and JML).
-
-%
-We propose a Javadoc-like language, called \contractjdoc{}, allowing Java programmers to add
-contract specifications (pre- and postconditions), in a straightforward way, into Javadoc comments.
-%
-Only a few extensions are needed to allow contracts,
-such as invariants.
-%
-To enable the power of contracts, the \contractjdoc{} compiler
-translates the documented contracts into corresponding JML specifications. 
-Then, these JML specifications, equipped with pre- and postconditions, are  
-compiled into runtime conformance checks.
+%There is evidence that programmers are more likely to use contracts in languages that support them
+%natively~\cite{Chalin06}, such as Microsoft's Code Contracts~\cite{codeContractsPaper} and Eiffel~\cite{eiffel}.
 %
 
-% how we evaluate
-We evaluate our approach by performing three studies:
-we first apply \contractjdoc{} to \totalSystems{} Javadoc-annotated open source
-systems in order to analyse \contractjdoc{}'s applicability.
-A number of previously-undetected inconsistencies between Javadoc and actual behaviour were found in some of the studied systems.
-% \item %experimental study
-Next, we report a study which observed 24 developers programming for Java interfaces with behaviour
-documented by the conventional Javadoc, JML~\cite{jml}, and
-\contractjdoc{}, within a controlled environment.
-As result, developers found it easier to implement an interface with contracts
-than writing a client for that interface. Also, in general pure Javadoc was straightforward to understand, but \contractjdoc{} performed better than JML, as we expected.
-% \item %survey
-Last, we investigate the readability of these three documentation approaches
-for specifying behavior in a Java interface -- Javadoc, JML and \contractjdoc{}, by
-means of a survey with 142 Java developers.
+%reason 2
+Another reason for their low adoption is that formal contracts, while useful for dynamic checking or static analysis, do not meet documentation needs critical to public contracts, as the case with third-party libraries~\cite{Leavens10,Parnas2011}. 
+%bridge to studies
+Tentative approaches do not seem to address those adoption issues~\cite{}.
+Developers would certainly benefit from the use of DbC as public contracts, although it seems undesirable to cast aside the simplicity provided by textual Javadoc specifications (Section~\ref{sec:example}).
+%we did not find
+To the best of our knowledge, research is needed to investigate how different contract styles in public contracts affect programming tasks.
+
+%solution - studies
+In this paper, we report results from empirical studies (Section~\ref{sec:results}) on integrating contract expressions into Javadoc comments used as public contracts. 
+For this purpose, we designed and implemented a small tag-based extension to Javadoc (\contractjdoc{}) to communicate pre- and post-conditions as contract expressions.
+%compilation
+Its compiler translates these expressions into corresponding runtime assertions.
+
+%studies
+The first study evaluates effectiveness and understandability~\cite{} of contract expressions within Javadoc, for both API clients and implementors, by means of a experimental simulation with 24 Java developers, using three contract styles: Javadoc text, \contractjdoc{} and JML-like formal contracts. 
+A follow-up judgement survey with 142 Java developers was carried out for amplifying understandability on those three styles.
+Finally, we investigated anomalies in Javadoc-rich open source systems that may arise when we manually formalize textual public contracts into contract expressions, then checking conformance at runtime.
+
 %results
-Survey results did not significantly differ for \contractjdoc{} and Javadoc, which
-is promising, as contracts are usually regarded as hard to read.
+The latter provided evidence on the problem of nonconformance between textual Javadoc and the implemented behaviour: we found 391 anomalies~\footnote{we refer to these issues as \emph{anomalies} because they are not necessarily bugs, but a mismatch between a specification and its implementation.} between contracts and code in one large and four small open source Java systems; most public contracts detected are post-conditions, but often simple forms of behaviour specifications -- more elaborate public contracts would potentially result in even more anomalies (Section~\ref{sec:discussion}).
 
-In summary, the main contributions of this paper are:
-\begin{itemize}
-\item A new approach for documenting source code -- \contractjdoc{} (Section~\ref{sec:approach});
-\item A case study applying \contractjdoc{} to \totalSystems{} Javadoc-annotated open source
-systems (Section~\ref{sec:caseStudy});
-\item An empirical study with 24 developers programming for Java interfaces with behavior
-documented by the conventional Javadoc, JML, and \contractjdoc{} (Section~\ref{sec:experiment});
-\item A comprehensibility survey with 142 Java developers investigating the
-readability of three documentation approaches for specifying behavior in a Java
-interface: Javadoc, JML and \contractjdoc{} (Section~\ref{sec:survey}).
-\end{itemize}
+%contract styles
+Our studies with contract styles, in turn, brought to our attention interesting discussion topics and hypotheses for further studies. 
+%result 1
+We observed higher quality of submissions as contracts were less formal, with satisfactory results when applying \contractjdoc{} with its semi-formal approach. Also, in terms of understandability, differences were discerned between different contract styles with variate levels of formality.
+In general, Javadoc text was considered straightforward to understand and apply, but \contractjdoc{} expressions mixed with textual presented better results in comparison to formal contracts, although opinions about understandability and implementation outcomes seem to be unrelated (Section~\ref{sec:discussion}).
+
+%consequences
+The results are promising in establishing hypotheses to the adoption of contract languages in mainstream development, by integrating informal and formal styles of specifications for public routines.
+Wide adoption of DbC in this context would bring the benefit of automatic verification to avoid mismatches between documentation and actual behaviour, as long as issues with flexibility and clarity are properly addressed. 
 
 
 \subsection{Research Questions}
 \label{sec:researchQuestions}
 
 %intro paragraph
-This research work investigates the impact of integrating contract expressions with Javadoc comments in public interfaces, in terms of applicability and usability. We first examine the impact of diverse contract documentation approaches with tasks related to the specification of data structure interfaces; as a follow-up, we inquired developers regarding understandability of contract examples. Second, we emulate the application of contract expressions to Javadoc-rich open source systems and analyzed results from runtime checking. In particular, we intend to answer the following research questions:  
+This research work investigates the impact of integrating contract expressions with Javadoc comments in public interfaces. 
+%We first examine the impact of three contract styles in API usage and implementation; as a follow-up, we inquired developers regarding understandability of examples using those contract styles. Moreover, we emulate the application of contract expressions to Javadoc-rich open source systems and analyzed results from runtime checking.
 
-\noindent\emph{RQ1. What is the success rate in implementation tasks, using three forms of public interface contracts?}\\
-We report and discuss results from a lab study with Java developers over development tasks involving a documented data structure interface.
+In particular, we intend to answer the following research questions:  
 
-  
-\noindent\emph{RQ2. What are the perceived understandability in using three forms of public interface contracts?}\\
-By means of impressions given by the previous lab study and a follow-up developer survey, we discuss quantitative and qualitative data regarding the forms of contract expressions that are preferred for implementation tasks.
+\noindent\emph{RQ1. What is the Effect of the Contract Style on API Usage and Implementation Tasks?}\\
+We report and discuss quantitative and qualitative results from a experimental simulation with Java developers over development tasks involving APIs documented with three contract styles: textual Javadoc, \contractjdoc{} (Section~\ref{sec:approach}), and JML-like formal contracts. 
 
+\noindent\emph{RQ2. What is the Effect of the Contract Style on the Understanbility of API Specifications?}\\
+By means of impressions given by the experimental simulation and a follow-up judgement survey, we discuss quantitative and qualitative data regarding the understandability of contract styles.
 
-\noindent\emph{RQ3. Can inconsistencies in Java systems be uncovered if using runtime-checkable contract expressions?}\\
-We collected a few open source systems based on their use of Javadoc andapplied contract expressions
+\noindent\emph{RQ3. What Kinds of Nonconformances can be Uncovered if Javadoc Specifications are Replaced by Contract Expressions?}\\
+We collected open source systems based on their use of Javadoc and applied contract expressions
 to each system, evaluating the result in terms of detected conformance errors. Also, we discuss the problems faced when replacing Javadoc comments by contract expressions in the described context.
-
-%TO DO: ver se é interessante colocar contribuições aqui.

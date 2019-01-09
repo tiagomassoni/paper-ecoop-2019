@@ -18,10 +18,9 @@ case study
 
 APIs (queue e stack)
 
-API contracts / external contracts
+public contracts
 
 API specifications
-
 
 understandability (precisa citação ou definição)
 

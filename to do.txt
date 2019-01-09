@@ -9,12 +9,13 @@
 [x] doc. approaches
 [x] contractjdoc section
 [x] related ecoop 2017, journal, todos do meyer
-[] introduction 
-[] conclusion
-[] anonymous paper
+[x] introduction 
+[x] conclusion
+[] hypothesis in conclusion
+[x] anonymous paper
 [] term understandability (define)
 [] complete research method for experiment
-[] eliminar simple shop, and invariants
+[] eliminar simple shop
 [] eliminate JML references, explain JML-like formal contracts
 [] #CCs/Pre/Post to results, change table 2 and table results
 [] Time for compilation, before and after
@@ -28,6 +29,7 @@
 [] analyze if API is a correct term
 [] eliminate invariants, but explain in section 2 they are harder to find in public class members
 [] section summary in the introduction
+[] citations
 
 
 
