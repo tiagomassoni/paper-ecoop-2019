@@ -1,5 +1,6 @@
 [x] citations
 [] hypotheses in conclusion
+[] evolution - discussion
 [] verificar comentários dos revisores
 [] term understandability: paper ase 2017 - concept and a big threat to validity
 [] colocar nos sites especializados os artefatos, e referenciar o repositório, with anonymous references
@@ -18,12 +19,16 @@
 [x] eliminar simple shop
 [] eliminate JML references, explain JML-like formal contracts
 [] #CCs/Pre/Post to results, change table 2 and table results
+
 [] Time for compilation, before and after
-[] include more citations into discussions
+
+[x] include more citations into discussions
 [] effect sizes (new table with statistical results)
+
 [] explain why types of contract (pre,post) are more often in each project
-[] ncs by pre or post
-[] ncs by contract type
+
+[LATER] anomalies by pre or post
+[LATER] anomalies by contract type
 [x] examples for nonconformances found
 [x] anomalies instead of nonconformances
 [] analyze if API is a correct term
@@ -31,6 +36,9 @@
 [x] section summary in the introduction
 [] problems in listings (math expressions)
 [] Rohit's comments
-
-
+[] Gary's comments
+[] Grammarly
+[] make terms and italics, fonts uniform
+[] fix form site
+[] italics
 
