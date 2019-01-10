@@ -67,9 +67,10 @@
 \usepackage{microtype}%if unwanted, comment out or use option "draft"
 \bibliographystyle{plainurl}
 
-\title{Design-by-Contract Javadoc for API Documentation: Trade-offs between Automatic Checking and Understandability}
+\title{Mixing Design-by-Contract and Javadoc: Trade-offs between Automatic Checking and Understandability}
 
-\titlerunning{Design-by-Contract Javadoc for API Documentation}%optional, please use if title is longer than one line
+\titlerunning{Mixing Design-by-Contract and Javadoc}
+%optional, please use if title is longer than one line
 
 \author{An Author}{An Institution}{author@authors.com}{}{}
 
@@ -114,10 +115,10 @@
 \begin{abstract}
 %context
 Documenting public routines counts as a key benefit from applying the Design by Contract (DbC) methodology. 
-In this context, DBC's pre- and post-conditions (public contracts) establish call conditions and expected results, respectively, which may be then checked at runtime for detecting invalid calls or nonconforming implementations.
+In this context, DbC's pre- and post-conditions (public contracts) establish call conditions and expected results, respectively, which may then be checked at runtime for detecting invalid calls or nonconforming implementations.
 %
 % problem
-It is well known, however, that programmers, despite this convenience, are resistant to use public contracts -- for Java programs, in particular, Javadoc natural text and tags are the dominant medium for documenting public routines.
+It is well known, however, that programmers, despite this convenience, are resistant to use public contracts -- for Java programs, in particular, Javadoc text and tags are the dominant media for documenting public routines.
 As a result, verification assistance is unavailable.
 %
 % solution
@@ -125,12 +126,13 @@ In this paper, we report results from empirical studies on integrating contract 
 For this purpose, we designed a small tag-based extension to Javadoc (\contractjdoc{}) to express pre- and post-conditions among other standard tags.
 %
 %studies
-Studies consisted in (1) evaluating effectiveness and understandability of contract expressions within Javadoc, either for API users or developers, by means of a experimental study and a judgment survey, and in (2) investigating anomalies in Javadoc-rich open source systems that may arise when we manually formalize textual public contracts into contract expressions, then checking conformance at runtime.
+Studies consisted in (1) evaluating effectiveness and understandability of contract expressions within Javadoc, either for API clients or implementors, by means of a experimental study and a judgment survey, and in (2) investigating anomalies in Javadoc-rich open source systems that may arise when we manually formalize textual public contracts into contract expressions, then checking conformance at runtime.
 %
 %results
-We observed higher quality of submissions as contracts were less formal, with satisfactory results when applying \contractjdoc with its semi-formal approach. Also, in terms of understandability, differences were discerned between different contract styles with variate levels of formality.
+We observed the higher quality of submissions as contracts were less formal, with satisfactory results when applying \contractjdoc{} with its semi-formal approach. Also, regarding understandability, differences were discerned between different contract styles with variate levels of formality.
 Given the fact that we found 391 anomalies between contracts and code in one large and four small open source Java systems, the results are promising in establishing hypotheses to the adoption of contract languages in mainstream development, by integrating informal and formal styles of documentation.
 \end{abstract}
+
 
 %(2) an empirical study
 %with 24 programmers using three different documenting approaches, including

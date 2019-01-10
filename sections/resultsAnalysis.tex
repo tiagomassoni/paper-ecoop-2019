@@ -1,7 +1,7 @@
 \section{Results}
 \label{sec:results}
 
-We start by describing the results for each study in detail, before proceeding to summarize and discuss the observed effects.
+We start by describing the results for each study in detail, before proceeding to summarise and discuss the observed effects.
 
 \subsection{Experimental Simulation}
 \label{sec:expResults}
@@ -9,13 +9,13 @@ We start by describing the results for each study in detail, before proceeding t
 %demographics
 The selected participant set encompasses graduates in Computer Science or Software Engineering -- either working in industry (41.6\%) or M.Sc. and Ph.D. candidates (58.4\%).
 %table
-In Table~\ref{tab:results} we summarize the results from the 24 trials, from which five -- 21\% -- were delivered with at least one fault detected by our test cases.
+In Table~\ref{tab:results} we summarise the results from the 24 trials, from which five -- 21\% -- were delivered with at least one fault detected by our test cases.
 %individual results
 All participants assigned to textual specifications in Javadoc delivered correct programs.
 By contrast, half of the programs delivered by participants using APIs with formal contracts were faulty (four out of eight).
 One faulty program was delivered by a participant from the \contractjdoc{} group.
 %task
-Regarding task, faulty programs were mostly present in implementing in API implementations -- four of them, if compared with only one in API clients.
+Regarding task, faulty programs were mostly present in API implementations -- four of them, if compared with only one in API clients.
 
 
 % source code correct
@@ -47,11 +47,11 @@ Regarding task, faulty programs were mostly present in implementing in API imple
 \end{table}
 
 %faults
-Table~\ref{tab:faults} details the faults detected by the test cases. After detailed analysis of the programs, we classified each fault in terms of the violated contract. 
+Table~\ref{tab:faults} details the faults detected by the test cases. After a detailed analysis of the programs, we classified each fault regarding the violated contract. 
 %clients
-All clients fulfilled the specified pre-conditions for calling the API methods -- p1's API client raise an exception which was incompatible with the method's postcondition.
+All clients fulfilled the specified pre-conditions for calling API methods -- p1's client raises an exception which was incompatible with the method's post-condition.
 %suppliers
-All four faults unveiled in API implementations resulted from failure in satisfying the specified post-condition in methods removing data from the given structure (two on \texttt{Stack.pop} and two on \texttt{Queue.remove}).
+All four faults unveiled in API implementations resulted from failing to satisfy the specified post-condition in methods removing data from the given structure (two on \texttt{Stack.pop} and two on \texttt{Queue.remove}).
 
 \begin{table}
 \centering
@@ -80,7 +80,7 @@ p20                                        & Queue                             &
 \end{adjustbox}
 \end{table}
 
-After they sent their code back, we asked participants about understandability of the API specifications, using a Likert-like scale which ranges from 1 (less understandable) to 5 (very understandable). The results for 24 answers are summarized in Figure~\ref{fig:ExpAnswersTotal}, where we can see assessments are split between 3 to 5. Most participants evaluated understandability as 4 (58\%).
+After they sent their code back, we asked participants about understandability of the API specifications, using a Likert-like scale which ranges from 1 (less understandable) to 5 (very understandable). The results for 24 answers are summarised in Figure~\ref{fig:ExpAnswersTotal}, in which assessments are spread between 3 to 5. Most participants evaluated understandability as 4 (58\%).
 
 \begin{figure*}
 \centering
@@ -108,18 +108,18 @@ Assuming a distinct perspective, we grouped understandability assessments by the
 %doc approach
 Visually, the assessments for Javadoc APIs are all above the median ($4$), while \contractjdoc{} assessments fluctuate around that median value. Formal contracts, in turn, were all assessed as $3$ or $4$.  
 % stats
-Nevertheless, statistical tests (in this case, Kruskal-Wallis non-parametric test) showed no difference between the groups (p-value = $0.15$, 95\% confidence level).
+Nevertheless, statistical tests (in this case, the Kruskal-Wallis non-parametric test) showed no difference between the groups (p-value = $0.15$, 95\% confidence level).
 
 %task
 Concerning the task performed by the developers, higher understandability is reported by participants assigned to supplier tasks, at least visually. Still, the Wilcoxon rank sum test~\cite{statistical} reported no significant difference (p-value = 0.07, for confidence level of 95\%).
 
 %qualitative results
 Furthermore, we asked the participants, with an open-ended question, to provide comments on their tasks.
-The quotes were organized in 11 categories, which are presented in Table~\ref{tab:categories}, in conjunction with the number of quotes. One quote might classified in more than one category -- three participants did not provide any answer.
+The quotes were organised in 11 categories, which are presented in Table~\ref{tab:categories}, in conjunction with the number of quotes. One quote might be classified in more than one category -- three participants did not provide an answer.
 
 %on the results
 %seven
-We found that most quotes either value the specifications or suggest the contracts should have been stronger (seven each). As an example of the latter, p6, which was assigned an \contractjdoc{} API, wrote "I hesitated over the \texttt{pop} method, due to its exception; there should be more information about the exception to be thrown in each case". 
+We found that most quotes either value the specifications or suggest the contracts should have been stronger (seven each). As an example of the latter, p6, which was assigned a \contractjdoc{} API, wrote: "I hesitated over the \texttt{pop} method, due to its exception; there should be more information about the exception to be thrown in each case". 
 %four
 Others made explicit suggestions on how the specification should be, from their previous understanding of Queue and Stack APIs.
 %other
@@ -160,7 +160,7 @@ Text was confusing                           & 1                                
 \label{sec:surveyResults}
 
 %survey description
-As a follow-up for the lab study, we showed three versions of the Stack API as a web survey, asking questions about those approaches to contract specifications; we suggested respondents to play the client role of the API, as if they were about to instantiate it and call its methods.
+As a follow-up for the lab study, we showed three versions of the Stack API as a web survey, asking questions about those approaches to contract specifications; we suggested respondents play the client role of the API as if they were about to instantiate it and call its methods.
 %questions
 Respondents were asked to assess understandability of each approach (again, using a 1--5 Likert scale), in addition to providing a verdict asking which approach they think is the most understandable as an API specification. For this, they were given three options -- one for each approach -- and a fourth, neutral option.
 
@@ -168,25 +168,25 @@ Respondents were asked to assess understandability of each approach (again, usin
 From the universe of developers who received the invitation, answers from 142 Java developers were considered valid.
 %demographics
 %students and professionals
-From those, 51 are graduate professionals (36\%) and 91 are undergraduate and graduate students in computer-related degrees (64\%).
+From those, 51 are graduate professionals (36\%), and 91 are undergraduate and graduate students in computer-related degrees (64\%).
 %experience
 Having some experience with Java was a requirement for being a participant; more than 73\% (105) have experience with either open source or industrial projects. Likewise, 74\% (105) of the respondents declared to have more than one year of Java programming.
 %contract experience.
 Regarding formal contract languages for specifying APIs (Eiffel, JML or similar), most respondents -- 67\% -- had no previous experience. 
 
 
-%results - javadoc is the simplest
-With respect to the survey answers, it is showed in Figure~\ref{fig:mostUnderstandable} that 50.7\% (72) of the respondents chose Javadoc as the simplest approach to understand the provided API specification. 
+%results - Javadoc is the simplest
+Concerning the survey answers, it is shown in Figure
+~\ref{fig:mostUnderstandable} that 50.7\% (72) of the respondents chose Javadoc as the most straightforward approach to understanding the provided API specification. 
 %contractjdoc em JML
-While only 11 (7\%) chose formal contracts as the most understandable approach and 18 (12\%) were indifferent, a almost one third of the respondents (41, almost 29\%) chose the mix of text and contract expressions -- \contractjdoc{}.
+While only 11 (7\%) chose formal contracts as the most understandable approach and 18 (12\%) were indifferent, an almost one-third of the respondents (41, almost 29\%) chose the mix of text and contract expressions -- \contractjdoc{}.
 
 
 \begin{figure}
 \centering
 \includegraphics[width=0.7\linewidth]{figs/mostUnderstandable.png}
 \label{fig:mostUnderstandable}
-\caption{Surveyed Verdicts on the Most Understandable API Documentation Approach.}
-\label{fig:surveyResults}
+\caption{Surveyed Verdicts on the Most Understandable Contract Style.}
 \end{figure}
 
 
@@ -194,7 +194,7 @@ While only 11 (7\%) chose formal contracts as the most understandable approach a
 After being presented with three versions of the same API, the distribution of assessments for each documentation approach is showed in Figure~\ref{fig:allApproaches}.
 %explain visual
 Answers for Javadoc and \contractjdoc{} were distributed around a median of $4.0$; for the first, assessments range from $3$ to $5$, while assesments for the latter were no higher than $4$.
-Likewise, formal contracts were evaluated with $4$ the highest, however with $3$ with center value. 
+Likewise, formal contracts were evaluated with $4$ the highest, however with $3$ with centre value. 
 
 \begin{figure}
 \centering
@@ -205,11 +205,13 @@ Likewise, formal contracts were evaluated with $4$ the highest, however with $3$
 
 
 %statistical results
-Differently from the experimental simulation from Section~\ref{sec:expResults}, statistical tests show significant difference between the assessments. The application of One-way ANOVA, which is robust enough for non-normal distributions~\cite{statistical}, detected distinction between the three groups of answers (p-value $<$ 0.05). A corresponding post hoc analysis -- Tukey HSD 
+Differently from the experimental simulation from Section~\ref{sec:expResults}, statistical tests show a significant difference between the assessments. The application of One-way ANOVA, which is robust enough for non-normal distributions~\cite{statistical}, detected a distinction between the three groups of answers (p-value $<$ 0.05). A corresponding post hoc analysis -- Tukey HSD 
 %and pairwise comparisons using t tests
-with Bonferroni correction~\cite{statistical} produced the following p-values for each pairwise comparison: Javadoc-ContractJDoc = 0.012, JML-ContractJDoc = 0.000, and JML-Javadoc = 0.000. The results then express significant difference between all approaches.
+with Bonferroni correction~\cite{statistical} produced the following p-values for each pairwise comparison: Javadoc-ContractJDoc = 0.012, Formal-ContractJDoc = 0.000, and Formal-Javadoc = 0.000. The results then express the significant difference between all styles.
+%effect sizes
 
-%When analyzing data grouped by experience (Figures~\ref{fig:javadocExp} to~\ref{fig:jmlExp}) by means of Wilcoxon rank sum test with continuity correctiontests, only for JML we found no statistical difference between Professionals and Students (p-value = 0.17). For both Javadoc and \contractjdoc{}, Professionals had perceived the approaches as being easier for comprehensing than Students (p-value = 0.012 and p-value = 0.004, respectively).
+
+%When analysing data grouped by experience (Figures~\ref{fig:javadocExp} to~\ref{fig:jmlExp}) using Wilcoxon rank sum test with continuity correctiontests, only for JML we found no statistical difference between Professionals and Students (p-value = 0.17). For both Javadoc and \contractjdoc{}, Professionals had perceived the approaches as being easier for comprehensing than Students (p-value = 0.012 and p-value = 0.004, respectively).
 
 
 \subsection{Case Study}
@@ -282,16 +284,14 @@ OOP Aufgabe3      & 1                                   & 4                     
 %commentary on the table
 From the selection of open source systems, only \emph{WebProtégé}'s test suites were unavailable; we translated their clauses nonetheless due to the richness of its Javadoc specification.
 The size of the available test suites is proportional to the system size.
-\emph{Dishevelled} is much larger than the other selected systems, naturally presenting a higher rate of anomalies, which provided us a profuse source of analysis about the mismatches between specification and implementation. 
+\emph{Dishevelled} is much larger than the other selected systems, naturally presenting a higher rate of anomalies, which provided us with an abundant source of analysis about the mismatches between specification and implementation. 
 %MASSONI: temos o tempo que cada sistema usou pra compilar SEM A INSTRUMENTACAO?
 About the time...
 
 
 
 % results for contract types
-Concerning the kind of contracts, the only unit in which we wrote more
-application-specific contracts was \emph{OOP Aufgabe3} system (55\% of the
-written contracts are application-specific). On the other hand, in \emph{ABC-Music-Player}, more than 90\% of the contracts remains between common-case and repetitive code: verifications that strings are not blank, collections are not empty, or that a method returns a field.
+Concerning the kind of contracts, the only unit for which we wrote more application-specific contracts was the \emph{OOP Aufgabe3} system (55\% of the written contracts are application-specific). On the other hand, in \emph{ABC-Music-Player}, more than 90\% of the contracts remain between common-case and repetitive code: verifications that strings are not blank, collections are not empty, or that a method returns a field.
 For \emph{Dishevelled}, most contracts are classified as common-case (57.51\%) -- 
 %other 36.92\% are repetitive with code and 
 only 5.57\% are application-specific.
