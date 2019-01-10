@@ -8,22 +8,36 @@ This section comprises discussion on the results from our empirical studies: exp
 \label{rq1}
 
 %code correctness, each approach
-Concerning code correctness, all participants assigned to Javadoc APIs produced code
-in accordance with the contracts -- our manually-produced test cases did not detect any contract violation. One \contractjdoc{} API implementation was delivered with a single fault, while half of the participants assigned to API with formal contracts presented at least one fault.
+Regarding code correctness, all participants assigned to Javadoc APIs produced code
+in accordance with the contracts -- our manually-produced test cases did not detect any contract violation. One \contractjdoc{} API implementation was submitted with a single fault, while half of the participants assigned to API with formal contracts presented at least one fault.
 %problems in understanding formal contracts
 These results may suggest participants had trouble understanding API formal contracts, assuming their self-reported experience in Java programming and their intention to complete the assignment correctly.
 %no test cases
 Since we did not provide our test cases, participants were asked to test at their discretion, and failure in fulfilling contracts as specified was not detected by them.
 %at least one example
-For example, we established the following postcondition for \texttt{Queue.remove}, using a JML-like notation
+For example, we established as post-condition for \texttt{AccountQueue.remove}, using JML-like formal contracts (Figure~\ref{code:remove}), that the return value be a non-null \texttt{CheckingAccount}. For this API, p20's submission presented an implementation that removed an account from the queue \emph{neglecting a previous emptiness test}, which allows for null returns, then violating the contract.
+
+
+\begin{figure}
+\centering
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi, frame=lines, mathescape=true]
 /**
-   
+public interface AccountQueue {
+...
+  /*@
+   @ ensures \result != null && \result instanceof CheckingAccount;
+   @ signals (AccountQueueException ex) 
+      (isEmpty() || headElement() instanceof SavingsAccount);
+   @*/
+  public Account remove() throws AccountQueueException;
+
 \end{lstlisting}
-p20's submission presented an implementation to \texttt{remove} \ldots 
+\caption{AccountQueue.remove with formal contracts.}
+\label{code:remove}
+\end{figure}
 
 %reports from faulty participants
-Surprisingly, no participant assigned to formal contracts reported any problems in their subjective answer –– p13 and p20 suggested changes to contracts, arguing they were vague and should be made stronger, while p14 asked a simple question about the task; p1 even reported "the documentation and contracts (\ldots) are clear".
+Surprisingly, no participant assigned to formal contracts reported any problems in their subjective answer –– p13 and p20 suggested changes to contracts, arguing they were vague and should be made stronger, while p14 asked a simple question about the task; p1 even reported "the documentation and contracts (...) are clear".
 %discussion 
 Even though developers understand the relevance of API formal contracts for the task, they may have misinterpreted the expected behavior, violating it with their implementation.
 In order to avoid such scenario, some sort of automatic verification would be critical.
@@ -34,7 +48,7 @@ p17 -- the only participant assigned to \contractjdoc{} whose implementation vio
 %issue - forgetting the contract!
 which raises the issue of, by rejecting defensive programming~\cite{}, one failing to notice contract restrictions, such as a basic assumption to ensure a post-condition clause.
 %solution?
-Again, test cases specific to the contract expressions should have made it easier to detect the nonconformance.
+Again, test cases specific to the contract expressions should have made it easier to detect anomalies.
 
 %in our case
 Four of those faults were submitted by implementers, which might be predictably more common, as API Clients could rely on simple tests or even additional compilation checks for not adding faults like the one added by p1.
@@ -79,17 +93,14 @@ Turning our attention back to experimental simulation data, participants reporte
 We then could possibly infer that the relationship between the perceived understandability and actual outcome of using API contracts might be orthogonal, although statistical evidence is absent for a more credible conclusion. 
 
 
-\subsection{RQ3. What Kinds of Nonconformances can be Uncovered if Javadoc Specifications are Replaced by Contract Expressions?}
+\subsection{RQ3. What Kinds of Anomalies are Uncovered if Javadoc Specifications are Replaced by Contract Expressions?}
 \label{rq3}
 
 
 % applying contractjdoc
 For all systems (see Table~\ref{tab:Units}), we
-wrote more pre- and postconditions than invariants. This result has two
-explanations: first, as expected the amount of Javadoc comments over the
-classes' fields in the evaluated systems is low in comparison with the amount
-of Javadoc comments over method's parameters and return.
-Those results corroborate with other research~\cite{} 
+wrote more post- than pre-conditions. 
+This result has two explanations: first, as expected the amount of Javadoc comments over the classes' fields in the evaluated systems is low in comparison with the amount of Javadoc comments over method's parameters and return. Those results corroborate with other research~\cite{}... 
 
 
 %  -- the only
@@ -107,16 +118,6 @@ In \texttt{ABC-Music-Player} this is related to the number of accessor methods
 available and for \texttt{WebProt\'{e}g\'{e}}, the difference is related to
 the available comments.
 
-
-
-%  and to the contracts we are able to infer from method's
-% body.
-%
-% In addition, based on the comment and the body of a method, establishing a
-% postcondition appears to be simpler than a precondition, as we do not know
-% the methods' clients beforehand.
-
-
 Data needed here: number of violations for each of two groupings:
 (1. by pre-, post-, inv-)
 (2. CommCase, AppSpec, Repet.)
@@ -124,46 +125,37 @@ One paragraph of discussion for each.
 
 
 %exceptions in ABC-MUSIC-PLAYER
+As example, we detected anomalies in \texttt{ABC-Mu\-sic-Player}; two of the pre-conditions in class \texttt{sound.Utilities} are violated by client classes (e.g. class \texttt{MainTest}). Javadoc comments such the following excerpt from \texttt{sound.Utilities} allowed trivial translations:
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi, frame=lines, mathescape=true]
+ /**
+     * Computes the greatest common divisor between two integers.
+     * @param a - must not be >= 0 [a >= 0]
+     * @param b must be > 0 [b > 0]
+     ...
+ **/  
+\end{lstlisting}
 
-\textbf{Add Example. }
-We were able to detect potential inconsistencies in \texttt{ABC-Mu\-sic-Player};
-the exception will be always thrown, differently from what is expected from the
-commentary.
-We also found a problem into
-\texttt{WebProt\'{e}g\'{e}} project, in the class \texttt{OWLLiteralParser} there was one exception
-in the Javadoc tag \texttt{@throws} that was not declared in the throws of the method's signature.
+One of the client classes tried to call such method with b as $0$. Another example of anomaly was found in the \texttt{WebProt\'{e}g\'{e}} system, regarding exceptional post-conditions. 
+The Javadoc from interface \texttt{OWLLiteralParser.parseLiteral} state the following post-conditions:
 
-% conformance errors
-\textbf{Add Examples. }
-In addition, sometimes the tests available along with the systems do
-not respect the definitions from the Javadoc comments. For instance, when the
-comments in natural language from \texttt{ABC-Music-Player} system are turned into
-\contractjdoc{} contracts, some tests from
-\texttt{MainTest}, \texttt{ParserTest}, and \texttt{SequencePlayerTest} violate
-the methods' preconditions from class \texttt{Utilities}, they try to
-call \texttt{Utilities}' methods by passing the value zero as the second
-parameter, even though the comment declares the second parameter must be greater than zero.
-This scenario also occurred in \texttt{Dishevelled} unit, the comments turned
-in \contractjdoc{} contracts also enable us to detect some tests
-that do not respect the restrictions available in the Javadoc comments.
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi, frame=lines, mathescape=true]
+ /**
+     * @return The {@link OWLLiteral} that {@code text} was parsed into.
+     * @throws OWLLiteralParseException If the literal text is malformed.
+     * @throws NullPointerException 
+          if {@code text} is {@code null} 
+          or {@code language} is {@code null}. 
+          [text == null || language == null]
+     */
+\end{lstlisting}
 
-
-% conformance errors
-\textbf{Add Examples. }
-When applying \contractjdoc{} to \texttt{ABC-Music-Player}, we found inconsistencies between Javadoc comments and the source code. The problems occurred in the class \texttt{Utilities} (package
-\texttt{sound}) because there are comments concerning a parameter declaring that the value of
-this parameter must not be greater than or equal to zero; however in the body of the methods there
-is an if-clause that throws exceptions when the value received by the parameter is negative.
-\textbf{Discuss open source software evolution, with citations}.
+In this case, the implementation for \texttt{parseLiteral} does not throw \texttt{NullPointerException} when the indicated scenario occurs.
 
 %final conclusion
 As a proof of concept, \contractjdoc{} and its compiler (\contractjdocCompiler{}) enabled us to write runtime
-checkable code for third-party systems based on the comments in natural
-language.
+checkable code for third-party systems based on the comments in natural language.
 As expected, the quality and variety of the contracts depended strongly on the available comments, however, we were able to
-detect and correct inconsistencies and missing expressions between source code and comments.
-
-
+detect and correct anomalies between source code and comments.
 
 
 \subsection{Threats to validity}
@@ -188,7 +180,7 @@ For the case study, \texttt{Dishevelled} and
 \texttt{WebProt\'{e}g\'{e}} sizes set them apart from the other systems.
 For instance, \texttt{Dishevelled} is more than 56 times bigger than \texttt{ABC-Music-Player}, 43
 times bigger than \texttt{Jenerics}, and 313 times bigger than \texttt{OOP Aufgabe3}.
-Therefore, results on those two systems are much more critical to the measurement of the dependent variable (number of nonconformances).
+Therefore, results on those two systems are much more critical to the measurement of the dependent variable (number of anomalies).
 
 
 %internal
@@ -197,7 +189,7 @@ Also, all experimental and survey material was available only in English, but a 
 submissions and answers.
 
 %internal - case study
-For the case study, our translation of Javadoc comments into contract expressions may be inaccurate, which could compromised the detected nonconformances. For that, two of the authors of this paper split the task of translating the comments, and one of them reviewed the translations carried out by other. 
+For the case study, our translation of Javadoc comments into contract expressions may be inaccurate, which could compromised the detected anomalies. For that, two of the authors of this paper split the task of translating the comments, and one of them reviewed the translations carried out by other. 
 
 
 

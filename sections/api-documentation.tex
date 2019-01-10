@@ -60,7 +60,6 @@ is an exceptional post-condition stating that {\lstinline!balance!} should be un
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi]
 class BankAccount {
  double balance;
- //@ invariant balance >= 0;
 
  //@ requires amt > 0 && amt <= balance;
  //@ ensures balance == \old(balance - amt);

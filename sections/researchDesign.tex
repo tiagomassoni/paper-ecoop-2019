@@ -3,14 +3,6 @@
 
 In the following subsections we discuss data collection and analysis for the performed studies. For naming the studies, we follow the terminology for Software Engineering research strategies from Stol and Fitzgerald~\cite{Stol2015}.
 
-
-%nomenclatura
-
-%Experimental simulation
-%Judgement task
-%Field Study
-
-
 \subsection{Experimental Simulation}
 \label{sec:experiment}
 
@@ -213,36 +205,32 @@ supporting code, with emphasis on views and editors for complex data structures,
 matrices; \texttt{Jenerics}\footnote{\url{https://github.com/mriedel/Jenerics}} is a general-purpose set of Java tools and templates library.
 On the other hand, \texttt{OOP
 Aufgabe3}\footnote{\url{https://github.com/rwilli/aufgabe3}} aims to manipulate
-polygons. \texttt{SimpleShop}\footnote{\url{https://github.com/pase/simpleshop}} is an
-electronical shopping system. In addition,
+polygons. In addition,
 \texttt{Webprot\'{e}g\'{e}}\footnote{\url{https://github.com/protegeproject/webprotege}}
 is a collaborative ontology development environment for the Web. Those systems amount to more than 190 KLOC. See Table~\ref{tab:Units} for details in
 terms of code lines (LOC), total contract clauses (\#CC) we were able to write
 -- following \cite{Estler-etal14} approach, in which the number of contract clauses is a proxy for contract complexity -- as split
-into preconditions (\#Pre), postconditions (\#Post), and invariants (\#Inv).\footnote{The clauses
+into preconditions (\#Pre) and postconditions (\#Post).\footnote{The clauses
 correspond to the contracts we applied in each system.}
 
 %systems table
 \begin{table}[ht]
 \caption{Case study Systems. LOC shows the code lines (LOC), total contract clauses (\#CC), as split
-into preconditions (\#Pre), postconditions (\#Post), and invariants (\#Inv)).}
+into preconditions (\#Pre) and postconditions (\#Post).}
 \label{tab:Units}
 \centering
 \begin{tabular}{llllll}
 \toprule
 \bfseries System &  \bfseries LOC & 
-\bfseries \#CC &  \bfseries \#Pre &  \bfseries \#Post &
- \bfseries \#Inv \\ \hline
-ABC-Music-Player & 1,973 & 115 & 41 & 74 & 0 \\ 
-Dishevelled & 110,577 & 2,655 & 1,411 & 1,250 & 0 \\ 
-Jenerics & 2,538 & 190 & 105 & 85 & 0 \\ 
-OOP Aufgabe3 & 353 & 54 & 28 & 26 & 0 \\
-SimpleShop & 472 & 50 & 16 & 15 & 19 \\
-Webprot\'{e}g\'{e} & 74,742 & 929 & 351 & 579 & 0 \\ \hline
+\bfseries \#CC &  \bfseries \#Pre &  \bfseries \#Post \\ \hline
+ABC-Music-Player & 1,973 & 115 & 41 & 74 \\ 
+Dishevelled & 110,577 & 2,655 & 1,411 & 1,250\\ 
+Jenerics & 2,538 & 190 & 105 & 85 \\ 
+OOP Aufgabe3 & 353 & 54 & 28 & 26 \\
+Webprot\'{e}g\'{e} & 74,742 & 929 & 351 & 579 \\ \hline
 
  \bfseries Total &  \bfseries \totalCode{} &  \bfseries
-\totalClauses{} &  \bfseries \totalPre{} &  \bfseries \totalPost{} &
- \bfseries \totalInv{}
+\totalClauses{} &  \bfseries \totalPre{} &  \bfseries \totalPost{}
 \\
 \bottomrule
 \end{tabular}
@@ -256,9 +244,8 @@ For instance, \texttt{``@param notes - Should not be null and should be of lengt
 replaced by the following \contractjdoc{}-based expression \texttt{[notes != null \&\& notes.size() >= 2]}, and
 postconditions that establish details on the return value of the
 methods, e.g. \texttt{``@return Integer the number of edges. Is always >= 3''}
-was replaced by \texttt{[@return >= 3]}. Class-level comments make up for
-invariants when they describe properties over fields that must be maintained for
-all methods of the class.
+was replaced by \texttt{[@return >= 3]}. 
+%$Class-level comments make up for invariants when they describe properties over fields that must be maintained for all methods of the class.
 
 \subsubsection{Experimental Procedure and Research Method} 
 
@@ -281,7 +268,7 @@ Section~\ref{sec:systems}); 2) compilation of the contracts by means of
 \contractjdocCompiler{} compiler, in order to generate the bytecode enriched
 with assertions; 3) the test suite available in each system is run over the
 contract-aware bytecode; 4) results of the test suite execution are analyzed and
-conformance errors are investigated.
+anomalies are investigated.
 
 \begin{figure}[h]
 \centering
@@ -310,7 +297,7 @@ package.\footnote{\url{https://goo.gl/yO8or2}; in order to run the
 Concerning the verification performed after applying \contractjdoc{} contracts into the systems,
 we used the test suites available with the purpose of identifying problems
 (four out of \totalSystems{} projects have a test suite available).
-Every test case that failed was investigated in order to find out if it was a conformance error in the system.
+Every test case that failed prompted for further investigation for confirming the presence of an anomaly.
 
 % applying dbcjdoc
 As a secondary goal, the study allowed us to check the expressiveness of \contractjdoc{} and to

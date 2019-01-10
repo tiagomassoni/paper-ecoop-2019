@@ -1,7 +1,9 @@
+[] citations
+[] hypothesis in conclusion
 [] verificar comentários dos revisores
+[] term understandability (define)
 [] colocar nos sites especializados os artefatos, e referenciar o repositório, with anonymous references
 [x] reescrever resumo - ajustar foco e terminologia (não é apenas JML; geral para outras linguagens de especificação)
-[] INTRO: " provide a near natural language interface to write contracts."
 [x] research questions na introducao
 [x] metodologia - usar modelo dos outros papers
 [x] resultado/discussão: reorganizar graficos, discutir com mais cuidado
@@ -11,11 +13,9 @@
 [x] related ecoop 2017, journal, todos do meyer
 [x] introduction 
 [x] conclusion
-[] hypothesis in conclusion
 [x] anonymous paper
-[] term understandability (define)
 [] complete research method for experiment
-[] eliminar simple shop
+[x] eliminar simple shop
 [] eliminate JML references, explain JML-like formal contracts
 [] #CCs/Pre/Post to results, change table 2 and table results
 [] Time for compilation, before and after
@@ -24,13 +24,13 @@
 [] explain why types of contract (pre,post) are more often in each project
 [] ncs by pre or post
 [] ncs by contract type
-[] examples for nonconformances found
-[] anomalies instead of nonconformances
+[x] examples for nonconformances found
+[x] anomalies instead of nonconformances
 [] analyze if API is a correct term
 [] eliminate invariants, but explain in section 2 they are harder to find in public class members
-[] section summary in the introduction
-[] citations
-
+[x] section summary in the introduction
+[] problems in listings (math expressions)
+[] Rohit's comments
 
 
 
