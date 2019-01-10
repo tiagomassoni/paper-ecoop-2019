@@ -1,6 +1,6 @@
 [x] citations
 [x] hypotheses in conclusion
-[] evolution - discussion
+[x] evolution - discussion
 [] verificar comentários dos revisores
 [] term understandability: paper ase 2017 - concept and a big threat to validity
 [] colocar nos sites especializados os artefatos, e referenciar o repositório, with anonymous references
@@ -15,7 +15,7 @@
 [x] introduction 
 [x] conclusion
 [x] anonymous paper
-[] complete research method for experiment
+[x] complete research method for experiment
 [x] eliminar simple shop
 [] eliminate JML references, explain JML-like formal contracts
 [] #CCs/Pre/Post to results, change table 2 and table results

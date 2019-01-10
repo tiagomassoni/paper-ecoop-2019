@@ -149,6 +149,7 @@ The Javadoc from interface \texttt{OWLLiteralParser.parseLiteral} state the foll
 \end{lstlisting}
 
 In this case, the implementation for \texttt{parseLiteral} does not throw \texttt{NullPointerException} when the indicated scenario occurs.
+These examples suggest the main reason behind these anomalies: the requirements changed during the system's lifecycle, causing the Javadoc to be obsolete in comparison with the program. In this scenario, incentives to update the specification are non-existent, since they are pure text -- analysis of conformance is hardly automatable. 
 
 %final conclusion
 As a proof of concept, \contractjdoc{} and its compiler (\contractjdocCompiler{}) enabled us to write runtime

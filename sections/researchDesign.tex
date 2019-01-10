@@ -1,21 +1,20 @@
 \section{Methodology}
 \label{sec:researchDesign}
 
-In the following subsections we discuss data collection and analysis for the performed studies. For naming the studies, we follow the terminology for Software Engineering research strategies from Stol and Fitzgerald~\cite{Stol2015}.
+In the following subsections we discuss data collection and analysis for the performed studies. For naming the studies, we follow the terminology for Software Engineering research strategies from Stol and Fitzgerald~\cite{Stol2015}: an experimental simulation (Section~\ref{sec:expPart}), a judgment survey (Section~\ref{sec:surveyPart}) and a case study (Section~\ref{sec:caseStudy}).
 
 \subsection{Experimental Simulation}
 \label{sec:experiment}
 
 %GQM
 In this study, we investigate the use of
-external contract expressions -- in particular, \contractjdoc{}, as showed in Section\ref{sec:approach} -- in simulated programming tasks, with respect to applicability and understandability, from the point of view of Java developers. 
+public contracts in simulated programming tasks, with respect to effectiveness and understandability, from the point of view of Java developers.
 
 \subsubsection{Participants}
 \label{sec:expPart}
 
 %recruitment
 We selected participants among professional developers assigned to projects in the context of an major R\&D Institute in Brazil. Recruitment was carried out by invitation; from estimated 150 invited professionals, 24 of them accepted the call and then, later, received the assignment by e-mail. The only requirement was previous experience with Java. From the 24 recruited developers, 10 of them had computer science (or related) degrees, while the remaining were carrying out undergraduate studies in the field. 
-
 %number of participants
 Although the number of participants is small for generalizing any conclusions, we expect the observations to be considered as an exploratory model to be checked by future studies with larger samples. For experimental simulations, our participant set is within the expected size~\cite{Stol2015}.
 
@@ -24,9 +23,9 @@ Although the number of participants is small for generalizing any conclusions, w
 \label{sec:studyDesign}
 
 %factors
-Our experiment was designed to assess the effect of a given documentation approach on implementation tasks which depend on documented APIs. 
+The study was designed to assess the effect of a given documentation approach on implementation tasks which depend on documented APIs. 
 %factor 1
-Participants are assigned to use a single documentation approach (Factor 1) from the following: plain Javadoc natural language, our Javadoc extension and formal contracts. Table~\ref{tab:factorsEmpStudy} displays the treatments for those two factors.
+Participants were assigned to use a contract style (Factor 1) from the following: plain Javadoc natural language, \contractjdoc{} and formal contracts. Table~\ref{tab:factorsEmpStudy} displays the treatments for those two factors.
 %factor 2
 For each of those approaches, two kinds of task are considered (Factor 2): a \textit{Supplier} task, in which the participant must program the implementation of a Java API class, and a \textit{Client} task, which demands development of a client code for the API.
 %factor 3
@@ -51,36 +50,28 @@ An additional variation we included regards the particular API assigned to an ar
 \end{table}
 
 %design
-We use a factorial design~\cite{wohlin}, randomly assigning participants to each combination of treatments; each triple
-$<$approach, task, API$>$ is called a trial.
-Since there are three documenting approaches, two tasks and two Java interfaces, there are 12 possible trials, so each of them was carried out by two participants, resulting in a balanced design. 
-The assignment Participant -- Trial is performed by using a
-completely randomized design in order to minimize bias.
-
+We use a factorial design~\cite{wohlin}, randomly assigning participants to each combination of treatments; a trial is the triple $<$approach, task, API$>$.
+Since there are three contract styles, two types of task and two APIs, there are 12 possible trials, so each of them was carried out by two participants, resulting in a balanced design. 
+The assignment of participants was completely random, in order to minimize bias.
 
 \subsubsection{Experimental Procedure}
 \label{sec:expProcedure}
 
-The experiment was performed offline, i.e., participants received the experimental package via an online Survey
-platform\footnote{An instance of the platform used is
-available online: \url{https://www.formpl.us/form/5671648952844288}} that we use to collect the results.
+The experiment was performed offline, i.e., participants received the experimental package via an online survey platform that we use to collect the results.
 % double blind process 
 % An example of survey sent to the
 % participants can be found online.\footnote{\url{https://goo.gl/forms/ySTsYfKSRcotLayk1}} 
-
 The experimental package consisted of (i) a statement of consent, (ii) a pretest
-questionnaire, (iii) instructions and materials to perform the experiment, and (iv) a post-test
-questionnaire. 
+questionnaire, (iii) instructions and materials to perform the experiment, and (iv) a post-test questionnaire. 
 The instructions contained what we expected from the participants: they were asked to perform an implementation task (a supplier or a client code) for the
-provided API. Each participant received one of the following tasks: create a supplier code for
-an API or a client code using the API methods.
-We also asked each participant to fulfill a
-pre-study questionnaire reporting their programming experience (with respect to Java and contract-based programming experience). 
+provided API. Each participant received one of the following tasks: create a class hat implements the API, or a client code using the API's methods.
+We also asked each participant to fulfill a pre-study questionnaire reporting their programming experience (with respect to Java and contract-based programming experience). 
 %After filling in the questionnaire, we randomly assign a task.
 
-During the assignment, participants were allowed to review additional information -- part of the experimental package -- about the assigned documentation approach. 
+During the assignment, participants were allowed to review additional information -- part of the experimental package -- about the assigned contract style. 
 %the tasks 1
-For \textit{Supplier} tasks, participants should have implemented variations of well-known stack or queue operations whose intended behaviour was documented as \contractjdoc{} expressions. The following example shows the contract for \lstinline!Queue.add!, written in plain Javadoc commentary.
+For \textit{Supplier} tasks, participants should have implemented variations of well-known stack (or queue) operations whose intended behaviour was documented using one of the three contract styles. The following example shows the contract for \lstinline!Queue.add!, written in textual Javadoc:
+
 %example
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi, frame=lines, mathescape=true]
 /**
@@ -100,9 +91,9 @@ For \textit{Supplier} tasks, participants should have implemented variations of 
 \end{lstlisting}
 
 %the tasks 2
-Differently, \textit{Client} tasks were carried out based on textual descriptions, although any call to API should fulfill its external contracts, also presented using one of the three documentation options. Implementation of the API were provided as binaries, so, as a result, participants were not given access to the source code.
+Differently, \textit{Client} tasks were carried out based on textual descriptions, although any call to API should fulfill its external contracts, also presented using one of the three documentation options. Implementation of the API were provided as binaries, so participants were not given access to the source code.
 %post-study
-Before sending the results back, we asked the participants to answer a a post-experiment questionnaire, in which we collected qualitative information about the developers' view of each task.
+Before submitting the programs, we asked the participants to answer a post-experiment questionnaire, in which we collected qualitative information about the developers' view of each task.
 
 We performed a pilot with three developers in order to fit the questionnaires' structure.
 %the way in which we make the data available for the developers. 
@@ -114,14 +105,16 @@ Pilot participants highlighted this fact, indicating that a single package conta
 label{sec:labmethod}
 
 %method for checking correctness
-Each program sent by the participants were subjected to test suites specially implemented for checking whether every single contract was fulfilled.
-As a result, we are able to classify each submission according to the number of contract-code inconsistencies.
-
+Each program sent by the participants were subjected to a test suite especially implemented by the researchers for checking whether every single contract was fulfilled -- there was a test case for each contract clause.
+As a result, we are able to classify each submission according to the number of faults detected by these tests.
 %method for likert
-For the objective questions in the post-study questionaire...
+To analyze the understandability assessments in the post-study questionaire, we applied simple visualization techniques (boxplots and bar charts) and statistical tests; in this case, we used the Wilcoxon rank sum test~\cite{statistical} for testing difference between groups, with non-normal data.
 
 %method for analysing questionnaire info
-The answers from qualitative post-study questionnaire were subject to a simple content analysis, performed by two researchers, which held a joint session for agreement on the category for each response from the developers.
+The answers from qualitative post-study questionnaire were subject to a simple content analysis, performed by two researchers, which held a joint session for agreement on the category for each response from the developers. 
+ We used \emph{open coding}~\cite{Price2010} to analyze the collected answers, by inspecting them quote by quote and detecting categories, representing the key ideas in the data.
+
+
 
 
 \subsection{Judgment Survey}
@@ -142,7 +135,7 @@ contact lists, increasing the sample and the number of participants in our study
 %number
 The survey was open for three weeks (from June to July 2016) and received 142
 answers (from an estimated total of 700 contacts who received the link -- approximately a 20\% response
-rate). From the 142 participants, 51 (\~36\%) are professionals and 91 are computer science (and related topics) students.
+rate). From the 142 participants, 51 (\~36\%) are professionals and 91 are computer science (or related) students.
 
 
 \subsubsection{Design and Method}
@@ -156,19 +149,19 @@ For this study, we followed a quantitative method based on a web-based survey in
 
 %survey structure
 The survey
-instrument\footnote{\url{https://goo.gl/forms/8W9jUMGCavkkzDj12}} begins with a purpose of clarification along with a consent term.
+instrument
+%\footnote{\url{https://goo.gl/forms/8W9jUMGCavkkzDj12}} 
+begins with a purpose of clarification along with a consent term.
 Then, a characterization of the respondent is conducted by some questions related to Java experience and experience with contract-based programming. Next, the survey is presented: links for three Java interfaces with each one documented in a different approach is showed, then some questions related to the understanding of the behavior of a class implementing the interfaces based on the comments available is asked. 
 
 %likert scale
-We used Likert-scale questions. In two questions we ask the developers to choose the most understandable documentation approach: one specific -- related to the provided interface; and one general, concerning the use of the approach in a general
-context.
-
+We used Likert-scale questions. In two questions we ask the developers to choose the most understandable documentation approach: one specific -- related to the provided contract style; and one general, concerning the use of the approach in a general context.
 %pilot study
 We also conducted a pilot concerning the questions and the structure of the programs being used. The pilot consists in asking three Java
 developers to test the setup for the survey, allowing us to validate the survey's questions and structure. The developers who participated, however, did not reported issues on the structure that we used for presenting the needed data for the participation in the study.
 
 %methods
-Regarding quantitative methods, we applied Wilcoxon and Kruskal-Wallis rank sum tests~\cite{statistical}for comparing the results for the different groups of participants. Regarding survey results, we applied one-way ANOVA, Tukey HSD and pairwise comparisons using t tests with Bonferroni correction~\cite{statistical}; in addition, we applied Wilcoxon rank sum test with continuity correction tests.
+Regarding quantitative methods, we applied Wilcoxon and Kruskal-Wallis rank sum tests~\cite{statistical} for comparing the results for the different groups of participants. Regarding survey results, we applied one-way ANOVA, Tukey HSD and pairwise comparisons using t tests with Bonferroni correction~\cite{statistical}.%in addition, we employed Wilcoxon rank sum test with continuity correction tests.
 
 \subsection{Case Study}
 \label{sec:caseStudy}
@@ -192,8 +185,7 @@ each system, based on overall dependence, and check whether those classes
 contained method-level Javadoc comments for most of their methods. If so, the
 system is selected. Finally, we checked whether the system presented a suite of
 unit test, which are run during the case study to detect inconsistencies. We
-were able to find four systems meeting these criteria, although we performed the
-manual translation to six systems.
+were able to find five systems meeting these criteria.
 
 %system descriptions
 While \texttt{ABC-Music-Player}\footnote{\url{https://github.com/deepakn94/ABC-Music-Player}}
@@ -278,7 +270,7 @@ anomalies are investigated.
 
 %contract classification
 Concerning the types of external contracts, we group the contracts according to
-the approach introduced by XXXXX et al.~\cite{typeContracts}: application-specific contracts
+the approach introduced by Schiller et al.~\cite{typeContracts}: application-specific contracts
 (AppSpec.) -- the kind of contracts that enforce richer semantic properties;
 % implications)
  common-case contracts (Com.Case) -- the kind of contracts that enforce
