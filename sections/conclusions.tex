@@ -1,10 +1,8 @@
 \section{Conclusions}
 \label{sec:conclusions}
 
-
-
 %context - tradeoffs are clear
-It is well known that software developers are resistant to use formal contracts for API specifications; for Java programs, for example, textual Javadoc prevail for documenting API behavior~\cite{}.
+It is well known that software developers are resistant to use formal contracts for API specifications; for Java programs, for example, textual Javadoc prevail for documenting API behavior~\cite{docAnalysis}.
 Javadoc's use is widespread, serves for relevant purposes -- tools for generating documentation -- but lacks, of course, automatic checking of the program against its specification.
 %what we have done
 The trade-off between the pragmatics of textual descriptions and formal contracts amenability to automatic analysis is explored in this paper, by three empirical studies.
@@ -21,13 +19,13 @@ In the third study, we evaluated the potential of detecting anomalies by manuall
 Participants of our experimental simulation submitted programs either using or implementing one among two simple APIs. A factorial design assigned one of the three specification styles for the API's behaviour -- for repetition purposes, two participants were subject to a single ($spec style,usage or implementation task,API$) treatment.
 Javadoc and \contractjdoc{} groups were more sucessful in submitting anomaly-free programs, while half of the formal contract group violated at least one contract clause. 
 We speculate, by this outcome and by analyzing the qualitative data provided by the participants, that developers, despite their awareness of the specified behaviour, were having trouble in interpreting the expressions.  
-Moreover, all anomalies happenned with post-conditions, which matches conclusions from previous research~\cite{} perceiving the discomfort when dealing with this kind of contract, in comparison with pre-conditions. 
+Moreover, all anomalies happenned with post-conditions, which matches conclusions from previous research~\cite{Estler-etal14,sac2017} perceiving the discomfort when dealing with this kind of contract, in comparison with pre-conditions. 
 
 
 %second question - effect on understandability
-We also used the experimental setting for assessing understandability~\cite{} of the three  specification styles. 
+We also used the experimental setting for assessing understandability~\cite{Scalabrino2017} of the three  specification styles. 
 In the answers, Javadoc contracts were regarded as the most understandable, followed by the mixed \contractjdoc{} style and, as the least understandable; nevertheless, those differences were not statistically significant. As a follow-up study, we carried out a judgement survey with 142 Java developers with at least one-year experience, in which the results were the same, this time with significant pairwise-difference effect sizes between all three styles.
-This outcome is expected, as developers tend to favour informal styles for documentation~\cite{}. It remains to be investigated whether an intermediate approach such as \contractjdoc{} is understandable enough for fostering the use of DBC in API specifications.
+This outcome is expected, as developers tend to favour informal styles for documentation~\cite{Polikarpova-etal09}. It remains to be investigated whether an intermediate approach such as \contractjdoc{} is understandable enough for fostering the use of DBC in API specifications.
 
 %third question - can we find anomalies?
 Finally, our case study applying contract expressions in open source systems resulted in finding 381 anomalies in a single Javadoc-rich system (\emph{Dishevelled}) and ten more in other three toy systems (\emph{ABC/-Music/-Player, Jenerics and OOP Aufgabe3}), showing the potential of using contract expressions in existing Javadoc specifications.

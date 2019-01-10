@@ -41,12 +41,12 @@ Surprisingly, no participant assigned to formal contracts reported any problems 
 %discussion 
 Even though developers understand the relevance of API formal contracts for the task, they may have misinterpreted the expected behavior, violating it with their implementation.
 In order to avoid such scenario, some sort of automatic verification would be critical.
-Since research has showed that developers often resist in applying formal specifications~\cite{}, contract expressions amid textual specifications might be useful.
+Since research has showed that developers often resist in applying formal specifications~\cite{Polikarpova-etal09,Estler-etal14}, contract expressions amid textual specifications might be useful.
 
 %the only error in cjdoc
 p17 -- the only participant assigned to \contractjdoc{} whose implementation violated a contract clause -- remarked he/she "\emph{trusted the contract expressions}", 
 %issue - forgetting the contract!
-which raises the issue of, by rejecting defensive programming~\cite{}, one failing to notice contract restrictions, such as a basic assumption to ensure a post-condition clause.
+which raises the issue of, by rejecting defensive programming~\cite{dbc}, one failing to notice contract restrictions, such as a basic assumption to ensure a post-condition clause.
 %solution?
 Again, test cases specific to the contract expressions should have made it easier to detect anomalies.
 
@@ -60,10 +60,9 @@ the APIs make up well-known data structures, thus their specifications may have 
 %types of faults
 All faults in the experiment failed to ensure post-conditions. 
 %postcond are harder
-Studies show these contracts are the trickier to write~\cite{}, and, by extension, might be also harder to follow (by API Clients) or fulfill (by API implementers). 
+These contracts are in fact trickier to write~\cite{Rosenblum}, and, by extension, might be also harder to follow (by API Clients) or fulfill (by API implementers). 
 %no preconditions!
-It is also noticeable that no pre-condition violations were detected. We might speculate that, because pre-conditions are the most commonly used type of API contract~\cite{}, developers are likely to be concerned about fulfilling them from the start. 
-Pre-conditions might be as well a deliverance to developers in two ways: API clients are inclined to comply right way, before calling any method, so they soon accomplish their contract obligation; and API implementers can assume the pre-condition for neglecting defensive programming, writing thus less code.
+It is also noticeable that no pre-condition violations were detected. We might speculate that developers are likely to be concerned about fulfilling pre-conditions from the start. Pre-conditions might be as well a deliverance to developers in two ways: API clients are inclined to comply right way, before calling any method, so they soon accomplish their contract obligation; and API implementers can assume the pre-condition for neglecting defensive programming, writing thus less code.
 
 %problems with kinds of contract
 Furthermore, qualitative data from participants do not present any reported issues with pre-conditions -- eight quotes are, as a matter of fact, \emph{compliments} to their clarity. On the other hand, nine participants make at least one remark about the trouble in understanding or accepting the post-conditions as they were provided.
@@ -78,7 +77,7 @@ From the assessments by the participants in our experiment, no statistical effec
 %first conclusion
 Nevertheless, by analyzing the assessments in together with the provided qualitative data, we notice a trend: Javadoc as the top approach and formal contracts as the least understandable approach. The \contractjdoc{} approach, mixing Javadoc and contract expressions, was assessed as intermediate, which is illustrated in Figure~\ref{fig:approachesEmpirical}.
 %expected
-This outcome is expected, as developers tend to favour informal styles for documentation -- a known obstacle for the adoption of DBC~\cite{}. In such scenarios, the approach employed in \contractjdoc{} is promising for a more gradual adoption of DBC in mainstream programming languages like Java.
+This outcome is expected, as developers tend to favour informal styles for documentation -- a known obstacle for the adoption of DBC~\cite{Polikarpova-etal09}. In such scenarios, the approach employed in \contractjdoc{} is promising for a more gradual adoption of DBC in mainstream programming languages like Java.
 
 %conclusion from survey
 Reinforcing this conclusion, the judgement survey with 142 respondents analogous results. 
@@ -100,7 +99,7 @@ We then could possibly infer that the relationship between the perceived underst
 % applying contractjdoc
 For all systems (see Table~\ref{tab:Units}), we
 wrote more post- than pre-conditions. 
-This result has two explanations: first, as expected the amount of Javadoc comments over the classes' fields in the evaluated systems is low in comparison with the amount of Javadoc comments over method's parameters and return. Those results corroborate with other research~\cite{}... 
+This result can be explained: ...~\cite{sac2017} 
 
 
 %  -- the only
@@ -166,7 +165,7 @@ Decisions about the design of our studies were taken specifically to mitigate th
 %construct
 Construct validity refers to correctly measuring the
 dependent variable -- for our experimental simulation, correctness of the implementation and understandability of API specifications.
-There is always the risk that participants present respondent bias~\cite{},  due to their knowledge about the experiment and the researchers (…we tried to give as less information about the study as possible).
+There is always the risk that participants present respondent bias~\cite{refSurvey}, due to their knowledge about the experiment and the researchers (…we tried to give as less information about the study as possible).
 
 Understandability assessment is specially dependent on the experience…our demographics questionnaire as answered by 27 developers, we discarded three because of experience level being discrepant.
 For the judgment survey, we have made similar arrangements for recruiting developers with comparable levels of experience, although uniformity is harder to achieve in that case.

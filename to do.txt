@@ -1,7 +1,7 @@
-[] citations
-[] hypothesis in conclusion
+[x] citations
+[] hypotheses in conclusion
 [] verificar comentários dos revisores
-[] term understandability (define)
+[] term understandability: paper ase 2017 - concept and a big threat to validity
 [] colocar nos sites especializados os artefatos, e referenciar o repositório, with anonymous references
 [x] reescrever resumo - ajustar foco e terminologia (não é apenas JML; geral para outras linguagens de especificação)
 [x] research questions na introducao

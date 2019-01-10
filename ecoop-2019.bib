@@ -1,3 +1,29 @@
+@article{Hoare1969,
+abstract = {In this paper an attempt is made to explore the logical foundations of computer programming by use of techniques which were first applied in the study of geometry and have later been extended to other branches of mathematics. This involves the elucidation of sets of axioms and rules of inference which can be used in proofs of the properties of computer programs. Examples are given of such axioms and rules, and a formal proof of a simple theorem is displayed. Finally, it is argued that important advantages, both theoretical and practical, may follow from a pursuance of these topics.},
+author = {Hoare, C. A. R.},
+doi = {10.1145/363235.363259},
+isbn = {0001-0782},
+issn = {00010782},
+journal = {Communications of the ACM},
+mendeley-groups = {Ecoop contractJdoc},
+pmid = {560945},
+title = {{An axiomatic basis for computer programming}},
+year = {1969}
+}
+
+@inproceedings{Dietrich2017,
+abstract = {The use of formal contracts has long been advocated as an approach to develop programs that are provably correct. However, the reality is that adoption of contracts has been slow in practice. Despite this, the adoption of lightweight contracts - typically utilising runtime checking - has progressed. In the case of Java, built-in features of the language (e.g. assertions and exceptions) can be used for this. Furthermore, a number of libraries which facilitate contract checking have arisen. In this paper, we catalogue 25 techniques and tools for lightweight contract checking in Java, and present the results of an empirical study looking at a dataset extracted from the 200 most popular projects found on Maven Central, constituting roughly 351,034 KLOC. We examine (1) the extent to which contracts are used and (2) what kind of contracts are used. We then investigate how contracts are used to safeguard code, and study problems in the context of two types of substitutability that can be guarded by contracts: (3) unsafe evolution of APIs that may break client programs and (4) violations of Liskov's Substitution Principle (LSP) when methods are overridden. We find that: (1) a wide range of techniques and constructs are used to represent contracts, and often the same program uses different techniques at the same time; (2) overall, contracts are used less than expected, with significant differences between programs; (3) projects that use contracts continue to do so, and expand the use of contracts as they grow and evolve; and, (4) there are cases where the use of contracts points to unsafe subtyping (violations of Liskov Substitution Principle) and unsafe evolution.},
+author = {Dietrich, Jens and Pearce, David J and Jezek, Kamil and Brada, Premek and Dietrich, Jens},
+booktitle = {31st European Conference on Object-Oriented Programming (ECOOP 2017)},
+doi = {10.4230/LIPIcs.ECOOP.2017.9},
+isbn = {978-3-95977-035-4},
+issn = {1868-8969},
+mendeley-groups = {Ecoop contractJdoc},
+title = {{Contracts in the Wild: A Study of Java Programs}},
+year = {2017}
+}
+
+
 @inproceedings{Stol2015,
 abstract = {Empirical research studies are the principal mech- anism through which the software engineering research commu- nity studies and learns from software engineering practice. The focus on empirical studies has increased significantly in the past decade, more or less coinciding with the emergence of evidence- based software engineering, an idea that was proposed in 2004. As a consequence, the software engineering community is familiar with a range of empirical methods. However, while several overviews exist of popular empirical research methods, such as case studies and experiments, we lack a ‘holistic' view of a more complete spectrum of research methods. Furthermore, while researchers will readily accept that all methods have inherent limitations, methods such as case study are still frequently critiqued for the lack of control that a researcher can exert in such a study, their use of qualitative data, and the limited generalizability that can be achieved. Controlled experiments are seen by many as yielding stronger evidence than case studies, but these can also be criticized due to the limited realism of the context in which they are conducted. We identify a holistic set of research methods and indicate their strengths and weaknesses in relation to various research elements.},
 author = {Stol, Klaas-Jan and Fitzgerald, Brian},
@@ -60,6 +86,19 @@ year = {2015}
  year = {1995},
  institution = {University of Zurich},
 }
+
+@inproceedings{Scalabrino2017,
+abstract = {—Program understanding plays a pivotal role in soft-ware maintenance and evolution: a deep understanding of code is the stepping stone for most software-related activities, such as bug fixing or testing. Being able to measure the understandability of a piece of code might help in estimating the effort required for a maintenance activity, in comparing the quality of alternative implementations, or even in predicting bugs. Unfortunately, there are no existing metrics specifically designed to assess the understandability of a given code snippet. In this paper, we perform a first step in this direction, by studying the extent to which several types of metrics computed on code, documentation, and developers correlate with code understandability. To perform such an investigation we ran a study with 46 participants who were asked to understand eight code snippets each. We collected a total of 324 evaluations aiming at assessing the perceived understandability, the actual level of understanding, and the time needed to understand a code snippet. Our results demonstrate that none of the (existing and new) metrics we considered is able to capture code understandability, not even the ones assumed to assess quality attributes strongly related with it, such as code readability and complexity.},
+author = {Scalabrino, Simone and Bavota, Gabriele and Vendome, Christopher and Linares-Vasquez, Mario and Poshyvanyk, Denys and Oliveto, Rocco},
+booktitle = {ASE 2017 - Proceedings of the 32nd IEEE/ACM International Conference on Automated Software Engineering},
+doi = {10.1109/ASE.2017.8115654},
+isbn = {9781538626849},
+keywords = {Code understandability,Empirical study,Negative result,Software metrics},
+mendeley-groups = {Ecoop contractJdoc},
+title = {{Automatically assessing code understandability: How far are we?}},
+year = {2017}
+}
+
 
 @MISC{jmlreference,
     author = {G. Leavens and E. Poll and C. Clifton and Y. Cheon and C. Ruby and D. Cok and P. M�ller and J. Kiniry and P. Chalin and D. Zimmerman and W. Dietl},
@@ -282,6 +321,40 @@ pages ={175--188},
   publisher={IEEE}
 }
 
+@article{Rosenblum,
+abstract = {Embedded assertions have long been recognized as a$\backslash$npotentially powerful tool for automatic runtime$\backslash$ndetection of software faults during debugging,$\backslash$ntesting and maintenance. However, they have seen$\backslash$nlittle widespread use in practice because previous$\backslash$nassertion processing tools did not integrate easily$\backslash$nwith existing programming environments, and it is$\backslash$nnot well understood what kinds of assertions are$\backslash$nmost effective at detecting software faults. The$\backslash$nauthor describes experience using an assertion$\backslash$nprocessing tool that was built to address the$\backslash$nconcerns of ease-of-use and effectiveness. The tool$\backslash$nis called APP, an Annotation Pre-Processor for C$\backslash$nprograms developed in UNIX-based development$\backslash$nenvironments. APP has been used to develop a number$\backslash$nof software systems over three years. Based on this$\backslash$nexperience, the author presents a classification of$\backslash$nthe assertions that were most effective at detecting$\backslash$nfaults. While the assertions that are described$\backslash$nguard against many common kinds of faults and$\backslash$nerrors, the very commonness of such faults$\backslash$ndemonstrates the need for an explicit, high-level,$\backslash$nautomatically checkable specification of required$\backslash$nbehavior.},
+author = {Rosenblum, D.S.},
+doi = {10.1109/ICSE.1992.753493},
+file = {:Users/tiagomassoni/Dropbox/leituras/papers/dbc/Rosenblum - 1992 - Towards A Method Of Programming With Assertions.pdf:pdf},
+isbn = {0-8791-504-6},
+issn = {0270-5257},
+journal = {International Conference on Software Engineering},
+mendeley-groups = {Ecoop contractJdoc},
+pages = {92--104},
+title = {{Towards A Method Of Programming With Assertions}},
+url = {http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=753493}
+}
+
+
+@inproceedings{sac2017,
+  author    = {Alysson Milanez and
+               Bianca Lima and
+               Jos{\'{e}} Ferreira and
+               Tiago Massoni},
+  title     = {Nonconformance between programs and contracts: a study on C{\#}/code
+               contracts open source systems},
+  booktitle = {Proceedings of the Symposium on Applied Computing, {SAC} 2017, Marrakech,
+               Morocco, April 3-7, 2017},
+  pages     = {1219--1224},
+  year      = {2017},
+  crossref  = {DBLP:conf/sac/2017},
+  url       = {https://doi.org/10.1145/3019612.3019779},
+  doi       = {10.1145/3019612.3019779},
+  timestamp = {Wed, 05 Dec 2018 13:49:36 +0100},
+  biburl    = {https://dblp.org/rec/bib/conf/sac/MilanezLFM17},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
 @inproceedings{typeContracts,
  author = {Schiller, T. and Donohue, K. and Coward, F. and Ernst, M.},
  title = {Case Studies and Tools for Contract Specifications},
@@ -306,4 +379,44 @@ booktitle={Software Maintenance, 2002. Proceedings. International Conference on}
 title={{Documenting pattern use in Java programs}},
 year={2002},
 pages={230-233},
+}
+
+@misc{javadoc-oracle,
+  title = {Javadoc Technology},
+  howpublished = {\url{https://docs.oracle.com/javase/8/docs/technotes/guides/javadoc/index.html}},
+  note = {Accessed: 2018-01-10}
+}
+
+@book{java-spec,
+ author = {Gosling, James and Joy, Bill and Steele, Guy L. and Bracha, Gilad and Buckley, Alex},
+ title = {The Java Language Specification, Java SE 8 Edition},
+ year = {2014},
+ isbn = {013390069X, 9780133900699},
+ edition = {1st},
+ publisher = {Addison-Wesley Professional},
+} 
+
+
+@incollection{Price2010,
+abstract = {Open coding is an essential methodological tool for qualitative data analysis that was introduced in grounded theory research. Open coding refers to the initial interpretive process by which raw research data are first systematically analyzed and categorized.},
+author = {Price, Jason Matthew Cameron},
+booktitle = {Encyclopedia of Case Study Research},
+doi = {10.4135/9781412957397.n55},
+isbn = {9781412956703},
+mendeley-groups = {Ecoop contractJdoc},
+title = {{Coding: Open Coding}},
+year = {2010}
+}
+
+
+@inproceedings{Hao2013,
+abstract = {In software evolution, developers typically need to identify whether the failure of a test is due to a bug in the source code under test or the obsoleteness of the test code when they execute a test suite. Only after finding the cause of a failure can developers determine whether to fix the bug or repair the obsolete test. Researchers have proposed several techniques to automate test repair. However, test-repair techniques typically assume that test failures are always due to obsolete tests. Thus, such techniques may not be applicable in real world software evolution when developers do not know whether the failure is due to a bug or an obsolete test. To know whether the cause of a test failure lies in the source code under test or in the test code, we view this problem as a classification problem and propose an automatic approach based on machine learning. Specifically, we target Java software using the JUnit testing framework and collect a set of features that may be related to failures of tests. Using this set of features, we adopt the Best-first Decision Tree Learning algorithm to train a classifier with some existing regression test failures as training instances. Then, we use the classifier to classify future failed tests. Furthermore, we evaluated our approach using two Java programs in three scenarios (within the same version, within different versions of a program, and between different programs), and found that our approach can effectively classify the causes of failed tests. {\textcopyright} 2013 Springer-Verlag Berlin Heidelberg.},
+author = {Hao, Dan and Lan, Tian and Zhang, Hongyu and Guo, Chao and Zhang, Lu},
+booktitle = {Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)},
+doi = {10.1007/978-3-642-39038-8-25},
+isbn = {9783642390371},
+issn = {03029743},
+mendeley-groups = {Ecoop contractJdoc},
+title = {{Is this a bug or an obsolete test?}},
+year = {2013}
 }
