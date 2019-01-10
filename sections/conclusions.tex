@@ -9,7 +9,6 @@ The trade-off between the pragmatics of textual descriptions and formal contract
 %evaluation of styles
 We evaluated the effect on API usage and implementation tasks of three different API contract approaches in Java programs: textual Javadoc, JML-like formal contracts, and a third option, a small tag-based extension to Javadoc to express pre- and post-conditions among text and other standard tags, which we call \contractjdoc{}.
 
-
 %studies
 The first and second studies evaluated the effect of specification styles on the efficacy and understandability of contract expressions, either for API implementors or users, by means of a experimental simulation with 24 recruited participants, and a judgment survey with more than a hundred Java developers.
 In the third study, we evaluated the potential of detecting anomalies by manually formalizing textual Javadoc contracts from open source Java systems into contract expressions, then checking conformance in runtime.
@@ -33,23 +32,21 @@ Other interesting findings about those systems include their preference for post
 
 % future work
 %hypothesis for future work
-Despite their limitations, we believe the studies presented in this paper prompt the research community to further investigate a few hypothesis with future enquiry. 
+Despite their limitations, we believe the studies presented in this paper prompt the research community to further investigate a number of hypothesis with future enquiry. 
 %h: relate perceiving understandability and correct, conforming implementation 
-
+Making sense of the specified behaviour in contracts is certainly a necessary condition to providing a program that conforms to the specification, but it is not sufficient; other forces should be considered, such as tool support, enforcing test cases or even the developer's lack of discipline.  
 %h: how freedom to neglect defensive programming could be bad for conforming implementations 
+Additionally, we could investigate whether contract conformance may be undermined by the omission of defensive programming promoted by Dbc -- as it becomes pointless to add program checks to certain conditions, other important conditions might be neglected.. 
+
 
 %h: how developers react to pre- and post-conditions; pre-conditions are a relief, post-conditions are neglected?
-
+In Dbc -- especially for public contracts --, pre-conditions seem easier to regard and fulfill, if compared to post-conditions. However, post-conditions are probably more fundamental to elaborate and useful contracts~\cite{Rosenblum}. Research could be carried out to test this hypothesis, and investigate the rationale behind the observations.   
 %h: what are the reasons for not adopting contracts? one evidence is that they are hard to maintain in sync
+Finally, the reason for the low adoption of DbC, at least for formal contracts, must be subject of further consideration. As we could observe in our case study with open-source systems, keeping the specification in sync with the program seems to be main issue, requiring extra resources often not available in software teams with tight schedules. Automatic generation of contracts from programs~\cite{docAnalysis,atComment} seems a reasonable option to address this issue.  
 
-%autocomplete?
-As future work, we plan to leverage \contractjdoc{} for
-supporting autocomplete when writing the Javadoc comment. For this purpose, we
-can use the Jaro-Winkler~\cite{jaro,winkler99} string distance for
-autocompleting the comments.
-
-
-
+%improve contractjdoc
+For \contractjdoc{}, we intend to improve the tags for considering more complex contract expressions, and carry out more studies on its usability and efficiency, in special for specifying APIs -- adaptation to other programming languages, such as C\#, would be relatively straightforward. 
+For instance, we could add support to \emph{autocomplete}, applying Jaro-Winkler string distance~\cite{jaro,winkler99} as basis.
 
 
 

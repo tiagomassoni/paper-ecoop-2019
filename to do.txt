@@ -1,5 +1,5 @@
 [x] citations
-[] hypotheses in conclusion
+[x] hypotheses in conclusion
 [] evolution - discussion
 [] verificar comentários dos revisores
 [] term understandability: paper ase 2017 - concept and a big threat to validity
@@ -40,5 +40,5 @@
 [] Grammarly
 [] make terms and italics, fonts uniform
 [] fix form site
-[] italics
+[] italics to highlight terms
 
