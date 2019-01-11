@@ -42,6 +42,6 @@
 
 [] verificar comentários dos revisores
 
-[] term understandability: paper ase 2017 - concept and a big threat to validity
+[x] term understandability: paper ase 2017 - concept and a big threat to validity
 
 [] review references

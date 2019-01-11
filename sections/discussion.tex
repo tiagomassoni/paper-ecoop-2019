@@ -159,14 +159,18 @@ Decisions about the design of our studies were explicitly taken to mitigate thre
 
 %construct
 Construct validity refers to correctly measuring the
-dependent variable -- for our experimental simulation, the correctness of the implementation and understandability of contracts styles.
-There is always the risk that participants present respondent bias~\cite{refSurvey}, due to their knowledge about the experiment and the researchers (…we tried to give as less information about the study as possible).
+dependent variable -- for our experimental simulation, the correctness of the implementation and understandability of contract styles.
+There is always the risk that participants present respondent bias~\cite{refSurvey}, due to their knowledge about the experiment and the researchers; we expect to mitigate this issue by providing as less information about the study as possible in the experimental package sent to the participants.
 
-Understandability assessment is primarily dependent on the experience…our demographics questionnaire as answered by 27 developers, we discarded three because of experience level being discrepant.
+Our demographics questionnaire as answered by 27 developers, we discarded three because of experience level being discrepant.
 For the judgment survey, we have made similar arrangements for recruiting developers with comparable levels of experience, although uniformity is harder to achieve in that case.
 The order in which we display the documented
 interfaces on the survey form and the absence of open-ended questions can also threaten the construct validity. For dealing with these threats, we
 performed a pilot before applying the survey and used the results from the pilot to improve the survey structure. 
+
+
+A known threat is related to the understandability construct, which is complex and not directly measurable. We limited the concept to the direct comprehension of functionalities provided by a given routine, in terms of the expected inputs and outputs~\cite{4019969}. In the questions, it is explicitly stated that readers "\emph{should grade how they were able to grasp as funcionality and restrictions from the contracts"}; yet, we assume that answers might have deviated from its original purpose, for which there is no trouble-free solution~\cite{Scalabrino2017}.
+
 
 %In addition, the answers from developers may not be representative of their real opinion on difficulty perception; to overcome this threat we made a space for comments available along with the Likert-scale questions, which are taken into account when collecting the answers.
 

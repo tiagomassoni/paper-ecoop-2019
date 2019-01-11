@@ -33,8 +33,7 @@ Its compiler translates these expressions into corresponding runtime assertions.
 
 %studies
 The first study evaluates the effectiveness and understandability~\cite{Scalabrino2017} of contract expressions within Javadoc, for both API clients and implementors, employing an experimental simulation with 24 Java developers, using three contract styles: Javadoc text, \contractjdoc{} and JML-like formal contracts. 
-A follow-up judgement survey with 142 Java developers was carried out for amplifying understandability on those three styles.
-Finally, we investigated anomalies in Javadoc-rich open source systems that may arise when we manually formalise textual public contracts into contract expressions, then checking conformance at runtime.
+A follow-up judgement survey with 142 Java developers was carried out for amplifying the enquiry on understandability for the contract styles. Finally, we investigated anomalies in Javadoc-rich open source systems that may arise when we manually formalise textual public contracts into contract expressions, then checking conformance at runtime.
 
 %results
 The latter provided evidence on the problem of nonconformance between textual Javadoc and the implemented behaviour: we found 391 anomalies~\footnote{we refer to these issues as \emph{anomalies} because they are not necessarily bugs, but a mismatch between a specification and its implementation.} between contracts and code in one large and four small open source Java systems. Most public contracts detected are post-conditions, but often simple forms of behaviour specifications -- more elaborate public contracts would potentially result in even more anomalies (Section~\ref{sec:discussion}).
@@ -62,7 +61,9 @@ In particular, we intend to answer the following research questions:
 We report and discuss quantitative and qualitative results from an experimental simulation with Java developers over development tasks involving APIs documented with three contract styles: textual Javadoc, \contractjdoc{} (Section~\ref{sec:approach}), and JML-like formal contracts. 
 
 \noindent\emph{RQ2. What is the Effect of the Contract Style on the Understandability of API Specifications?}\\
-Using impressions given by the experimental simulation and a follow-up judgement survey, we discuss quantitative and qualitative data regarding the understandability of contract styles.
+Using impressions given by the experimental simulation and a follow-up judgement survey, we discuss quantitative and qualitative data regarding the understandability of contract styles. 
+Our approach to \emph{understandability} is evaluate the comprehension of functionalities provided by a given routine, in terms of the expected inputs and outputs; however, it is a composite construct, whose measurement may be limited~\cite{4019969}.
+
 
 \noindent\emph{RQ3. What Kinds of Anomalies are Uncovered if Contract Expressions replace Javadoc Specifications?}\\
 We collected open source systems based on their use of Javadoc and applied contract expressions
