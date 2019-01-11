@@ -207,9 +207,26 @@ Likewise, formal contracts were evaluated with $4$ the highest, however with $3$
 
 
 %statistical results
-Differently from the experimental simulation from Section~\ref{sec:expResults}, statistical tests show a \emph{significant difference between the assessments}. The application of One-way ANOVA, which is robust enough for non-normal distributions~\cite{statistical}, detected a distinction between the three groups of answers (p-value $<$ 0.05). A corresponding post hoc analysis -- Tukey HSD 
-%and pairwise comparisons using t tests
-with Bonferroni correction~\cite{statistical} produced the following p-values for each pairwise comparison: Javadoc-ContractJDoc = 0.012, Formal-ContractJDoc = 0.000, and Formal-Javadoc = 0.000. The results then express the significant difference between all styles.
+Differently from the experimental simulation from Section~\ref{sec:expResults}, statistical tests show a \emph{significant difference between the assessments}. The application of One-way Analysis of Variance (ANOVA), which is robust enough for non-normal distributions~\cite{statistical}, detected a distinction between the three groups of answers (p-value $<$ 0.05). 
+To estimate the assessment differences between each pair of groups, we applied post hoc analysis -- Tukey HSD with Bonferroni correction~\cite{statistical}. Cohen's effect sizes are shown in Table~\ref{tab:effect}, expressing significant difference between all styles. Using formal contracts as baseline, \contractjdoc{} presented greater understandability grades by a medium effect size; the same with Javadoc, but with a large effect size. With \contractjdoc{} as baseline, the effect of Javadoc over \contractjdoc{} is smaller, but also medium (d=$0.343$).
+
+\begin{table}
+\centering
+\caption{Effect sizes (Cohen) from Tukey HSD with Bonferroni correction}
+\label{tab:effect}
+\begin{tabular}{l|r} 
+\toprule
+\textbf{Group Pairs}                                                & \textbf{Effect size}  \\ 
+\toprule
+Javadoc $\rightarrow$ \contractjdoc{} & 0.343                 \\
+\contractjdoc{} $\rightarrow$ formal  & 0.516                 \\
+Javadoc $\rightarrow$ formal          & 0.902                \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
 %effect sizes
 
 % cohen.d(javadocSurvey$Difficulty, contractJDocSurvey$Difficulty)

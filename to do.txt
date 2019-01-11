@@ -1,3 +1,5 @@
+[] limpar submissão/passar no word
+[] ajeitar alinhamento nas figuras
 [x] citations
 [x] hypotheses in conclusion
 [x] evolution - discussion
@@ -21,7 +23,7 @@
 
 [x] include more citations into discussions
 
-[] effect sizes (new table with statistical results)
+[x] effect sizes (new table with statistical results)
 
 [x] colocar nos sites especializados os artefatos, e referenciar o repositório, with anonymous references
 
@@ -42,7 +44,7 @@
 [x] fix form site
 [x] italics to highlight terms
 
-[] verificar comentários dos revisores
+[x] verificar comentários dos revisores
 
 [x] term understandability: paper ase 2017 - concept and a big threat to validity
 
