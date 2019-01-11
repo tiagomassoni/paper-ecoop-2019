@@ -1,5 +1,5 @@
 [] limpar submissão/passar no word
-[] ajeitar alinhamento nas figuras
+[x] ajeitar alinhamento nas figuras
 [x] citations
 [x] hypotheses in conclusion
 [x] evolution - discussion

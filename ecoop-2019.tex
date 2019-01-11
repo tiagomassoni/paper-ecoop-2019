@@ -1,9 +1,4 @@
 \documentclass[a4paper,UKenglish]{lipics-v2018}
-%This is a template for producing LIPIcs articles. 
-%See lipics-manual.pdf for further information.
-%for A4 paper format use option "a4paper", for US-letter use option "letterpaper"
-%for british hyphenation rules use option "UKenglish", for american hyphenation rules use option "USenglish"
-% for section-numbered lemmas etc., use "numberwithinsect"
 
 \usepackage{listings}
 \usepackage{color}
@@ -63,14 +58,13 @@
 
 % respondants of our survey
 \newcommand{\surveyRespondants}[1]{142}
-
 \usepackage{microtype}%if unwanted, comment out or use option "draft"
 \bibliographystyle{plainurl}
 
 
-\title{Investigating the Trade-offs between Automatic Checking and Understandability in Java API Documentation}
+\title{Investigating Trade-offs between Automatic Checking and Understandability in Java API Documentation}
 
-\titlerunning{Investigating the Trade-offs between Automatic Checking and Understandability in Java API Documentation}
+\titlerunning{Investigating Trade-offs in Java API Documentation}
 %optional, please use if title is longer than one line
 
 \author{An Author}{An Institution}{author@authors.com}{}{}
@@ -96,7 +90,7 @@
 \ccsdesc[500]{Software and its engineering~Software verification and validation, Software and its engineering~Domain specific languages}
 }% mandatory: Please choose ACM 2012 classifications from https://www.acm.org/publications/class-2012 or https://dl.acm.org/ccs/ccs_flat.cfm . E.g., cite as "General and reference $\rightarrow$ General literature" or \ccsdesc[100]{General and reference~General literature}. 
 
-\keywords{design-by-contract, documentation, runtime checking, Javadoc, specification languages}
+\keywords{design-by-contract, documentation, runtime checking, Javadoc, specification languages.}
 
 %\category{}%optional, e.g. invited paper
 %\relatedversion{}%optional, e.g. full version hosted on arXiv, HAL, or other respository/website
@@ -106,7 +100,7 @@
 %\acknowledgements{I want to thank \dots}%optional
 
 \nolinenumbers %uncomment to disable line numbering
-%\hideLIPIcs  %uncomment to remove references to LIPIcs series (logo, DOI, ...), e.g. when preparing a pre-final version to be uploaded to arXiv or another public repository
+\hideLIPIcs  %uncomment to remove references to LIPIcs series (logo, DOI, ...), e.g. when preparing a pre-final version to be uploaded to arXiv or another public repository
 
 \begin{document}
 
@@ -127,7 +121,7 @@ In this paper, we report results from empirical studies on integrating contract 
 For this purpose, we designed a small tag-based extension to Javadoc (\contractjdoc{}) to express pre- and post-conditions among other standard tags.
 %
 %studies
-Studies consisted in (1) evaluating effectiveness and understandability of contract expressions within Javadoc, either for API clients or implementors, by means of a experimental study and a judgment survey, and in (2) investigating anomalies that may arise in open source systems with a high rate of Javadoc coverage, when we manually formalize textual public contracts into contract expressions, then checking conformance at runtime.
+Two studies evaluate effectiveness and understandability of contract expressions within Javadoc, either for API clients or implementors, by means of an experimental simulation and a judgment survey. Moreover, one case study inspects anomalies that may arise in open source systems with a high rate of Javadoc coverage, when we manually formalize textual public contracts into contract expressions, then checking conformance at runtime.
 %
 %results
 We observed the higher quality of submissions as contracts were less formal, with satisfactory results when applying \contractjdoc{} with its semi-formal approach. Also, regarding understandability, differences were discerned between different contract styles with variate levels of formality.

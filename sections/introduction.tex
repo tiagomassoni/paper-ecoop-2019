@@ -6,7 +6,7 @@ Java programmers tend to consider writing Javadoc comments~\cite{javadoc-oracle}
 especially when these comments enhance public methods -- this case is especially crucial for API callers and implementors. Despite its recognised value and practice in Java community, understanding how to use public routines using contracts is widely ignored~\cite{liveAPI}.
 %problem 1
 This situation occurs because the source of documentation is textual comments, which are potentially incomplete and ambiguous. Also, a well-known problem is that documentation and implementation tend to diverge over time~\cite{Estler-etal14}; 
-a deveoper may forget to update the Javadoc documentation after performing an implementation change. Such a scenario may produce faults related to requirements that could go unnoticed until late in the software process.
+a developer may forget to update the Javadoc documentation after performing an implementation change. Such a scenario may produce faults related to requirements that could go unnoticed until late in the software process.
 
 %problem 2
 On the other hand, embedding contracts that follow the Design-by-Contract methodology (DbC) -- pre- and post-conditions as checkable assertions for defining a public method's behaviour, which we refer as \emph{public contracts} -- has
@@ -32,7 +32,7 @@ Its compiler translates these expressions into corresponding runtime assertions.
 
 %studies
 The first study evaluates the \emph{effectiveness and understandability}~\cite{Scalabrino2017} of contract expressions within Javadoc, for both API clients and implementors, employing an experimental simulation with 24 Java developers, using three contract styles: Javadoc text, \contractjdoc{} and JML-like formal contracts. 
-A follow-up judgement survey with 142 Java developers was carried out for amplifying the enquiry on understandability for the contract styles. Finally, we investigated anomalies~\footnote{we refer to these issues as \emph{anomalies} because they are not necessarily bugs, but a mismatch between a specification and its implementation.} in Javadoc-rich open source systems that may arise when we manually formalise textual public contracts into contract expressions, before checking conformance at runtime.
+A follow-up judgement survey with 142 Java developers was carried out for amplifying the enquiry on understandability for the contract styles. Finally, we investigated anomalies~\footnote{We refer to these issues as \emph{anomalies} because they are not necessarily bugs, but a mismatch between a specification and its implementation.} in Javadoc-rich open source systems that may arise when we manually formalise textual public contracts into contract expressions, before checking conformance at runtime.
 
 %results
 The case study provided evidence on the problem of nonconformance between textual Javadoc and the implemented behaviour: we found 391 anomalies between contracts and code in one large and four small open source Java systems. 
@@ -63,7 +63,7 @@ We report and discuss quantitative and qualitative results from an experimental 
 
 \noindent\emph{RQ2. What is the Effect of the Contract Style on the Understandability of API Specifications?}\\
 Using impressions given by the experimental simulation and a follow-up judgement survey, we discuss quantitative and qualitative data regarding the understandability of contract styles. 
-Our approach to \emph{understandability} is evaluate the comprehension of functionalities provided by a given routine, in terms of the expected inputs and outputs; however, it is a composite construct, whose measurement may be limited~\cite{4019969}.
+Our approach to \emph{understandability} is to evaluate the comprehension of functionalities provided by a given routine, in terms of the expected inputs and outputs; however, it is a composite construct, whose measurement may be limited~\cite{4019969,Scalabrino2017}.
 
 
 \noindent\emph{RQ3. What Kinds of Anomalies are Uncovered if Contract Expressions replace Javadoc Specifications?}\\

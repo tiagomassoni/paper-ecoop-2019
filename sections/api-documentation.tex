@@ -7,8 +7,7 @@ In this section, we discuss issues in specifying the behaviour of public routine
 
 %documentation in Javadoc - no invariant
 Javadoc~\cite{javadoc-oracle} is the usual notation (and tool) for public routines (methods) in Java; it includes special tags (with symbol \texttt{@}) for structuring and pretty-printing code commentary.
-The Java Platform API specification itself~\cite{java-spec}, for instance, employs Javadoc for specifying \emph{"contract[s] between callers and implementations."}
-In those terms, Javadoc may be a tool for applying the Design-by-Contract (DbC) methodology~\cite{dbc}, with its pre- and post-conditions around public methods, establishing the expected behaviour for each part (the contract). In the context of distributed software teams, for instance, this kind of documentation is of critical importance, because it adds preciseness to the communication between client and implementor roles. 
+The Java Platform API specification itself~\cite{java-spec}, for instance, employs Javadoc for specifying "\emph{contract[s] between callers and implementations}". In those terms, Javadoc may be a tool for applying the Design-by-Contract (DbC) methodology~\cite{dbc}, with its pre- and post-conditions around public methods, establishing the expected behaviour for each part (the contract). In the context of distributed software teams, for instance, this kind of documentation is of critical importance, because it adds preciseness to the communication between client and implementor roles. 
 
 
 %java interface
@@ -48,11 +47,11 @@ ideas about program behaviour effectively -- and allows a high degree of freedom
 \subsection{Formal Contracts}
 
 
-DbC is supported by contruction in a few programming languages (such as Eiffel~\cite{eiffel}), or by extensions (Java Modeling Language (JML)~\cite{jml} for Java and Code Contracts~\cite{codeContractsPaper} for .NET languages) in mainstream programming languages.
+DbC is supported by construction in a few programming languages (such as Eiffel~\cite{eiffel}), or by extensions (Java Modeling Language (JML)~\cite{jml} for Java and Code Contracts~\cite{codeContractsPaper} for .NET languages) in mainstream programming languages.
 For Java, JML contracts may be defined as also showed for a bank account, in Figure~\ref{Fig-JML-Bank}. Pre-conditions
 are defined by the clause {\lstinline!requires!} and (normal) post-conditions by {\lstinline!ensures!}. The specification
 denoted by the {\lstinline!signals!} clause
-is an exceptional post-condition stating that {\lstinline!balance!} should be unchanged, when the exception \texttt{TransactionExcep\-tion} is thrown~\footnote{Usually, formal contract languages and extensions include \textbf{class invariants}, which establish conditions that must remain true between executions of a given class. In this paper, we do not focus on invariants since their use as public contracts is rare, as it would require public or abstract fields.}.
+is an exceptional post-condition stating that {\lstinline!balance!} should be unchanged, when the exception \texttt{TransactionExcep\-tion} is thrown~\footnote{Usually, formal contract languages and extensions include \textit{class invariants}, which establish conditions that must remain true between executions of a given class. In this paper, we do not focus on invariants since their use as public contracts is rare, as it would require public or abstract fields.}.
 
 \begin{figure}
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi]

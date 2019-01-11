@@ -1,7 +1,7 @@
 \section{Results}
 \label{sec:results}
 
-We start by describing the results for each study in detail, before proceeding to summarise and discuss the observed effects. All the studies results are available online for replication purposes~\cite{Data-Results}.
+We start by describing the results for each study in detail, before proceeding to summarise and discuss the observed effects. All the studies' results are available online for replication purposes~\cite{Data-Results}.
 
 \subsection{Experimental Simulation}
 \label{sec:expResults}
@@ -78,31 +78,17 @@ p20                                        & Queue                             &
 \end{adjustbox}
 \end{table}
 
-After they submitted the programs, we asked participants about understandability of the API specifications, using a Likert-like scale which ranges from 1 (less understandable) to 5 (very understandable). The results for 24 answers are summarised in Figure~\ref{fig:ExpAnswersTotal}, in which assessments are spread between 3 and 5. Most participants evaluated understandability as 4 (58\%).
+After they submitted the programs, we asked participants about understandability of the API specifications, using a Likert-like scale which ranges from 1 (less understandable) to 5 (very understandable). The results for 24 answers are summarised in Figure~\ref{fig:expAll}(a), in which assessments are spread between 3 and 5. Most participants evaluated understandability as 4 (58\%).
 
-\begin{figure*}
+\begin{figure}
 \centering
-\begin{subfigure}{.32\textwidth}
-\includegraphics[width=1\textwidth]{figs/ExpAnswersTotal.png}
-\caption{Total Results.}
-\label{fig:ExpAnswersTotal}
-\end{subfigure}
-\begin{subfigure}{.33\textwidth}
-\includegraphics[width=1\linewidth]{figs/boxplotApproachesEmpiricalStudy}
-\caption{Results by approach.}
-\label{fig:approachesEmpirical}
-\end{subfigure}
-\begin{subfigure}{.33\textwidth}
-\includegraphics[width=1\linewidth]{figs/boxplotTasksEmpiricalStudy}
-\caption{Results by task.}
-\label{fig:tasksEmpirical}
-\end{subfigure}
-\caption{Results from Understandability Assessment of API specifications, as Perceived from Participants.}
-\label{fig:empiricalResults}
-\end{figure*}
+\includegraphics[width=1\textwidth]{figs/expAllFig.png}
+\caption{Understandability Assessment Results from Experimental Simulation.}
+\label{fig:expAll}
+\end{figure}
 
 %perspectives
-Assuming a distinct perspective, we grouped understandability assessments by the assigned documentation approach and task -- Figures~\ref{fig:approachesEmpirical} and~\ref{fig:tasksEmpirical}, respectively, depict their distribution using boxplots.
+Assuming a distinct perspective, we grouped understandability assessments by the assigned documentation approach and task -- Figures~\ref{fig:expAll}(b) and~\ref{fig:expAll}(c), respectively, depict their distribution using boxplots.
 %doc approach
 The assessments for Javadoc APIs are all above the median ($4$), while \contractjdoc{} assessments fluctuate around that median value. Formal contracts, in turn, were all assessed as $3$ or $4$.  
 % stats
@@ -116,7 +102,7 @@ The quotes were organised in 11 categories, which are presented in Table~\ref{ta
 
 %on the results
 %seven
-We found that most quotes either value the specifications or suggest the contracts should have been stronger (seven each). As an example of the latter, p6, which was assigned a \contractjdoc{} API, wrote: \emph{"I hesitated over the \texttt{pop} method, due to its exception; there should be more information about the exception to be thrown in each case"}. 
+We found that most quotes either value the specifications or suggest the contracts should have been stronger (seven each). As an example of the latter, p6, which was assigned a \contractjdoc{} API, wrote: "\emph{I hesitated over the \texttt{pop} method, due to its exception; there should be more information about the exception to be thrown in each case}". 
 %four
 Others made explicit suggestions on how the specification should be, from their previous understanding of Queue and Stack APIs.
 %other
@@ -173,32 +159,26 @@ Regarding formal contract languages for specifying APIs (Eiffel, JML or similar)
 
 
 %results - Javadoc is the simplest
-Concerning the survey answers, Figure \ref{fig:understand} shows 50.7\% (72) of the respondents chose Javadoc as the most straightforward approach to understanding the provided API specification. 
+Concerning survey answers, Figure \ref{fig:survey}(a) shows 50.7\% (72) of the respondents chose Javadoc as the most straightforward approach to understanding the provided API specification. 
 %contractjdoc em JML
 While only 11 (7\%) chose formal contracts as the most understandable approach and 18 (12\%) were indifferent, an almost one-third of the respondents (41, almost 29\%) chose the mix of text and contract expressions -- \contractjdoc{}.
 
 
-\begin{figure*}
+\begin{figure}
 \centering
-\begin{subfigure}{.45\textwidth}
-\includegraphics[width=0.8\linewidth]{figs/mostUnderstandable.png}
-\caption{Surveyed Verdicts on Understandability.}
-\label{fig:understand}
-\end{subfigure}
-\begin{subfigure}{.48\textwidth}
-\includegraphics[width=1\linewidth]{figs/boxplotApproachesSurveyStudy}
-\caption{Assessment for Each Contract Style.}
-\label{fig:surveyResults}
-\end{subfigure}
+\includegraphics[width=0.8\linewidth]{figs/survAll.png}
 \caption{Results from the Judgement Survey.}
 \label{fig:survey}
-\end{figure*}
+\end{figure}
+
+
+
 
 
 % individual answers to each approach
-After being presented with three versions of the same API, the distribution of assessments for each contract style is showed in Figure~\ref{fig:surveyResults}.
+After being presented with three versions of the same API, the distribution of assessments for each contract style is showed in Figure~\ref{fig:survey}(b).
 %explain visual
-Answers for Javadoc and \contractjdoc{} were distributed around a median of $4.0$; for the first, assessments range from $3$ to $5$, while assesments for the latter were no higher than $4$.
+Answers for Javadoc and \contractjdoc{} were distributed around a median of $4.0$; for the first, assessments range from $3$ to $5$, while assessments for the latter were no higher than $4$.
 Likewise, formal contracts were evaluated with $4$ the highest, however with $3$ with centre value. 
 
 \begin{figure}
@@ -212,7 +192,7 @@ To estimate the assessment differences between each pair of groups, we applied p
 
 \begin{table}
 \centering
-\caption{Effect sizes (Cohen) from Tukey HSD with Bonferroni correction}
+\caption{Cohen's Effect sizes from Tukey HSD with Bonferroni correction}
 \label{tab:effect}
 \begin{tabular}{l|r} 
 \toprule

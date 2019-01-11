@@ -55,7 +55,7 @@ Again, test cases specific to the contract expressions should have made it easie
 %This example also illustrates that trivial misunderstandings like this would often go unnoticed if specifications were only textual.  
 %another explanation
 This outcome may also be explained by the awareness required in using methods provided by the API: one needs to read the documentation available to know how to use the methods, whereas implementation could be considered more straightforward -- in this simulation, 
-the APIs make up well-known data structures. Thus their specifications may have been neglected -- although none of the participants made any remark about it.
+the APIs make up well-known data structures. Thus, their specifications may have been neglected -- although none of the participants made any remark about it.
 
 %types of faults
 \emph{All faults in the experiment failed to ensure post-conditions}. 
@@ -71,14 +71,14 @@ Furthermore, qualitative data from participants do not present any reported issu
 \label{rq2}
 
 %all results
-From the assessments by the participants in our experiment, no statistical difference was perceived in using either of the three styles. \emph{All participants perceived all API specifications as having medium to high understandability} (Figure~\ref{fig:ExpAnswersTotal}). 
+From the assessments by the participants in our experiment, no statistical difference was perceived in using either of the three styles. \emph{All participants perceived all API specifications as having medium to high understandability} (Figure~\ref{fig:expAll}(a)). 
 %first conclusion
-Nevertheless, by analysing the assessments together with the provided qualitative data, we notice a trend: Javadoc as the top approach and formal contracts as the least understandable approach. The \contractjdoc{} approach, mixing Javadoc and contract expressions, was assessed as intermediate, which is illustrated in Figure~\ref{fig:approachesEmpirical}.
+Nevertheless, by analysing the assessments together with the provided qualitative data, we notice a trend: Javadoc as the top approach and formal contracts as the least understandable approach. The \contractjdoc{} approach, mixing Javadoc and contract expressions, was assessed as intermediate, which is illustrated in Figure~\ref{fig:expAll}(b).
 %expected
 This outcome is expected, as developers tend to favour informal styles for documentation -- a known obstacle for the adoption of DbC~\cite{Polikarpova-etal09}. In such scenarios, the approach employed in \contractjdoc{} is promising for more gradual adoption of DbC in mainstream programming languages like Java.
 
 %conclusion from survey
-Reinforcing this conclusion, the judgement survey with 142 respondents similar results. 
+Reinforcing this conclusion, the judgement survey with 142 respondents presents similar results. 
 \emph{In this case, however, differences between all groups are statistically significant} -- in detail, (effect sizes and pairwise) /ldots
 Larger effect sizes when formal contracts are compared with either Javadoc and \contractjdoc{}, and a smaller effect size between Javadoc and \contractjdoc{} (higher understandability for the first).
 %more on the answers
@@ -167,7 +167,7 @@ interfaces on the survey form and the absence of open-ended questions can also t
 performed a pilot before applying the survey and used the results from the pilot to improve the survey structure. 
 
 
-A known threat is related to the \emph{understandability construct}, which is complex and not directly measurable. We limited the concept to the direct comprehension of functionalities provided by a given routine, in terms of the expected inputs and outputs~\cite{4019969}. In the questions, it is explicitly stated that readers "\emph{should grade how they were able to grasp as funcionality and restrictions from the contracts"}; yet, we assume that answers might have deviated from its original purpose, for which there is no trouble-free solution~\cite{Scalabrino2017}.
+A known threat is related to the \emph{understandability construct}, which is complex and not directly measurable. We limited the concept to the direct comprehension of functionalities provided by a given routine, in terms of the expected inputs and outputs~\cite{4019969}. In the questions, it is explicitly stated that readers "\emph{should grade how they were able to grasp as functionality and restrictions from the contracts"}; yet, we assume that answers might have deviated from its original purpose, for which there is no trouble-free solution~\cite{Scalabrino2017}.
 
 
 %In addition, the answers from developers may not be representative of their real opinion on difficulty perception; to overcome this threat we made a space for comments available along with the Likert-scale questions, which are taken into account when collecting the answers.

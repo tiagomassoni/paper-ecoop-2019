@@ -1,7 +1,7 @@
 \section{Methodology}
 \label{sec:researchDesign}
 
-In the following subsections, we discuss data collection and analysis for the performed studies. For naming the studies, we follow the terminology for Software Engineering research strategies from Stol and Fitzgerald~\cite{Stol2015}: an experimental simulation (Section~\ref{sec:expPart}), a judgment survey (Section~\ref{sec:surveyPart}) and a case study (Section~\ref{sec:caseStudy}). The package for these studies are available online~\cite{package-bib}.
+In the following subsections, we discuss data collection and analysis for the performed studies. For naming the studies, we follow the terminology for Software Engineering research strategies from Stol and Fitzgerald~\cite{Stol2015}: an experimental simulation (Section~\ref{sec:expPart}), a judgment survey (Section~\ref{sec:surveyPart}) and a case study (Section~\ref{sec:caseStudy}). The package for these studies is available online~\cite{package-bib}.
 
 \subsection{Experimental Simulation}
 \label{sec:experiment}
@@ -61,7 +61,7 @@ The experiment was performed offline, i.e., participants received the experiment
 % double blind process 
 % An example of survey sent to the
 % participants can be found online.\footnote{\url{https://goo.gl/forms/ySTsYfKSRcotLayk1}} 
-The experimental package consisted of \emph{(i) a statement of consent, (ii) a pretest
+The experimental package consisted of \emph{(i) a statement of consent, (ii) a pre-test
 questionnaire, (iii) instructions and materials to perform the experiment, and (iv) a post-test questionnaire}. 
 The instructions contained what we expected from the participants: they were asked to perform an implementation task (a supplier or a client code) for the
 provided API. Each participant received one of the following tasks: create a class that implements the API, or a client code using the API's methods.
@@ -250,15 +250,10 @@ anomalies are investigated.
 
 %contract classification
 We group the contracts according to
-the approach introduced by Schiller et al.~\cite{typeContracts}: application-specific contracts
-(AppSpec.) -- the kind of contracts that enforce richer semantic properties;
-% implications)
- common-case contracts (Com.Case) -- the kind of contracts that enforce
+the approach introduced by Schiller et al.~\cite{typeContracts}: application-specific contracts, which enforce richer semantic properties;
+common-case contracts, which enforce
 expected (common) program properties;
-% methods do not modify unrelated variables; 
-code-repetitive (Repet.) -- the kind of
-contracts that repeat exact statements from the code.
-% : that a method returns a
+and code-repetitive contracts, which repeat exact statements from the code.
 
 %experiment package - link
 All systems used in this study are available in a replication
