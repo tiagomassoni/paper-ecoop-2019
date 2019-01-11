@@ -23,7 +23,7 @@
 
 [] effect sizes (new table with statistical results)
 
-[] colocar nos sites especializados os artefatos, e referenciar o repositório, with anonymous references
+[x] colocar nos sites especializados os artefatos, e referenciar o repositório, with anonymous references
 
 [x] explain why types of contract (pre,post) are more often in each project
 

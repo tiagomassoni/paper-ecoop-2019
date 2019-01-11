@@ -27,7 +27,7 @@ practice are short and simple~\cite{Estler-etal14,typeContracts}. For instance, 
 %Recall the pre-condition illustrated in Section~\ref{sec:example}. We discussed two ways to document such a pre-condition, a formal one in JML (see Figure~\ref{Fig-JML-Bank}) and an informal one with plain Javadoc comments (see Figure~\ref{Fig-Javadoc-Bank}).
 In \contractjdoc, the pre-condition for method \lstinline!withdraw! from Section~\ref{sec:example} can be rewritten as the excerpt in Figure~\ref{fig:pre-example}.
 %explain
-Tag \lstinline!@param! documents parameter \lstinline!amt! of \lstinline!double! type.
+Tag \lstinline!@param! documents parameter \lstinline!amt! of \lstinline!BigDecimal! type.
 Besides the usual comments, we have added a boolean expression
 surrounded by brackets; these brackets indicate assertions internally to the \contractjdoc{} compiler, so the comments can be turned into an executable pre-condition checking.
 An alternative (not showed) is to replace tag \lstinline!@param! by \lstinline!@requires! or \lstinline!@pre!. Both can be used to document a pre-condition constraint; the main difference is that they are not part of the standard Javadoc tagging system.
@@ -37,9 +37,10 @@ An alternative (not showed) is to replace tag \lstinline!@param! by \lstinline!@
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi, frame=lines, mathescape=true]
  /**
   * @param amt the amount value to withdraw, 
-  *   where [amt > 0 && amt <= balance]
+  *   where [amt.compareTo(new BigDecimal("0") > 0 
+  *     && amt.compareTo(balance) <= 0]
   */
- double withdraw(double amt) 
+ BigDecimal withdraw(BigDecimal amt) 
    throws TransactionException {...}
 \end{lstlisting}
 \caption{\texttt{withdraw}'s pre-condition.}
@@ -69,11 +70,11 @@ Derived from JML, we can also employ \lstinline!@signals! to document and constr
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi, frame=lines, mathescape=true]
  /**
   * @return amt the current balance after withdraw,
-  *   that is [@return == balance]
+  *   that is [@return.equals(balance)]
   * @throws TransactionException the 'balance' does
-  *  not change, that is [balance == @old(balance)]
+  *  not change, that is [balance.equals(@old(balance))]
   */
- double withdraw(double amt) 
+ BigDecimal withdraw(BigDecimal amt) 
    throws TransactionException {...}
 \end{lstlisting}
 \caption{\texttt{withdraw}'s post-condition.}
@@ -107,7 +108,7 @@ Derived from JML, we can also employ \lstinline!@signals! to document and constr
 
 \subsection{Supporting Infrastructure}
 
-The \contractjdoc{} compiler is based on the open source AspectJML/ajmlc compiler~\cite{aspectjml,ajmlc,Rebelo-etal08}.
+The \contractjdoc{} compiler~\cite{contractjdoc-Compiler} is based on the open source AspectJML/ajmlc compiler~\cite{aspectjml,ajmlc,Rebelo-etal08}.
 Unlike the standard JML compiler, ajmlc presents code optimisations and improved error reporting~\cite{ajmlc}.
 Also, AspectJML enables the modularisation
 of crosscutting contracts that can arise in standard

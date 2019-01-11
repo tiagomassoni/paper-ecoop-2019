@@ -28,7 +28,7 @@ class BankAccount {
   *             remains unchanged
   *
   */
- double withdraw(double amt) 
+ BigDecimal withdraw(BigDecimal amt) 
    throws TransactionException {...}
  // ...
 }
@@ -57,14 +57,15 @@ is an exceptional post-condition stating that {\lstinline!balance!} should be un
 \begin{figure}
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi]
 class BankAccount {
- double balance;
+ BigDecimal balance;
 
- //@ requires amt > 0 && amt <= balance;
- //@ ensures balance == \old(balance - amt);
- //@ ensures \result == balance;
+ //@ requires amt.compareTo(new BigDecimal("0") > 0 
+ //@ && amt.compareTo(balance) <= 0;
+ //@ ensures balance.equals(\old(balance.subtract(amt)));
+ //@ ensures \result.equals(balance);
  //@ signals (TransactionException) 
- //@   balance == \old(balance);
- double withdraw(double amt) 
+ //@   balance.equals(\old(balance));
+ BigDecimal withdraw(BigDecimal amt) 
    throws TransactionException {...}
  // ...
 }

@@ -1,7 +1,7 @@
 \section{Results}
 \label{sec:results}
 
-We start by describing the results for each study in detail, before proceeding to summarise and discuss the observed effects.
+We start by describing the results for each study in detail, before proceeding to summarise and discuss the observed effects. All the studies results are available online for replication purposes~\cite{Data-Results}.
 
 \subsection{Experimental Simulation}
 \label{sec:expResults}
@@ -211,6 +211,31 @@ Differently from the experimental simulation from Section~\ref{sec:expResults}, 
 %and pairwise comparisons using t tests
 with Bonferroni correction~\cite{statistical} produced the following p-values for each pairwise comparison: Javadoc-ContractJDoc = 0.012, Formal-ContractJDoc = 0.000, and Formal-Javadoc = 0.000. The results then express the significant difference between all styles.
 %effect sizes
+
+% cohen.d(javadocSurvey$Difficulty, contractJDocSurvey$Difficulty)
+% 
+% Cohen's d
+% 
+% d estimate: 0.3429443 (small)
+% 95 percent confidence interval:
+%     lower     upper 
+% 0.1076259 0.5782627 
+% > cohen.d(contractJDocSurvey$Difficulty, jmlSurvey$Difficulty)
+% 
+% Cohen's d
+% 
+% d estimate: 0.5162612 (medium)
+% 95 percent confidence interval:
+%     lower     upper 
+% 0.2787942 0.7537282 
+% > cohen.d(javadocSurvey$Difficulty, jmlSurvey$Difficulty)
+% 
+% Cohen's d
+% 
+% d estimate: 0.9020116 (large)
+% 95 percent confidence interval:
+%     lower     upper 
+% 0.6568123 1.1472108
 
 
 %When analysing data grouped by experience (Figures~\ref{fig:javadocExp} to~\ref{fig:jmlExp}) using Wilcoxon rank sum test with continuity correctiontests, only for JML we found no statistical difference between Professionals and Students (p-value = 0.17). For both Javadoc and \contractjdoc{}, Professionals had perceived the approaches as being easier for comprehensing than Students (p-value = 0.012 and p-value = 0.004, respectively).
