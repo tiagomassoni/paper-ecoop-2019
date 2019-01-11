@@ -7,17 +7,15 @@ We start by describing the results for each study in detail, before proceeding t
 \label{sec:expResults}
 
 %demographics
-The selected participant set encompasses graduates in Computer Science or Software Engineering -- either working in industry (41.6\%) or M.Sc. and Ph.D. candidates (58.4\%).
+The participant set encompasses graduates in Computer Science or Software Engineering -- either working in industry (41.6\%) or M.Sc. and Ph.D. candidates (58.4\%).
 %table
 In Table~\ref{tab:results} we summarise the results from the 24 trials, from which five -- 21\% -- were delivered with at least one fault detected by our test cases.
 %individual results
 All participants assigned to textual specifications in Javadoc delivered correct programs.
 By contrast, half of the programs delivered by participants using APIs with formal contracts were faulty (four out of eight).
-One faulty program was delivered by a participant from the \contractjdoc{} group.
+One faulty program was delivered by a participant assigned to \contractjdoc{}.
 %task
-Regarding task, faulty programs were mostly present in API implementations -- four of them, if compared with only one in API clients.
-
-
+Regarding task, faults were mostly in API implementations -- four of them, if compared with only one in API clients.
 % source code correct
 %Javadoc and \contractjdoc{} were the only documenting approaches in which all participants were able to produce a code satisfying the oracle (respecting the restrictions available in the comments). On the other hand, there was one case developed by following the JML documenting approach in which the contract is not satisfied by the implementation.
 
@@ -106,15 +104,15 @@ After they submitted the programs, we asked participants about understandability
 %perspectives
 Assuming a distinct perspective, we grouped understandability assessments by the assigned documentation approach and task -- Figures~\ref{fig:approachesEmpirical} and~\ref{fig:tasksEmpirical}, respectively, depict their distribution using boxplots.
 %doc approach
-Visually, the assessments for Javadoc APIs are all above the median ($4$), while \contractjdoc{} assessments fluctuate around that median value. Formal contracts, in turn, were all assessed as $3$ or $4$.  
+The assessments for Javadoc APIs are all above the median ($4$), while \contractjdoc{} assessments fluctuate around that median value. Formal contracts, in turn, were all assessed as $3$ or $4$.  
 % stats
 Nevertheless, statistical tests (in this case, the Kruskal-Wallis non-parametric test) showed no difference between the groups (p-value = $0.15$, 95\% confidence level).
 %task
-Concerning the task performed by the developers, higher understandability is reported by participants assigned to supplier tasks, at least visually. Still, the Wilcoxon rank sum test~\cite{statistical} reported no significant difference (p-value = 0.07, for confidence level of 95\%).
+Concerning the task performed by the developers, raw data shows a slightly higher understandability by participants assigned to supplier tasks. Still, the Wilcoxon rank sum test~\cite{statistical} reported no significant difference (p-value = 0.07, for confidence level of 95\%).
 
 %qualitative results
 Furthermore, we asked the participants, with an open-ended question, to provide comments on their tasks.
-The quotes were organised in 11 categories, which are presented in Table~\ref{tab:categories}, in conjunction with the number of quotes. One quote might be classified in more than one category -- three participants did not provide an answer.
+The quotes were organised in 11 categories, which are presented in Table~\ref{tab:categories}, in conjunction with the number of quotes; one quote may be classified in more than one category. Three participants did not provide an answer.
 
 %on the results
 %seven
@@ -221,6 +219,7 @@ with Bonferroni correction~\cite{statistical} produced the following p-values fo
 \subsection{Case Study}
 
 Table~\ref{tab:caseStudyResults} exhibits the results of translating real Javadoc specifications to \contractjdoc{} in each system.
+The detected anomalies reflect potential errors already present in the code or mismatches between the code and the contracts (i.e., possible errors in the contracts).
 %columns
 Column \textbf{Anom} presents the anomalies detected by the original test suite (whose size is showed in Column \textbf{TCs}), with source code enhanced by \contractjdoc{}, while Columns \textbf{T} and \textbf{CJDT} respectively provide the seconds spent in compiling the system before and after \contractjdoc{} instrumentation, both before running the test cases. 
 \textbf{Clauses} displays how many contract clauses were translated into contract expressions, which we classified as pre-conditions (\textbf{Pre}) or post-conditions (\textbf{Post}). The alternative classification for contract types -- according to Schiller et al.~\cite{typeContracts} -- is in Columns \textbf{CommCase}, \textbf{AppSpec} and \textbf{Repet}.
@@ -289,8 +288,9 @@ The size of the available test suites is proportional to the system size.
 %MASSONI: temos o tempo que cada sistema usou pra compilar SEM A INSTRUMENTACAO?
 Regarding compilation overhead, instrumenting the code with runtime assertions added considerable time for compiling the systems. This process may be subject to optimizations, which were not our priority for this case study.
 
+
 % results for contract types
-Concerning the kind of contracts, the only unit for which we wrote more application-specific contracts was the \texttt{OOP Aufgabe3} system (55\% of the written contracts are application-specific). On the other hand, in \texttt{ABC-Music-Player}, more than 90\% of the contracts remain between common-case and repetitive code: verifications that strings are not blank, collections are not empty, or that a method returns a field.
+Concerning the kind of contracts, the only unit for which we wrote more application-specific contracts was the \texttt{OOP Aufgabe3} system (55\% of the written contracts are application-specific). On the other hand, in \texttt{ABC-Music-Player}, more than 90\% of the contracts remain between common-case (contracts that avoid unexpected cases, such as the absence of data, blank strings or empty collections) and repetitive code (contracts that repeat exact statements from the code).
 For \texttt{Dishevelled}, most contracts are classified as common-case (57.51\%) -- 
 %other 36.92\% are repetitive with code and 
 only 5.57\% are application-specific.

@@ -67,9 +67,10 @@
 \usepackage{microtype}%if unwanted, comment out or use option "draft"
 \bibliographystyle{plainurl}
 
-\title{Mixing Design-by-Contract and Javadoc: Trade-offs between Automatic Checking and Understandability}
 
-\titlerunning{Mixing Design-by-Contract and Javadoc}
+\title{Investigating the Trade-offs between Automatic Checking and Understandability in Java API Documentation}
+
+\titlerunning{Investigating the Trade-offs between Automatic Checking and Understandability in Java API Documentation}
 %optional, please use if title is longer than one line
 
 \author{An Author}{An Institution}{author@authors.com}{}{}
@@ -95,7 +96,7 @@
 \ccsdesc[500]{Software and its engineering~Software verification and validation, Software and its engineering~Domain specific languages}
 }% mandatory: Please choose ACM 2012 classifications from https://www.acm.org/publications/class-2012 or https://dl.acm.org/ccs/ccs_flat.cfm . E.g., cite as "General and reference $\rightarrow$ General literature" or \ccsdesc[100]{General and reference~General literature}. 
 
-\keywords{design-by-contract, documentation, runtime checking, Javadoc}
+\keywords{design-by-contract, documentation, runtime checking, Javadoc, specification languages}
 
 %\category{}%optional, e.g. invited paper
 %\relatedversion{}%optional, e.g. full version hosted on arXiv, HAL, or other respository/website
@@ -115,22 +116,22 @@
 \begin{abstract}
 %context
 Documenting public routines counts as a key benefit from applying the Design by Contract (DbC) methodology. 
-In this context, DbC's pre- and post-conditions (public contracts) establish call conditions and expected results, respectively, which may then be checked at runtime for detecting invalid calls or nonconforming implementations.
+In this context, DbC's pre- and post-conditions (public contracts) establish conditions and expected results, respectively, which may then be checked at runtime for detecting invalid calls or nonconforming implementations.
 %
 % problem
-It is well known, however, that programmers, despite this convenience, are resistant to use public contracts -- for Java programs, in particular, Javadoc text and tags are the dominant media for documenting public routines.
-As a result, verification assistance is unavailable.
+Despite these benefits, however, programmers resist using formal contracts. Instead, Javadoc and natural language text are the dominant way that public contracts and APIs are documented.
+Verification assistance is unavailable.
 %
 % solution
 In this paper, we report results from empirical studies on integrating contract expressions into Javadoc comments used as public contracts. 
 For this purpose, we designed a small tag-based extension to Javadoc (\contractjdoc{}) to express pre- and post-conditions among other standard tags.
 %
 %studies
-Studies consisted in (1) evaluating effectiveness and understandability of contract expressions within Javadoc, either for API clients or implementors, by means of a experimental study and a judgment survey, and in (2) investigating anomalies in Javadoc-rich open source systems that may arise when we manually formalize textual public contracts into contract expressions, then checking conformance at runtime.
+Studies consisted in (1) evaluating effectiveness and understandability of contract expressions within Javadoc, either for API clients or implementors, by means of a experimental study and a judgment survey, and in (2) investigating anomalies that may arise in open source systems with a high rate of Javadoc coverage, when we manually formalize textual public contracts into contract expressions, then checking conformance at runtime.
 %
 %results
 We observed the higher quality of submissions as contracts were less formal, with satisfactory results when applying \contractjdoc{} with its semi-formal approach. Also, regarding understandability, differences were discerned between different contract styles with variate levels of formality.
-Given the fact that we found 391 anomalies between contracts and code in one large and four small open source Java systems, the results are promising in establishing hypotheses to the adoption of contract languages in mainstream development, by integrating informal and formal styles of documentation.
+Given that we found 391 anomalies between contracts and code in one large and four small open source Java systems, the results are promising in establishing hypotheses to the adoption of contract languages in mainstream development, by integrating informal and formal styles of documentation.
 \end{abstract}
 
 

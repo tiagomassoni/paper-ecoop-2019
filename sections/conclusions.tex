@@ -7,10 +7,10 @@ Javadoc's use is widespread, serves for important purposes -- tools for generati
 %what we have done
 The trade-off between the pragmatics of textual descriptions and formal contracts amenability to automatic analysis is explored in this paper, by three empirical studies.
 %evaluation of styles
-We evaluated the effect on API usage and implementation tasks of three public contract styles in Java programs: textual Javadoc, JML-like formal contracts, and a third option, a small tag-based extension to Javadoc to express pre- and post-conditions among text and other standard tags, which we call \contractjdoc{}.
+We evaluated the effect on API usage and implementation tasks of three public contract styles in Java programs: textual Javadoc, JML-like formal contracts, and a third option, a small tag-based extension to Javadoc to express pre- and post-conditions amid text and other standard tags, which we call \contractjdoc{}.
 %studies
 The first and second studies evaluated the effect of specification styles on the efficacy and understandability of contract expressions, either for API implementors or users, through an experimental simulation with 24 recruited participants, and a judgment survey with more than a hundred Java developers.
-In the third study, we evaluated the potential of detecting anomalies by manually formalising textual Javadoc contracts from open source Java systems into contract expressions, then checking conformance in runtime.
+In the third study, we evaluated the potential of detecting anomalies by manually formalising textual Javadoc contracts from open source Java systems into contract expressions, then checking conformance at runtime.
 
 
 %first question - effect on the programming task
@@ -25,7 +25,7 @@ In the answers, Javadoc contracts were regarded as the most understandable, foll
 This outcome is expected, as developers tend to favour informal styles for documentation~\cite{Polikarpova-etal09}. It remains to be investigated whether an intermediate approach such as \contractjdoc{} is understandable enough for fostering the use of DbC in API specifications.
 
 %third question - can we find anomalies?
-Finally, our case study applying contract expressions in open source systems resulted in finding 381 anomalies in a single Javadoc-rich system (\emph{Dishevelled}) and ten more in other three toy systems (\emph{ABC/-Music/-Player, Jenerics and OOP Aufgabe3}), showing the potential of using contract expressions in existing Javadoc specifications.
+Finally, our case study applying contract expressions in open source systems resulted in finding 381 anomalies in a single Javadoc-rich system (\texttt{Dishevelled}) and ten more in other three toy systems (\texttt{ABCMusicPlayer}, \texttt{Jenerics} and \texttt{OOP Aufgabe3}), showing the potential of using contract expressions in existing Javadoc specifications.
 Other interesting findings about those systems include their preference for post-conditions over pre-conditions, although most contracts were classified as \emph{common case} -- enforcing expected program properties, such as nullable variables.
 
 % future work

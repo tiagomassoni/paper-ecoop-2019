@@ -52,7 +52,7 @@ DbC is supported by contruction in a few programming languages (such as Eiffel~\
 For Java, JML contracts may be defined as also showed for a bank account, in Figure~\ref{Fig-JML-Bank}. Pre-conditions
 are defined by the clause {\lstinline!requires!} and (normal) post-conditions by {\lstinline!ensures!}. The specification
 denoted by the {\lstinline!signals!} clause
-is an exceptional post-condition stating that {\lstinline!balance!} should be unchanged, when the exception \texttt{TransactionExcep\-tion} is thrown.
+is an exceptional post-condition stating that {\lstinline!balance!} should be unchanged, when the exception \texttt{TransactionExcep\-tion} is thrown~\footnote{Usually, formal contract languages and extensions include \textbf{class invariants}, which establish conditions that must remain true between executions of a given class. In this paper, we do not focus on invariants since their use as public contracts is rare, as it would require public or abstract fields.}.
 
 \begin{figure}
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi]
@@ -75,13 +75,12 @@ class BankAccount {
 
 In this style, formal contracts precisely describe what must be true when the method is called, what must be true when the method return or when it returns abnormally. A critical property of such contracts is that they are machine-checkable, either by assertion testing or static analysis~\cite{Chalin06}.
 % Also for object-oriented languages, contracts can describe object invariants that must hold for an object in all of its visible states -- in this paper,.
-Nevertheless, using JML-like formal contracts might require some level of training, hence becoming, to some extent, hard to read and write, and thus is often used sparingly~\cite{Chalin06,Polikarpova-etal09,typeContracts}.
-Besides, if the code in Figure~\ref{Fig-JML-Bank} were an interface, with no available code, the specification would be required. However, usually formal contracts are only available for the interface implementors, thus becoming not useful for its clients~\cite{Parnas2011}.
-
+Nevertheless, using JML-like formal contracts might require some level of training, becoming, to some extent, hard to read or write, and thus is often used sparingly~\cite{Chalin06,Polikarpova-etal09,typeContracts}.
+Besides, if the code in Figure~\ref{Fig-JML-Bank} were an interface, with no available code, the specification would be required. However, usually formal contracts are only available for the interface implementors, or not available at all~\cite{Parnas2011}.
 
 %The Documentation Dilemma
-Therefore, we face a dilemma concerning program documentation. If we use formal contracts, the result is more precise documentation, with the possibility of automatic checks. However, it also results in less flexible documentation than using natural language.
-If we refer to a more flexible and informal documentation approach such as Javadoc, we face the lack of precision and potential ambiguity, even though Javadoc comments are more useful for third-party libraries users. This trade-off leads us to the following inquiries: is it possible to have the best of both worlds, mixing informal documentation and contract specification within a unified framework? In this case, what would be the effect of using such an approach to API clients and implementors? This paper tries to enhance evidence on DbC development and languages by focusing on those questions.
+Therefore, we face a dilemma concerning program documentation. If we use formal contracts, the result is more precise documentation, with the possibility of automatic checks.
+Contrarily, by using an informal documentation approach such as Javadoc, we face the lack of precision and potential ambiguity, despite its flexibility and simplicity. This trade-off leads us to the following inquiries: is it possible to have the best of both worlds, mixing informal documentation and contract specification within a unified framework? In this case, what would be the effect of using such an approach to API clients and implementors? This paper improve evidence on those questions.
 
 %In the following, we discuss how \contractjdoc{} provides means to combine the benefits
 % and overcome the main limitations 

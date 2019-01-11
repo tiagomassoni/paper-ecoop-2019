@@ -20,7 +20,9 @@
 [x] Time for compilation, before and after
 
 [x] include more citations into discussions
+
 [] effect sizes (new table with statistical results)
+
 [] colocar nos sites especializados os artefatos, e referenciar o repositório, with anonymous references
 
 [x] explain why types of contract (pre,post) are more often in each project
@@ -30,11 +32,11 @@
 [x] examples for nonconformances found
 [x] anomalies instead of nonconformances
 [x] analyze if API is a correct term
-[] eliminate invariants, but explain in section 2 they are harder to find in public class members
+[x] eliminate invariants, but explain in section 2 they are harder to find in public class members
 [x] section summary in the introduction
 [x] problems in listings (math expressions)
-[] Rohit's comments
-[] Gary's comments
+[x] Rohit's comments
+[x] Gary's comments
 [x] Grammarly
 [x] make terms and italics, fonts uniform
 [x] fix form site
@@ -45,3 +47,6 @@
 [x] term understandability: paper ase 2017 - concept and a big threat to validity
 
 [x] review references
+
+[x] gary sugeriu tirar anomalias - talvez faults ou bugs
+

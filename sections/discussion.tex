@@ -13,7 +13,7 @@ fulfilling the contracts} -- our manually-produced test cases did not detect any
 %problems in understanding formal contracts
 These results may suggest participants had trouble understanding API formal contracts, assuming their self-reported experience in Java programming and their intention to complete the assignment correctly.
 %no test cases
-Since we did not provide our test cases, participants were asked to test programs at their discretion, and they did not detect a failure in fulfilling contracts as specified.
+Since we did not provide our test cases, participants were asked to test programs at their discretion -- they had access to ajmlc to do runtime assertion checking in their own tests, and they did not detect a failure in fulfilling contracts as specified.
 %at least one example
 For example, we established as post-condition for \texttt{AccountQueue.remove}, using JML-like formal contracts (Figure~\ref{code:remove}), that the return value be a non-null \texttt{CheckingAccount}. For this API, p20's submission presented an implementation that removed an account from the queue \emph{neglecting a previous emptiness test}, which allows for null returns, then violating the contract.
 
@@ -55,15 +55,14 @@ Again, test cases specific to the contract expressions should have made it easie
 %This example also illustrates that trivial misunderstandings like this would often go unnoticed if specifications were only textual.  
 %another explanation
 This outcome may also be explained by the awareness required in using methods provided by the API: one needs to read the documentation available to know how to use the methods, whereas implementation could be considered more straightforward -- in this simulation, 
-the APIs make up well-known data structures. Thus their specifications may have been neglected -- although none of the participants' comments explicitly evidence this speculation.
+the APIs make up well-known data structures. Thus their specifications may have been neglected -- although none of the participants made any remark about it.
 
 %types of faults
 \emph{All faults in the experiment failed to ensure post-conditions}. 
 %postcond are harder
 These contracts are trickier to write~\cite{Rosenblum}, and, by extension, might be also harder to follow (by API Clients) or fulfil (by API implementors). 
 %no pre-conditions!
-It is also noticeable that no pre-condition violations were detected. We might speculate that developers are likely to be concerned about fulfilling pre-conditions from the start. Pre-conditions might be as well a deliverance to developers in two ways: API clients are inclined to comply right way, before calling any method, so they soon accomplish their contract obligation; and API implementors can assume the pre-condition for neglecting defensive programming, writing thus less code.
-
+It is also noticeable that no pre-condition violations were detected. We might speculate that developers are likely to be concerned about fulfilling pre-conditions from the start.%Pre-conditions might be as well a deliverance to developers in two ways: API clients are inclined to comply right way, before calling any method, so they soon accomplish their contract obligation; and API implementors can assume the pre-condition for neglecting defensive programming, writing thus less code.
 %problems with kinds of contract
 Furthermore, qualitative data from participants do not present any reported issues with pre-conditions -- eight quotes are \emph{compliments} to their clarity. On the other hand, nine participants make at least one remark about the trouble in understanding or accepting the post-conditions as they were provided.
 
@@ -72,7 +71,7 @@ Furthermore, qualitative data from participants do not present any reported issu
 \label{rq2}
 
 %all results
-From the assessments by the participants in our experiment, no statistical effect was perceived in using either of the three styles. \emph{All participants perceived all API specifications as having medium to high understandability} (Figure~\ref{fig:ExpAnswersTotal}). 
+From the assessments by the participants in our experiment, no statistical difference was perceived in using either of the three styles. \emph{All participants perceived all API specifications as having medium to high understandability} (Figure~\ref{fig:ExpAnswersTotal}). 
 %first conclusion
 Nevertheless, by analysing the assessments together with the provided qualitative data, we notice a trend: Javadoc as the top approach and formal contracts as the least understandable approach. The \contractjdoc{} approach, mixing Javadoc and contract expressions, was assessed as intermediate, which is illustrated in Figure~\ref{fig:approachesEmpirical}.
 %expected
@@ -161,7 +160,7 @@ Construct validity refers to correctly measuring the
 dependent variable -- for our experimental simulation, the correctness of the implementation and understandability of contract styles.
 There is always the risk that participants present \emph{respondent bias}~\cite{refSurvey}, due to their knowledge about the experiment and the researchers; we expect to mitigate this issue by providing as less information about the study as possible in the experimental package sent to the participants.
 
-Our demographics questionnaire as answered by 27 developers, but we discarded three submissions due to experimental balance and discrepant experience levels.
+Our demographics questionnaire as answered by 27 developers, but we discarded three submissions due to experimental balance and discrepant experience levels (in this case, too low).
 For the judgment survey, we have made similar arrangements for recruiting developers with comparable levels of experience, although uniformity is harder to achieve in that case.
 The order in which we display the documented
 interfaces on the survey form and the absence of open-ended questions can also threaten the construct validity. For dealing with these threats, we
@@ -182,7 +181,7 @@ Still, \texttt{WebProt\'{e}g\'{e}} did not include test cases -- we did not gene
 
 
 %internal
-Internal validity refers to causation: are changes in the dependent variables necessarily the result of manipulations to treatments? A possible problem in our experimental design is that it is hard to determine whether faults were introduced due to the assigned contract style. We tried to mix qualitative data with the experimental outcomes to have a more transparent view of task performing, but, despite our encouragement, \emph{developers provided less commentary than what we expected}. Our speculations about the results certainly demand more experiments for inferring a causation relationship between faults and documentation approach.
+Internal validity refers to causation: are changes in the dependent variables necessarily the result of treatment manipulation? A possible problem in our experimental design is that it is hard to determine whether faults were introduced due to the assigned contract style. We tried to mix qualitative data with the experimental outcomes to have a more transparent view of task performing, but, despite our encouragement, \emph{developers provided less commentary than what we expected}. Our speculations about the results certainly demand more experiments for inferring a causation relationship between faults and documentation approach.
 Also, all experimental and survey material was available only in English, but a large part of the respondents are likely to not have English as their first language, which may have affected their
 submissions and answers.
 
@@ -197,10 +196,8 @@ Conducting the experimental simulation on small APIs, with simple methods, may n
 
 Likewise, due to its size, results from the case study cannot be generalised; its purpose is evaluating the applicability of contract expressions.
 %represetantive sample
-The sample is not representative since there is no available estimate of the Javadoc-rich project
-population in GitHub, then a probability sample is impossible. 
-Our approach is as systematic as feasible in selecting the evaluated project -- manual translation
-does not scale, then the sample contains only five projects.
+The sample is not representative since there is no available estimate for projects of interest in GitHub, then a probability sample is hard to achieve. 
+Our approach is as systematic as feasible in selecting the evaluated project -- manual translation does not scale, so the sample contains only five projects.
 Therefore, those systems may not be representative of the real use of Javadoc in real systems; however, we were able to detect real inconsistencies between Javadoc comments and source code.
 
 

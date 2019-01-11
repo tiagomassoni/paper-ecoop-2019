@@ -2,10 +2,10 @@
 \label{sec:approach}
 
 %update to be more general
-To perform studies on public contract styles, we propose \contractjdoc{}, a simple extension to the Javadoc-tagging systems with contracts. Its compilation system is built on the top of the AspectJML compiler~\cite{aspectjml}, providing support for runtime checking of the contracts.
+We propose \contractjdoc{}, a simple extension to the Javadoc-tagging systems with contracts. Its compilation system is built on the top of the AspectJML compiler~\cite{aspectjml}, providing support for runtime checking of the contracts.
 \contractjdoc{} allows programmers to document \emph{contract expressions} amid Javadoc header for methods. With new tags, in addition to the standard Javadoc tags, one can write contracts as Javadoc comments that are compiled to runtime checkable code. 
 %The \contractjdoc{} approach fulfills the gap between informal documentation (as with Javadoc) and formal specification (such as JML~\cite{jml} or Code Contracts~\cite{codeContractsPaper}).
-In the remaining of this section, we present, based on the example from Section~\ref{sec:example}, how \contractjdoc{} supports a mixed approach, which combines textual documentation with formal notation.
+In this section, we present, based on the example from Section~\ref{sec:example}, how \contractjdoc{} supports a mixed approach, which combines textual documentation with formal notation.
 
 \subsection{Language Extension Design}
 

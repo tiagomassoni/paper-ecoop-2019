@@ -14,7 +14,7 @@ public contracts in simulated programming tasks, concerning effectiveness and un
 \label{sec:expPart}
 
 %recruitment
-We selected participants among professional developers assigned to projects in the context of a major R\&D Institute in Brazil. Recruitment was carried out by invitation; from estimated 150 invited professionals, 24 of them accepted the call and then, later, received the assignment by e-mail. The only requirement was previous experience with Java. From the 24 recruited developers, 10 of them had computer science (or related) degrees, while the remaining were carrying out undergraduate studies in the field. 
+We selected participants among professional developers assigned to projects in the context of a major R\&D Institute in Brazil. Recruitment was carried out by invitation; from estimated 150 invited professionals, 24 of them accepted and later received the assignment material by e-mail. The only requirement was previous experience with Java. From the 24 recruited developers, 10 of them had computer science (or related) degrees, while the remaining were carrying out undergraduate studies in the field. 
 %number of participants
 Although the number of participants is small for generalising any conclusions, we expect the observations to be considered as an exploratory model to be checked by future studies with larger samples. For experimental simulations, our participant set is within the expected size~\cite{Stol2015}.
 
@@ -25,7 +25,7 @@ Although the number of participants is small for generalising any conclusions, w
 %factors
 The study was designed to assess the effect of a given contract style on implementation tasks which depend on documented APIs. 
 %factor 1
-Participants were assigned to use a contract style (Factor 1) from the following: \emph{Javadoc natural language, \contractjdoc{} and JML-like formal contracts}. Table~\ref{tab:factorsEmpStudy} displays the treatments for those two factors.
+Participants were assigned to use a contract style (Factor 1) from the following: \emph{Textual Javadoc, \contractjdoc{} and JML-like formal contracts}. Table~\ref{tab:factorsEmpStudy} displays the treatments for those two factors.
 %factor 2
 For each of those styles, two kinds of task are considered (Factor 2): a \textit{Supplier} task, in which the participant must program the implementation of a Java API, and a \textit{Client} task, which demands development of client code for the API.
 %factor 3
@@ -40,12 +40,12 @@ An additional variation we included regards the particular API assigned to an ar
 \bfseries Factors & \bfseries Treatments \\
 \hline
 
+\multirow{3}{*}{\textbf{Approach}} & \contractjdoc{} \\
+ & Textual Javadoc \\
+& JML-like formal contracts \\ \hline 
 \multirow{2}{*}{\textbf{Task}} & Client \\
-& Supplier \\ \hline 
-
-\multirow{3}{*}{\textbf{Approach}} & Javadoc extension \\
- & Javadoc \\
-& formal contracts \\ \bottomrule
+& Supplier \\ 
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -95,11 +95,11 @@ Differently, \textit{Client} tasks were carried out based on textual description
 %post-study
 Before submitting the programs, we asked the participants to answer a \emph{post-experiment questionnaire}, in which we collected qualitative information about the developers' view of each task.
 
-We performed a pilot with three developers in order to fit the questionnaires' structure.
+We performed a pilot with three developers in order to adjust the questionnaires' structure.
 %the way in which we make the data available for the developers. 
 As a result, we changed the way of making the artefacts available to participants. 
 At first, we were making the documented interface available in a link and the working dataset in another. 
-Pilot participants highlighted this fact, indicating that a single package containing all Java classes should be located in a single URL.
+Pilot participants highlighted this, indicating that a single package containing all Java classes should be located in a single URL.
 
 \subsubsection{Research Method}
 \label{sec:labmethod}
@@ -135,7 +135,7 @@ contact lists, increasing the sample and the number of participants in our study
 %number
 The survey was open for three weeks (from June to July 2016) and received 142
 answers (from an estimated total of 700 contacts who were sent the link -- approximately a 20\% response
-rate). From the 142 participants, 51 (36\%) are professionals, and 91 are computer science (or related) students.
+rate). From the 142 participants, 51 (36\%) are professionals, and 91 are computer science students.
 
 
 \subsubsection{Design and Method}
@@ -156,7 +156,7 @@ Then, a characterisation of the respondent is given by questions related to Java
 %likert scale
 We applied \emph{Likert-scale} questions. In two questions we ask the developers to choose the most understandable documentation approach: one specific -- related to the provided contract style; and one general, concerning the use of the approach in a general context.
 %pilot study
-We also conducted a pilot concerning the questions and the structure of the programs being used. The pilot consists in asking three Java developers to test the setup for the survey, allowing us to validate the survey's questions and structure. The developers who participated, however, did not report issues on the structure that we used for presenting the needed data for the participation in the study.
+We also conducted a pilot concerning the questions and the structure of the programs being used. The pilot consists in asking three Java developers to test the setup for the survey, allowing us to adjust the survey's questions and structure. The developers who participated, however, did not report issues on the structure that we used for presenting the needed data for the participation in the study.
 
 %methods
 Regarding quantitative methods, we applied \emph{Wilcoxon, and Kruskal-Wallis rank sum tests}~\cite{statistical} for comparing the results for the different groups of participants. Regarding survey results, we applied \emph{one-way analysis of variance (ANOVA), Tukey HSD} and pairwise comparisons using \emph{t-tests with Bonferroni correction}~\cite{statistical}.%in addition, we employed Wilcoxon rank sum test with continuity correction tests.
@@ -174,10 +174,8 @@ This study aims at assessing the usefulness of contract expressions within Javad
 %which systems
 The case study was performed on a convenience sample: \totalSystems{} Javadoc-rich open source systems available at GitHub\footnote{\url{https://github.com/}} repository.
 %criteria
-They were selected based on the presence of method-level Javadoc annotations. 
-We searched for projects using the following set of key phrases: \emph{``must be'', ``must not be'', ``should
-be'', ``should not be'', ``greater than'', ``not be null'', ``less than''} into Javadoc
-comments.
+The selected systems presented the highest rate of method-level Javadoc commentary including the following set of key phrases: \emph{``must be'', ``must not be'', ``should
+be'', ``should not be'', ``greater than'', ``not be null'', ``less than''}.
 After some visual filtering, we collected the five most important classes in
 each system, based on overall dependence, and check whether those classes
 contained method-level Javadoc comments for most of their methods. If so, the
