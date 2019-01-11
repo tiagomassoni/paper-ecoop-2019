@@ -176,31 +176,36 @@ Regarding formal contract languages for specifying APIs (Eiffel, JML or similar)
 
 
 %results - Javadoc is the simplest
-Concerning the survey answers, it is shown in Figure
-~\ref{fig:mostUnderstandable} that 50.7\% (72) of the respondents chose Javadoc as the most straightforward approach to understanding the provided API specification. 
+Concerning the survey answers, Figure \ref{fig:understand} shows 50.7\% (72) of the respondents chose Javadoc as the most straightforward approach to understanding the provided API specification. 
 %contractjdoc em JML
 While only 11 (7\%) chose formal contracts as the most understandable approach and 18 (12\%) were indifferent, an almost one-third of the respondents (41, almost 29\%) chose the mix of text and contract expressions -- \contractjdoc{}.
 
 
-\begin{figure}
+\begin{figure*}
 \centering
-\includegraphics[width=0.7\linewidth]{figs/mostUnderstandable.png}
-\label{fig:mostUnderstandable}
-\caption{Surveyed Verdicts on the Most Understandable Contract Style.}
-\end{figure}
+\begin{subfigure}{.45\textwidth}
+\includegraphics[width=1\linewidth]{figs/mostUnderstandable.png}
+\caption{Surveyed Verdicts on Understandability.}
+\label{fig:understand}
+\end{subfigure}
+\begin{subfigure}{.45\textwidth}
+\includegraphics[width=1\linewidth]{figs/boxplotApproachesSurveyStudy}
+\caption{Assessment for Each Contract Style.}
+\label{fig:surveyResults}
+\end{subfigure}
+\caption{Results from the Judgement Survey.}
+\label{fig:survey}
+\end{figure*}
 
 
 % individual answers to each approach
-After being presented with three versions of the same API, the distribution of assessments for each documentation approach is showed in Figure~\ref{fig:allApproaches}.
+After being presented with three versions of the same API, the distribution of assessments for each contract style is showed in Figure~\ref{fig:surveyResults}.
 %explain visual
 Answers for Javadoc and \contractjdoc{} were distributed around a median of $4.0$; for the first, assessments range from $3$ to $5$, while assesments for the latter were no higher than $4$.
 Likewise, formal contracts were evaluated with $4$ the highest, however with $3$ with centre value. 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\linewidth]{figs/boxplotApproachesSurveyStudy}
-\caption{Surveyed Assessment for Each Documentation Approach.}
-\label{fig:surveyResults}
 \end{figure}
 
 
@@ -218,28 +223,25 @@ with Bonferroni correction~\cite{statistical} produced the following p-values fo
 
 Table~\ref{tab:caseStudyResults} exhibits the results of translating real Javadoc specifications to \contractjdoc{} in each system.
 %columns
-Column \textbf{Faults} presents the failures raised by the original test suite (whose size is showed in Column \textbf{TCs}), with source code enhanced by \contractjdoc{}, while Column \textbf{Time} measures the seconds spent in compiling the system instrumented with \contractjdoc{} before running the test cases. 
-%MASSONI: confirmar isso acima.
-\textbf{Clauses} displays how many contract clauses were translated into contract expressions, which are classified -- according to XXX et al.~\cite{typeContracts} -- in Columns \textbf{CommCase}, \textbf{AppSpec} and \textbf{Repet}.
+Column \textbf{Anom} presents the anomalies detected by the original test suite (whose size is showed in Column \textbf{TCs}), with source code enhanced by \contractjdoc{}, while Columns \textbf{T} and \textbf{CJDT} respectively provide the seconds spent in compiling the system before and after \contractjdoc{} instrumentation, both before running the test cases. 
+\textbf{Clauses} displays how many contract clauses were translated into contract expressions, which we classified as pre-conditions (\textbf{\#Pre}) or post-conditions (\textbf{\#Post}). The alternative classification for contract types -- according to Schiller et al.~\cite{typeContracts} -- is in Columns \textbf{CommCase}, \textbf{AppSpec} and \textbf{Repet}.
 
 \begin{table}
 \centering
-\caption{Results from Study Replacing Javadoc with \contractjdoc{}.}
+\caption{Results from Case Study with \contractjdoc{}.}
 \label{tab:caseStudyResults}
 \begin{adjustbox}{width=\textwidth}
-\begin{tabular}{lrrrrrrr} 
-\hline
-\multicolumn{1}{l}{\textbf{System}} & \textbf{Faults} & \textbf{Time(s)} & \textbf{TCs}     & \textbf{Clauses}                          & \textbf{CommCase} & \textbf{AppSpec} & \textbf{Repet}  \\ 
-\hline
-Dishevelled       & 381                                 & 434                                     & 2,643                            & 2,655                                     & 1,536                                  & 151                                    & 968                                   \\
-Webprotégé      & 0                                   & 713                                     & 0                                & 930                                       & 717                                    & 282                                    & 1,214                                 \\
-ABC-Music-Player  & 2                                   & 14                                      & 30                               & 115                                       & 42                                     & 11                                     & 62                                    \\
-Jenerics          & 7                                   & 20                                      & 44                               & 190                                       & 156                                    & 0                                      & 34                                    \\
-OOP Aufgabe3      & 1                                   & 4                                       & 11                               & 54                                        & 16                                     & 30                                     & 8                                     \\
-%MASSONI: ELIMINEI SimpleShop
-% SimpleShop        & 0                                   & 5                                       & 0                                & 50                                        & 30                                     & 11                                     & 9                                     \\
+\begin{tabular}{lrrrrrrrrrr} 
+\toprule
+ \textbf{System}  & \textbf{Anom} & \textbf{T(s)}  & \multicolumn{1}{l}{\textbf{CJDT}(s)} & \textbf{TCs}      & \textbf{Clauses}  & \multicolumn{1}{l}{\#\textbf{Pre}} & \multicolumn{1}{l}{\#\textbf{Post}} & \textbf{CommCase}  & \textbf{AppSpec}  & \textbf{Repet}    \\ 
+\toprule
+Dishevelled       & 381           & 59                & 434                                     & 2,643             & 2,661             & 1,411                              & 1,250                               & 1,542              & 151               & 968               \\
+Webprotégé        & --             & 19                & 713                                     & --                 & 931               & 352                                & 579                                 & 719                & 79                & 133               \\
+ABC-Music-Player  & 2             & 1                 & 9                                       & 30                & 115               & 41                                 & 74                                  & 42                 & 11                & 62                \\
+Jenerics          & 7             & 1                 & 20                                      & 44                & 190               & 105                                & 85                                  & 156                & --                 & 34                \\
+OOP Aufgabe3      & 1             & 1                 & 4                                       & 11                & 54                & 28                                 & 26                                  & 16                 & 30                & 8                 \\ 
 \bottomrule
-\textbf{ Total }  & \textbf{391}                      & \textbf{1,185}                        & \textbf{ 2,728 }                 & \textbf{\totalClauses{}} & \textbf{ 2,497 }                       & \textbf{ 282 }                         & \textbf{ 1,214}                       \\
+\textbf{ Total }  & \textbf{391}  & \textbf{82}       & \textbf{1,185}                          & \textbf{ 2,728 }  & \textbf{3,951}    & \multicolumn{1}{l}{\textbf{1,937}} & \multicolumn{1}{l}{\textbf{2,014}}  & \textbf{ 2,497 }   & \textbf{ 282 }    & \textbf{ 1,214}   \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
@@ -286,9 +288,7 @@ From the selection of open source systems, only \emph{WebProtégé}'s test suite
 The size of the available test suites is proportional to the system size.
 \emph{Dishevelled} is much larger than the other selected systems, naturally presenting a higher rate of anomalies, which provided us with an abundant source of analysis about the mismatches between specification and implementation. 
 %MASSONI: temos o tempo que cada sistema usou pra compilar SEM A INSTRUMENTACAO?
-About the time...
-
-
+Regarding compilation overhead, instrumenting the code with runtime assertions added considerable time for compiling the systems. This process may be subject to optimizations, which were not our priority for this case study.
 
 % results for contract types
 Concerning the kind of contracts, the only unit for which we wrote more application-specific contracts was the \emph{OOP Aufgabe3} system (55\% of the written contracts are application-specific). On the other hand, in \emph{ABC-Music-Player}, more than 90\% of the contracts remain between common-case and repetitive code: verifications that strings are not blank, collections are not empty, or that a method returns a field.

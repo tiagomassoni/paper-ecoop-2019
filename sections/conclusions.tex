@@ -47,6 +47,7 @@ Finally, the reason for the low adoption of DbC, at least for formal contracts, 
 %improve contractjdoc
 For \contractjdoc{}, we intend to improve the tags for considering more complex contract expressions, and carry out more studies on its usability and efficiency, in particular for specifying APIs -- adaptation to other programming languages, such as C\#, would be relatively straightforward. 
 For instance, we could add support to \emph{autocomplete}, applying Jaro-Winkler string distance~\cite{jaro,winkler99} as a basis.
+Moreover, the overhead \contractjdoc{} adds to the instrumented code must be addressed with optimizations, perhaps using an alternative framework rather than Aspectj as foundation. 
 
 
 

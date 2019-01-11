@@ -33,7 +33,7 @@ In \contractjdoc, the pre-condition for method \lstinline!withdraw! from Section
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi, frame=lines, mathescape=true]
  /**
   * @param amt the amount value to withdraw, 
-  *   where $\shd{[amt > 0 \&\& amt <= balance]}$
+  *   where [amt > 0 && amt <= balance]
   */
  double withdraw(double amt) 
    throws TransactionException {...}
@@ -58,9 +58,9 @@ We may use \contractjdoc{} for post-conditions as the example in Figure~\ref{fig
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi, frame=lines, mathescape=true]
  /**
   * @return amt the current balance after withdraw,
-  *   that is $\shd{[@return == balance]}$
+  *   that is [@return == balance]
   * @throws TransactionException the 'balance' does
-  *  not change, that is $\shd{[balance == @old(balance)]}$
+  *  not change, that is [balance == @old(balance)]
   */
  double withdraw(double amt) 
    throws TransactionException {...}
@@ -110,7 +110,7 @@ Derived from JML, we can also employ \lstinline!@signals! to document and constr
 \subsection{Supporting Infrastructure}
 
 The \contractjdoc{} compiler is based on the open source AspectJML/ajmlc compiler~\cite{aspectjml,ajmlc,Rebelo-etal08}.
-Unlike the standard JML compiler jmlc~\cite{jmlc-compiler}, ajmlc presents code optimisations and improved error reporting~\cite{ajmlc}.
+Unlike the standard JML compiler, ajmlc presents code optimisations and improved error reporting~\cite{ajmlc}.
 Also, AspectJML enables the modularisation
 of crosscutting contracts that can arise in standard
 JML specifications~\cite{aspectjml}.

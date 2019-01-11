@@ -186,42 +186,31 @@ contained method-level Javadoc comments for most of their methods. If so, the
 system is selected. Finally, we checked whether the system presented a suite of
 unit test, which are run during the case study to detect inconsistencies. We
 were able to find five systems meeting these criteria.
-
 %system descriptions
-While \texttt{ABC-Music-Player}\footnote{\url{https://github.com/deepakn94/ABC-Music-Player}}
-plays music from an ABC file (part of a project assignment from MIT class
-6.005), \texttt{Dishevelled}\footnote{\url{https://github.com/heuermh/dishevelled}} hosts
-free and Open Source libraries for several user interface components and
-supporting code, with emphasis on views and editors for complex data structures, like collections, sets, lists, maps, graphs, and
-matrices; \texttt{Jenerics}\footnote{\url{https://github.com/mriedel/Jenerics}} is a general-purpose set of Java tools and templates library.
-On the other hand, \texttt{OOP
-Aufgabe3}\footnote{\url{https://github.com/rwilli/aufgabe3}} aims to manipulate
-polygons. In addition,
-\texttt{Webprot\'{e}g\'{e}}\footnote{\url{https://github.com/protegeproject/webprotege}}
-is a collaborative ontology development environment for the Web. Those systems amount to more than 190 KLOC. See Table~\ref{tab:Units} for details regarding code lines (LOC), total contract clauses (\#CC) we were able to write
--- following \cite{Estler-etal14} approach, in which the number of contract clauses is a proxy for contract complexity -- as split
-into pre-conditions (\#Pre) and post-conditions (\#Post).\footnote{The clauses
-correspond to the contracts we applied in each system.}
+See Table~\ref{tab:Units} for details about the selected systems. 
+
+%While \texttt{ABC-Music-Player}\footnote{\url{https://github.com/deepakn94/ABC-Music-Player}} plays music from an ABC file (part of a project assignment from MIT class 6.005), \texttt{Dishevelled}\footnote{\url{https://github.com/heuermh/dishevelled}} hosts free and Open Source libraries for several user interface components and supporting code, with emphasis on views and editors for complex data structures, like collections, sets, lists, maps, graphs, and matrices; \texttt{Jenerics}\footnote{\url{https://github.com/mriedel/Jenerics}} is a general-purpose set of Java tools and templates library. On the other hand, \texttt{OOP Aufgabe3}\footnote{\url{https://github.com/rwilli/aufgabe3}} aims to manipulate polygons. In addition, \texttt{Webprot\'{e}g\'{e}}\footnote{\url{https://github.com/protegeproject/webprotege}} is a collaborative ontology development environment for the Web. Those systems amount to more than 190 KLOC. 
+
+%total contract clauses (\#CC) we were able to write
+%-- following \cite{Estler-etal14} approach, in which the number of contract clauses is a proxy for contract complexity -- 
+%as split into pre-conditions (\#Pre) and post-conditions (\#Post).\footnote{The clauses correspond to the contracts we applied in each system.}
 
 %systems table
 \begin{table}[ht]
-\caption{Case study Systems. LOC shows the code lines (LOC), total contract clauses (\#CC), as split
-into pre-conditions (\#Pre) and post-conditions (\#Post).}
+\caption{Case study Systems. LOC shows the code lines (LOC), total contract clauses (\#CC) and a brief description.}
 \label{tab:Units}
 \centering
-\begin{tabular}{llllll}
+\begin{tabular}{lrl}
 \toprule
 \bfseries System &  \bfseries LOC & 
-\bfseries \#CC &  \bfseries \#Pre &  \bfseries \#Post \\ \hline
-ABC-Music-Player & 1,973 & 115 & 41 & 74 \\ 
-Dishevelled & 110,577 & 2,655 & 1,411 & 1,250\\ 
-Jenerics & 2,538 & 190 & 105 & 85 \\ 
-OOP Aufgabe3 & 353 & 54 & 28 & 26 \\
-Webprot\'{e}g\'{e} & 74,742 & 929 & 351 & 579 \\ \hline
+\bfseries Description  \\ \hline
+ABC-Music-Player & 1,973 & Music player from ABC files  \\ 
+Dishevelled & 110,577 & UI components for complex data structures.\\ 
+Jenerics & 2,538 &  General-purpose set of Java tools and templates.\\ 
+OOP Aufgabe3 & 353 &  Routines for polygon manipulation\\
+Webprot\'{e}g\'{e} & 74,742 & Environment for ontology development \\ \hline
 
- \bfseries Total &  \bfseries \totalCode{} &  \bfseries
-\totalClauses{} &  \bfseries \totalPre{} &  \bfseries \totalPost{}
-\\
+ \bfseries Total &  \bfseries \totalCode{} & \\
 \bottomrule
 \end{tabular}
 \end{table}

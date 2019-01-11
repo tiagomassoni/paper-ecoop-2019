@@ -1,9 +1,6 @@
 [x] citations
 [x] hypotheses in conclusion
 [x] evolution - discussion
-[] verificar comentários dos revisores
-[x] term understandability: paper ase 2017 - concept and a big threat to validity
-[] colocar nos sites especializados os artefatos, e referenciar o repositório, with anonymous references
 [x] reescrever resumo - ajustar foco e terminologia (não é apenas JML; geral para outras linguagens de especificação)
 [x] research questions na introducao
 [x] metodologia - usar modelo dos outros papers
@@ -18,12 +15,13 @@
 [x] complete research method for experiment
 [x] eliminar simple shop
 [x] eliminate JML references, explain JML-like formal contracts
-[] #CCs/Pre/Post to results, change table 2 and table results
+[x] #CCs/Pre/Post to results, change table 2 and table results
 
-[] Time for compilation, before and after
+[x] Time for compilation, before and after
 
 [x] include more citations into discussions
 [] effect sizes (new table with statistical results)
+[] colocar nos sites especializados os artefatos, e referenciar o repositório, with anonymous references
 
 [x] explain why types of contract (pre,post) are more often in each project
 
@@ -34,7 +32,7 @@
 [x] analyze if API is a correct term
 [] eliminate invariants, but explain in section 2 they are harder to find in public class members
 [x] section summary in the introduction
-[] problems in listings (math expressions)
+[x] problems in listings (math expressions)
 [] Rohit's comments
 [] Gary's comments
 [x] Grammarly
@@ -42,3 +40,8 @@
 [x] fix form site
 [] italics to highlight terms
 
+[] verificar comentários dos revisores
+
+[] term understandability: paper ase 2017 - concept and a big threat to validity
+
+[] review references
