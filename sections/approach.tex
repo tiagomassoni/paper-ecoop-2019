@@ -3,21 +3,20 @@
 
 %update to be more general
 To perform studies on public contract styles, we propose \contractjdoc{}, a simple extension to the Javadoc-tagging systems with contracts. Its compilation system is built on the top of the AspectJML compiler~\cite{aspectjml}, providing support for runtime checking of the contracts.
-\contractjdoc{} allows programmers to document \emph{contract expressions} amid Javadoc header for methods. With just a few new tags, in addition to the standard Javadoc tags, one can write contracts as Javadoc comments that are compiled to runtime checkable code. 
+\contractjdoc{} allows programmers to document \emph{contract expressions} amid Javadoc header for methods. With new tags, in addition to the standard Javadoc tags, one can write contracts as Javadoc comments that are compiled to runtime checkable code. 
 %The \contractjdoc{} approach fulfills the gap between informal documentation (as with Javadoc) and formal specification (such as JML~\cite{jml} or Code Contracts~\cite{codeContractsPaper}).
-
-In the remaining of this section, we present, based on a running example, how \contractjdoc{} supports a mixed approach, which combines textual documentation with a limited set of formal features from the examples in Section~\ref{sec:example}.
+In the remaining of this section, we present, based on the example from Section~\ref{sec:example}, how \contractjdoc{} supports a mixed approach, which combines textual documentation with formal notation.
 
 \subsection{Language Extension Design}
 
-The \contractjdoc{} tags act as traditional Javadoc tags,  embedded within block comments. 
-The main idea is to allow a mix between the traditional Javadoc syntax and JML-like notation; 
-JML seems appropriate in this context since it is built over Java expressions, except for a few logical operators (such as \texttt{==>} -- implication).
+The \contractjdoc{} tags act as traditional Javadoc tags, embedded within block comments. 
+The main idea is to allow \emph{a mix between the traditional Javadoc syntax and JML-like notation}; 
+JML seems appropriate in this context since it is built over Java expressions, adding logical operators, such as implication (\texttt{==>}).
 Embedding contracts allows for contract expressions (e.g., pre-conditions) in the existing Javadoc comments
 and making them machine discoverable through the use of
 marker brackets within those comments.
 %semantic-neutral
-In this proposal, we consider the textual comments surrounding the formal expressions semantically neutral -- we assume the expression does not change its semantics. 
+In this proposal, we consider the textual comments surrounding the formal expressions are semantically neutral -- we assume the expression does not change its semantics. 
 
 %benefits
 The potential benefit of embedding contract expressions in a more natural setting for the developer is his/her ability to remain within a single artefact which is purpose-built for writing public specifications. 
@@ -27,6 +26,11 @@ practice are short and simple~\cite{Estler-etal14,typeContracts}. For instance, 
 \subsubsection{Pre-conditions}
 %Recall the pre-condition illustrated in Section~\ref{sec:example}. We discussed two ways to document such a pre-condition, a formal one in JML (see Figure~\ref{Fig-JML-Bank}) and an informal one with plain Javadoc comments (see Figure~\ref{Fig-Javadoc-Bank}).
 In \contractjdoc, the pre-condition for method \lstinline!withdraw! from Section~\ref{sec:example} can be rewritten as the excerpt in Figure~\ref{fig:pre-example}.
+%explain
+Tag \lstinline!@param! documents parameter \lstinline!amt! of \lstinline!double! type.
+Besides the usual comments, we have added a boolean expression
+surrounded by brackets; these brackets indicate assertions internally to the \contractjdoc{} compiler, so the comments can be turned into an executable pre-condition checking.
+An alternative (not showed) is to replace tag \lstinline!@param! by \lstinline!@requires! or \lstinline!@pre!. Both can be used to document a pre-condition constraint; the main difference is that they are not part of the standard Javadoc tagging system.
 
 \begin{figure}
 \centering
@@ -42,15 +46,22 @@ In \contractjdoc, the pre-condition for method \lstinline!withdraw! from Section
 \label{fig:pre-example}
 \end{figure}
 
-%explain
-Tag \lstinline!@param! documents parameter \lstinline!amt! of \lstinline!double! type.
-Besides the usual comments, we have added a boolean expression
-surrounded by brackets; these brackets indicate assertions internally to the \contractjdoc{} compiler, so the comments can be turned into an executable pre-condition checking.
-An alternative (not showed) is to replace tag \lstinline!@param! by \lstinline!@requires! or \lstinline!@pre!. Both can be used to document a pre-condition constraint; the main difference is that they are not part of the standard Javadoc tagging system.
 
 \subsubsection{Post-conditions}
 
 We may use \contractjdoc{} for post-conditions as the example in Figure~\ref{fig:post-example}.
+Tags \lstinline!@return! and \lstinline!@throws! document normal and exceptional post-conditions, respectively, with their respective expressions
+expressed within brackets.
+%Tag \lstinline!@return! appears again within the brackets. This inner is allowed (in \contractjdoc{}) and allows one
+%to use the value of the method's returns to write the contract regarding
+%the normal post-condition. A similar tag, \lstinline!@result! derived from the JML syntax,
+%can also be employed instead of the inner use of the \lstinline!@return! tag.
+Tag \lstinline!@old! refers to expressions or fields in their pre-state, used only in post-conditions.
+As with pre-conditions, \contractjdoc{} offers three tags for expressing post-conditions.
+For normal post-conditions, similar JML-based tags \lstinline!@ensures! and \lstinline!@post! may be used instead of \lstinline!@return!.
+For \lstinline!@throws! tag, the standard Javadoc offers a surrogate tag \lstinline!@exception!. 
+Derived from JML, we can also employ \lstinline!@signals! to document and constrain exceptional behaviour.
+
 
 
 \begin{figure}
@@ -68,19 +79,6 @@ We may use \contractjdoc{} for post-conditions as the example in Figure~\ref{fig
 \caption{\texttt{withdraw}'s post-condition.}
 \label{fig:post-example}
 \end{figure}
-
-Tags \lstinline!@return! and \lstinline!@throws! document normal and exceptional post-conditions, respectively, with their respective expressions
-expressed within brackets.
-%Tag \lstinline!@return! appears again within the brackets. This inner is allowed (in \contractjdoc{}) and allows one
-%to use the value of the method's returns to write the contract regarding
-%the normal post-condition. A similar tag, \lstinline!@result! derived from the JML syntax,
-%can also be employed instead of the inner use of the \lstinline!@return! tag.
-Tag \lstinline!@old! refers to expressions or fields in their pre-state, used only in post-conditions.
-
-As with pre-conditions, \contractjdoc{} offers three tags for expressing post-conditions.
-For normal post-conditions, similar JML-based tags \lstinline!@ensures! and \lstinline!@post! may be used instead of \lstinline!@return!.
-For \lstinline!@throws! tag, the standard Javadoc offers a surrogate tag \lstinline!@exception!. 
-Derived from JML, we can also employ \lstinline!@signals! to document and constrain exceptional behaviour.
 
 % \subsubsection{Documenting Invariants}
 

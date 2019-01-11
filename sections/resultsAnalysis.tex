@@ -47,11 +47,11 @@ Regarding task, faulty programs were mostly present in API implementations -- fo
 \end{table}
 
 %faults
-Table~\ref{tab:faults} details the faults detected by the test cases. After a detailed analysis of the programs, we classified each fault regarding the violated contract. 
+Table~\ref{tab:faults} details some of the results from participants' submissions, including the faults detected by the test cases. After a detailed analysis of the programs, we classified each fault regarding the violated contract. 
 %clients
-All clients fulfilled the specified pre-conditions for calling API methods -- p1's client raises an exception which was incompatible with the method's post-condition.
+\emph{All clients fulfilled the specified pre-conditions for calling API methods} -- p1's client raises an exception which was incompatible with the method's post-condition.
 %suppliers
-All four faults unveiled in API implementations resulted from failing to satisfy the specified post-condition in methods removing data from the given structure (two on \texttt{Stack.pop} and two on \texttt{Queue.remove}).
+\emph{All four faults unveiled in API implementations resulted from failing to satisfy the specified post-condition} in methods removing data from the given structure (two on \texttt{Stack.pop} and two on \texttt{Queue.remove}).
 
 \begin{table}
 \centering
@@ -80,7 +80,7 @@ p20                                        & Queue                             &
 \end{adjustbox}
 \end{table}
 
-After they sent their code back, we asked participants about understandability of the API specifications, using a Likert-like scale which ranges from 1 (less understandable) to 5 (very understandable). The results for 24 answers are summarised in Figure~\ref{fig:ExpAnswersTotal}, in which assessments are spread between 3 to 5. Most participants evaluated understandability as 4 (58\%).
+After they submitted the programs, we asked participants about understandability of the API specifications, using a Likert-like scale which ranges from 1 (less understandable) to 5 (very understandable). The results for 24 answers are summarised in Figure~\ref{fig:ExpAnswersTotal}, in which assessments are spread between 3 and 5. Most participants evaluated understandability as 4 (58\%).
 
 \begin{figure*}
 \centering
@@ -109,7 +109,6 @@ Assuming a distinct perspective, we grouped understandability assessments by the
 Visually, the assessments for Javadoc APIs are all above the median ($4$), while \contractjdoc{} assessments fluctuate around that median value. Formal contracts, in turn, were all assessed as $3$ or $4$.  
 % stats
 Nevertheless, statistical tests (in this case, the Kruskal-Wallis non-parametric test) showed no difference between the groups (p-value = $0.15$, 95\% confidence level).
-
 %task
 Concerning the task performed by the developers, higher understandability is reported by participants assigned to supplier tasks, at least visually. Still, the Wilcoxon rank sum test~\cite{statistical} reported no significant difference (p-value = 0.07, for confidence level of 95\%).
 
@@ -119,7 +118,7 @@ The quotes were organised in 11 categories, which are presented in Table~\ref{ta
 
 %on the results
 %seven
-We found that most quotes either value the specifications or suggest the contracts should have been stronger (seven each). As an example of the latter, p6, which was assigned a \contractjdoc{} API, wrote: "I hesitated over the \texttt{pop} method, due to its exception; there should be more information about the exception to be thrown in each case". 
+We found that most quotes either value the specifications or suggest the contracts should have been stronger (seven each). As an example of the latter, p6, which was assigned a \contractjdoc{} API, wrote: \emph{"I hesitated over the \texttt{pop} method, due to its exception; there should be more information about the exception to be thrown in each case"}. 
 %four
 Others made explicit suggestions on how the specification should be, from their previous understanding of Queue and Stack APIs.
 %other
@@ -160,9 +159,9 @@ Text was confusing                           & 1                                
 \label{sec:surveyResults}
 
 %survey description
-As a follow-up for the lab study, we showed three versions of the Stack API as a web survey, asking questions about those approaches to contract specifications; we suggested respondents play the client role of the API as if they were about to instantiate it and call its methods.
+As a follow-up, we showed three versions of the Stack API as a web survey, asking questions about those approaches to contract specifications; we suggested respondents play the client role of the API as if they were about to call its methods.
 %questions
-Respondents were asked to assess understandability of each approach (again, using a 1--5 Likert scale), in addition to providing a verdict asking which approach they think is the most understandable as an API specification. For this, they were given three options -- one for each approach -- and a fourth, neutral option.
+Respondents were asked to assess understandability of each approach (again, using a 1--5 Likert scale), in addition to providing a verdict asking which approach they think is the most understandable as an API specification. For this, they were given three options -- one for each contract style -- and a fourth, neutral option.
 
 %general results
 From the universe of developers who received the invitation, answers from 142 Java developers were considered valid.
@@ -184,11 +183,11 @@ While only 11 (7\%) chose formal contracts as the most understandable approach a
 \begin{figure*}
 \centering
 \begin{subfigure}{.45\textwidth}
-\includegraphics[width=1\linewidth]{figs/mostUnderstandable.png}
+\includegraphics[width=0.8\linewidth]{figs/mostUnderstandable.png}
 \caption{Surveyed Verdicts on Understandability.}
 \label{fig:understand}
 \end{subfigure}
-\begin{subfigure}{.45\textwidth}
+\begin{subfigure}{.48\textwidth}
 \includegraphics[width=1\linewidth]{figs/boxplotApproachesSurveyStudy}
 \caption{Assessment for Each Contract Style.}
 \label{fig:surveyResults}
@@ -210,7 +209,7 @@ Likewise, formal contracts were evaluated with $4$ the highest, however with $3$
 
 
 %statistical results
-Differently from the experimental simulation from Section~\ref{sec:expResults}, statistical tests show a significant difference between the assessments. The application of One-way ANOVA, which is robust enough for non-normal distributions~\cite{statistical}, detected a distinction between the three groups of answers (p-value $<$ 0.05). A corresponding post hoc analysis -- Tukey HSD 
+Differently from the experimental simulation from Section~\ref{sec:expResults}, statistical tests show a \emph{significant difference between the assessments}. The application of One-way ANOVA, which is robust enough for non-normal distributions~\cite{statistical}, detected a distinction between the three groups of answers (p-value $<$ 0.05). A corresponding post hoc analysis -- Tukey HSD 
 %and pairwise comparisons using t tests
 with Bonferroni correction~\cite{statistical} produced the following p-values for each pairwise comparison: Javadoc-ContractJDoc = 0.012, Formal-ContractJDoc = 0.000, and Formal-Javadoc = 0.000. The results then express the significant difference between all styles.
 %effect sizes
@@ -224,7 +223,7 @@ with Bonferroni correction~\cite{statistical} produced the following p-values fo
 Table~\ref{tab:caseStudyResults} exhibits the results of translating real Javadoc specifications to \contractjdoc{} in each system.
 %columns
 Column \textbf{Anom} presents the anomalies detected by the original test suite (whose size is showed in Column \textbf{TCs}), with source code enhanced by \contractjdoc{}, while Columns \textbf{T} and \textbf{CJDT} respectively provide the seconds spent in compiling the system before and after \contractjdoc{} instrumentation, both before running the test cases. 
-\textbf{Clauses} displays how many contract clauses were translated into contract expressions, which we classified as pre-conditions (\textbf{\#Pre}) or post-conditions (\textbf{\#Post}). The alternative classification for contract types -- according to Schiller et al.~\cite{typeContracts} -- is in Columns \textbf{CommCase}, \textbf{AppSpec} and \textbf{Repet}.
+\textbf{Clauses} displays how many contract clauses were translated into contract expressions, which we classified as pre-conditions (\textbf{Pre}) or post-conditions (\textbf{Post}). The alternative classification for contract types -- according to Schiller et al.~\cite{typeContracts} -- is in Columns \textbf{CommCase}, \textbf{AppSpec} and \textbf{Repet}.
 
 \begin{table}
 \centering
@@ -233,7 +232,7 @@ Column \textbf{Anom} presents the anomalies detected by the original test suite 
 \begin{adjustbox}{width=\textwidth}
 \begin{tabular}{lrrrrrrrrrr} 
 \toprule
- \textbf{System}  & \textbf{Anom} & \textbf{T(s)}  & \multicolumn{1}{l}{\textbf{CJDT}(s)} & \textbf{TCs}      & \textbf{Clauses}  & \multicolumn{1}{l}{\#\textbf{Pre}} & \multicolumn{1}{l}{\#\textbf{Post}} & \textbf{CommCase}  & \textbf{AppSpec}  & \textbf{Repet}    \\ 
+ \textbf{System}  & \textbf{Anom} & \textbf{T(s)}  & \multicolumn{1}{l}{\textbf{CJDT}(s)} & \textbf{TCs}      & \textbf{Clauses}  & \multicolumn{1}{l}{\textbf{Pre}} & \multicolumn{1}{l}{\textbf{Post}} & \textbf{CommCase}  & \textbf{AppSpec}  & \textbf{Repet}    \\ 
 \toprule
 Dishevelled       & 381           & 59                & 434                                     & 2,643             & 2,661             & 1,411                              & 1,250                               & 1,542              & 151               & 968               \\
 Webprotégé        & --             & 19                & 713                                     & --                 & 931               & 352                                & 579                                 & 719                & 79                & 133               \\
@@ -284,20 +283,19 @@ OOP Aufgabe3      & 1             & 1                 & 4                       
 
 
 %commentary on the table
-From the selection of open source systems, only \emph{WebProtégé}'s test suites were unavailable; we translated their clauses nonetheless due to the richness of its Javadoc specification.
+From the selection of open source systems, only \texttt{WebProtégé}'s test suites were unavailable; we translated their clauses nonetheless due to the richness of its Javadoc specification.
 The size of the available test suites is proportional to the system size.
-\emph{Dishevelled} is much larger than the other selected systems, naturally presenting a higher rate of anomalies, which provided us with an abundant source of analysis about the mismatches between specification and implementation. 
+\texttt{Dishevelled} is much larger than the other selected systems, naturally presenting a higher rate of anomalies, which provided us with an abundant source of analysis about the mismatches between specification and implementation. 
 %MASSONI: temos o tempo que cada sistema usou pra compilar SEM A INSTRUMENTACAO?
 Regarding compilation overhead, instrumenting the code with runtime assertions added considerable time for compiling the systems. This process may be subject to optimizations, which were not our priority for this case study.
 
 % results for contract types
-Concerning the kind of contracts, the only unit for which we wrote more application-specific contracts was the \emph{OOP Aufgabe3} system (55\% of the written contracts are application-specific). On the other hand, in \emph{ABC-Music-Player}, more than 90\% of the contracts remain between common-case and repetitive code: verifications that strings are not blank, collections are not empty, or that a method returns a field.
-For \emph{Dishevelled}, most contracts are classified as common-case (57.51\%) -- 
+Concerning the kind of contracts, the only unit for which we wrote more application-specific contracts was the \texttt{OOP Aufgabe3} system (55\% of the written contracts are application-specific). On the other hand, in \texttt{ABC-Music-Player}, more than 90\% of the contracts remain between common-case and repetitive code: verifications that strings are not blank, collections are not empty, or that a method returns a field.
+For \texttt{Dishevelled}, most contracts are classified as common-case (57.51\%) -- 
 %other 36.92\% are repetitive with code and 
 only 5.57\% are application-specific.
-Similarly, all contracts written for \emph{Jenerics} are related to verification of nullity from parameters or the return value, thus all contracts
-remains between common-case and repetitive code.
-For \emph{WebProt\'{e}g\'{e}}  common-case contract expressions amount to 77.51\%.  
+Similarly, all contracts written for \texttt{Jenerics} are related to verification of nullity from parameters or the return value, thus all contracts remain between common-case and repetitive code.
+For \texttt{WebProt\'{e}g\'{e}}  common-case contract expressions amount to 77.51\%.  
 
 %In \emph{SimpleShop}, the written contracts are distributed in the following manner: common-case 60\%, repetitive code 19\%, and application-specific 21\%; again the number of common-case and repetitive code outperforms application-specific contracts. 
 

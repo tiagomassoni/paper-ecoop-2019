@@ -25,7 +25,7 @@ Although the number of participants is small for generalising any conclusions, w
 %factors
 The study was designed to assess the effect of a given contract style on implementation tasks which depend on documented APIs. 
 %factor 1
-Participants were assigned to use a contract style (Factor 1) from the following: plain Javadoc natural language, \contractjdoc{} and formal contracts. Table~\ref{tab:factorsEmpStudy} displays the treatments for those two factors.
+Participants were assigned to use a contract style (Factor 1) from the following: \emph{Javadoc natural language, \contractjdoc{} and JML-like formal contracts}. Table~\ref{tab:factorsEmpStudy} displays the treatments for those two factors.
 %factor 2
 For each of those styles, two kinds of task are considered (Factor 2): a \textit{Supplier} task, in which the participant must program the implementation of a Java API, and a \textit{Client} task, which demands development of client code for the API.
 %factor 3
@@ -50,9 +50,9 @@ An additional variation we included regards the particular API assigned to an ar
 \end{table}
 
 %design
-We use a factorial design~\cite{wohlin}, randomly assigning participants to each combination of treatments; a trial is the triple $<$approach, task, API$>$.
+We use a factorial design~\cite{wohlin}, randomly assigning participants to each combination of treatments; a trial is the triple $<style, task, API>$.
 Since there are three contract styles, two types of task and two APIs, there are 12 possible trials, so each of them was carried out by two participants, resulting in a balanced design. 
-The assignment of participants was utterly random, to minimise bias.
+The assignment of participants was random, to minimise bias.
 
 \subsubsection{Experimental Procedure}
 \label{sec:expProcedure}
@@ -61,8 +61,8 @@ The experiment was performed offline, i.e., participants received the experiment
 % double blind process 
 % An example of survey sent to the
 % participants can be found online.\footnote{\url{https://goo.gl/forms/ySTsYfKSRcotLayk1}} 
-The experimental package consisted of (i) a statement of consent, (ii) a pretest
-questionnaire, (iii) instructions and materials to perform the experiment, and (iv) a post-test questionnaire. 
+The experimental package consisted of \emph{(i) a statement of consent, (ii) a pretest
+questionnaire, (iii) instructions and materials to perform the experiment, and (iv) a post-test questionnaire}. 
 The instructions contained what we expected from the participants: they were asked to perform an implementation task (a supplier or a client code) for the
 provided API. Each participant received one of the following tasks: create a class that implements the API, or a client code using the API's methods.
 We also asked each participant to fulfil a pre-study questionnaire reporting their programming experience (concerning Java and contract-based programming experience). 
@@ -93,7 +93,7 @@ For \textit{Supplier} tasks, participants should have implemented variations of 
 %the tasks 2
 Differently, \textit{Client} tasks were carried out based on textual descriptions, although any call to API should fulfil its external contracts, also presented using one of the three documentation options. Implementation of the API was provided as binaries, so participants were not given access to the source code.
 %post-study
-Before submitting the programs, we asked the participants to answer a post-experiment questionnaire, in which we collected qualitative information about the developers' view of each task.
+Before submitting the programs, we asked the participants to answer a \emph{post-experiment questionnaire}, in which we collected qualitative information about the developers' view of each task.
 
 We performed a pilot with three developers in order to fit the questionnaires' structure.
 %the way in which we make the data available for the developers. 
@@ -102,13 +102,13 @@ At first, we were making the documented interface available in a link and the wo
 Pilot participants highlighted this fact, indicating that a single package containing all Java classes should be located in a single URL.
 
 \subsubsection{Research Method}
-label{sec:labmethod}
+\label{sec:labmethod}
 
 %method for checking correctness
-Each program sent by the participants were subjected to a test suite especially implemented by the researchers for checking whether every single contract was fulfilled -- there was a test case for each contract clause.
+Each program sent by the participants were subjected to a test suite especially implemented by the researchers for checking whether every single contract was fulfilled -- \emph{there was a test case for each contract clause}.
 As a result, we can classify each submission according to the number of faults detected by these tests.
 %method for Likert
-To analyse the understandability assessments in the post-study questionnaire, we applied simple visualisation techniques (boxplots and bar charts) and statistical tests; in this case, we used the Wilcoxon rank sum test~\cite{statistical} for testing difference between groups, with non-normal data.
+To analyse the understandability assessments in the post-study questionnaire, we applied simple visualisation techniques (boxplots and bar charts) and statistical tests; in this case, we used the \emph{Wilcoxon rank sum test}~\cite{statistical} for testing difference between groups, with non-normal data.
 
 %method for analysing questionnaire info
 The answers from the qualitative post-study questionnaire were subject to a simple content analysis, performed by two researchers, which held a joint session for agreement on the category for each response from the developers. 
@@ -134,8 +134,8 @@ Also, our contacts were asked to follow a snowball approach, sending the survey 
 contact lists, increasing the sample and the number of participants in our study.
 %number
 The survey was open for three weeks (from June to July 2016) and received 142
-answers (from an estimated total of 700 contacts who received the link -- approximately a 20\% response
-rate). From the 142 participants, 51 (\~36\%) are professionals, and 91 are computer science (or related) students.
+answers (from an estimated total of 700 contacts who were sent the link -- approximately a 20\% response
+rate). From the 142 participants, 51 (36\%) are professionals, and 91 are computer science (or related) students.
 
 
 \subsubsection{Design and Method}
@@ -146,7 +146,6 @@ For this study, we followed a quantitative method based on a web-based survey in
 %web-based survey
 % double-blind
 % The questions were available as an online form\footnote{http://goo.gl/forms/XcEqvPH0Eq920jaA3}. 
-
 %survey structure
 The survey
 instrument
@@ -155,20 +154,19 @@ begins with a purpose of clarification along with a consent term.
 Then, a characterisation of the respondent is given by questions related to Java experience and experience with contract-based programming. Next, the survey is presented: links for three Java interfaces with each one documented in a different approach is shown, then some questions related to the understanding of the behaviour of a class implementing the interfaces based on the comments available is asked. 
 
 %likert scale
-We used Likert-scale questions. In two questions we ask the developers to choose the most understandable documentation approach: one specific -- related to the provided contract style; and one general, concerning the use of the approach in a general context.
+We applied \emph{Likert-scale} questions. In two questions we ask the developers to choose the most understandable documentation approach: one specific -- related to the provided contract style; and one general, concerning the use of the approach in a general context.
 %pilot study
-We also conducted a pilot concerning the questions and the structure of the programs being used. The pilot consists in asking three Java
-developers to test the setup for the survey, allowing us to validate the survey's questions and structure. The developers who participated, however, did not report issues on the structure that we used for presenting the needed data for the participation in the study.
+We also conducted a pilot concerning the questions and the structure of the programs being used. The pilot consists in asking three Java developers to test the setup for the survey, allowing us to validate the survey's questions and structure. The developers who participated, however, did not report issues on the structure that we used for presenting the needed data for the participation in the study.
 
 %methods
-Regarding quantitative methods, we applied Wilcoxon, and Kruskal-Wallis rank sum tests~\cite{statistical} for comparing the results for the different groups of participants. Regarding survey results, we applied one-way ANOVA, Tukey HSD and pairwise comparisons using t-tests with Bonferroni correction~\cite{statistical}.%in addition, we employed Wilcoxon rank sum test with continuity correction tests.
+Regarding quantitative methods, we applied \emph{Wilcoxon, and Kruskal-Wallis rank sum tests}~\cite{statistical} for comparing the results for the different groups of participants. Regarding survey results, we applied \emph{one-way analysis of variance (ANOVA), Tukey HSD} and pairwise comparisons using \emph{t-tests with Bonferroni correction}~\cite{statistical}.%in addition, we employed Wilcoxon rank sum test with continuity correction tests.
 
 \subsection{Case Study}
 \label{sec:caseStudy}
 %goal
 This study aims at assessing the usefulness of contract expressions within Javadoc text, concerning automation benefits, from the point of view of Java developers. 
 %metric
-We observe the results from applying adding contract expressions to \totalSystems{} real, Javadoc-rich open source systems; all their method-level Javadoc annotations are manually translated to contract expressions, before running tests looking for mismatches between specifications and actual method behaviour.
+%We observe the results from applying adding contract expressions to \totalSystems{} real, Javadoc-rich open source systems; all their method-level Javadoc annotations are manually translated to contract expressions, before running tests looking for mismatches between specifications and actual method behaviour.
 
 \subsubsection{Systems Selection} 
 \label{sec:systems}
@@ -177,14 +175,13 @@ We observe the results from applying adding contract expressions to \totalSystem
 The case study was performed on a convenience sample: \totalSystems{} Javadoc-rich open source systems available at GitHub\footnote{\url{https://github.com/}} repository.
 %criteria
 They were selected based on the presence of method-level Javadoc annotations. 
-We searched for projects using the following set of key phrases: ``must be'', ``must not be'', ``should
-be'', ``should not be'', ``greater than'', ``not be null'', ``less than'' into Javadoc
+We searched for projects using the following set of key phrases: \emph{``must be'', ``must not be'', ``should
+be'', ``should not be'', ``greater than'', ``not be null'', ``less than''} into Javadoc
 comments.
 After some visual filtering, we collected the five most important classes in
 each system, based on overall dependence, and check whether those classes
 contained method-level Javadoc comments for most of their methods. If so, the
-system is selected. Finally, we checked whether the system presented a suite of
-unit test, which are run during the case study to detect inconsistencies. We
+system is selected. Finally, we checked whether the system presented a test suite, which is run during the case study to detect anomalies. We
 were able to find five systems meeting these criteria.
 %system descriptions
 See Table~\ref{tab:Units} for details about the selected systems. 
@@ -207,8 +204,8 @@ See Table~\ref{tab:Units} for details about the selected systems.
 ABC-Music-Player & 1,973 & Music player from ABC files  \\ 
 Dishevelled & 110,577 & UI components for complex data structures.\\ 
 Jenerics & 2,538 &  General-purpose set of Java tools and templates.\\ 
-OOP Aufgabe3 & 353 &  Routines for polygon manipulation\\
-Webprot\'{e}g\'{e} & 74,742 & Environment for ontology development \\ \hline
+OOP Aufgabe3 & 353 &  Routines for polygon manipulation.\\
+Webprot\'{e}g\'{e} & 74,742 & Environment for ontology development. \\ \hline
 
  \bfseries Total &  \bfseries \totalCode{} & \\
 \bottomrule
@@ -231,15 +228,14 @@ was replaced by \texttt{[@return >= 3]}.
 %tasks
 %translation
 Three researchers applied \contractjdoc{} in \totalSystems{} existing open-source systems
-available at GitHub. They followed a bottom-up approach for
+available at GitHub (Table~\ref{tab:Units}). They followed a bottom-up approach for
 writing the \contractjdoc{} contracts: the researchers started applying
 \contractjdoc{} in the simplest methods and classes (or interfaces), following
 up to the most complex. Contracts followed the Javadoc comments available in
-natural language (in English) and some of them were inferred from the methods'
-source code.
-As result, they wrote \totalClauses{} contract clauses:
-\totalPre{} pre-conditions, \totalPost{} post-conditions, and \totalInv{} invariants (see
-Table~\ref{tab:Units}).
+natural language (in English).
+%and some of them were inferred from the methods' source code.
+%As result, they wrote \totalClauses{} contract clauses: \totalPre{} pre-conditions and \totalPost{} post-conditions.
+% and \totalInv{} invariants (see
 Figure~\ref{fig:applicationProcess} presents the steps performed by the researchers when applying
 \contractjdoc{} to the systems. The process is composed of four steps: 1) generation of the
 contracts based on the natural language comments available (as shown in
@@ -255,7 +251,7 @@ anomalies are investigated.
 \end{figure}
 
 %contract classification
-Concerning the types of external contracts, we group the contracts according to
+We group the contracts according to
 the approach introduced by Schiller et al.~\cite{typeContracts}: application-specific contracts
 (AppSpec.) -- the kind of contracts that enforce richer semantic properties;
 % implications)
@@ -273,7 +269,7 @@ package.\footnote{\url{https://goo.gl/yO8or2}; in order to run the
 %when we consider an error
 Concerning the verification performed after applying \contractjdoc{} contracts into the systems,
 we used the test suites available with the purpose of identifying problems
-(four out of \totalSystems{} projects have a test suite available).
+(four systems include a test suite).
 Every test case that failed prompted for further investigation for confirming the presence of an anomaly.
 
 % applying dbcjdoc

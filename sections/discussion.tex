@@ -8,8 +8,8 @@ This section comprises discussion on the results from our empirical studies: exp
 \label{rq1}
 
 %code correctness, each approach
-Regarding code correctness, all participants assigned to Javadoc APIs produced code
-following the contracts -- our manually-produced test cases did not detect any contract violation. One \contractjdoc{} API implementation was submitted with a single fault, while half of the participants assigned to API with formal contracts presented at least one fault.
+Regarding code correctness, \emph{all participants assigned to Javadoc APIs produced code
+fulfilling the contracts} -- our manually-produced test cases did not detect any contract violation. One \contractjdoc{} API implementation was submitted with a single fault, while half of the participants assigned to API with formal contracts presented at least one fault.
 %problems in understanding formal contracts
 These results may suggest participants had trouble understanding API formal contracts, assuming their self-reported experience in Java programming and their intention to complete the assignment correctly.
 %no test cases
@@ -37,7 +37,7 @@ public interface AccountQueue {
 \end{figure}
 
 %reports from faulty participants
-Surprisingly, no participant assigned to formal contracts reported any problems in their subjective answer –– p13 and p20 suggested changes to contracts, arguing they were vague and should be made stronger, while p14 asked a simple question about the task; p1 even reported: "the documentation and contracts (...) are clear".
+Surprisingly, \emph{no participant assigned to formal contracts reported any problems in their subjective answer} –– p13 and p20 suggested changes to contracts, arguing they were vague and should be made stronger, while p14 asked a simple question about the task; p1 even reported: "the documentation and contracts (...) are clear".
 %discussion 
 Even though developers understand the relevance of API formal contracts for the task, they may have misinterpreted the expected behaviour, violating it with their implementation.
 To avoid such a scenario, some sort of automatic verification would be critical.
@@ -46,23 +46,23 @@ Since research has shown that developers often resist in applying formal specifi
 %the only error in cjdoc
 p17 -- the only participant assigned to \contractjdoc{} whose implementation violated a contract clause -- remarked he/she "\emph{trusted the contract expressions}", 
 %issue - forgetting the contract!
-which raises the issue of, by rejecting defensive programming~\cite{dbc}, one failing to notice contract restrictions, such as a basic assumption to ensure a post-condition clause.
+which raises the issue of, \emph{by rejecting defensive programming~\cite{dbc}, one failing to notice contract restrictions}, such as a basic assumption to ensure a post-condition clause.
 %solution?
 Again, test cases specific to the contract expressions should have made it easier to detect anomalies.
 
 %in our case
-Four of those faults were submitted by implementers, which might be predictably more common, as API Clients could rely on simple tests or even additional compilation checks for not adding faults like the one added by p1.
+\emph{Four of those faults were submitted by API implementors}, which might be predictably more common, as API Clients could rely on simple tests or even additional compilation checks for not adding faults like the one added by p1.
 %This example also illustrates that trivial misunderstandings like this would often go unnoticed if specifications were only textual.  
 %another explanation
 This outcome may also be explained by the awareness required in using methods provided by the API: one needs to read the documentation available to know how to use the methods, whereas implementation could be considered more straightforward -- in this simulation, 
 the APIs make up well-known data structures. Thus their specifications may have been neglected -- although none of the participants' comments explicitly evidence this speculation.
 
 %types of faults
-All faults in the experiment failed to ensure post-conditions. 
+\emph{All faults in the experiment failed to ensure post-conditions}. 
 %postcond are harder
-These contracts are trickier to write~\cite{Rosenblum}, and, by extension, might be also harder to follow (by API Clients) or fulfil (by API implementers). 
+These contracts are trickier to write~\cite{Rosenblum}, and, by extension, might be also harder to follow (by API Clients) or fulfil (by API implementors). 
 %no pre-conditions!
-It is also noticeable that no pre-condition violations were detected. We might speculate that developers are likely to be concerned about fulfilling pre-conditions from the start. Pre-conditions might be as well a deliverance to developers in two ways: API clients are inclined to comply right way, before calling any method, so they soon accomplish their contract obligation; and API implementers can assume the pre-condition for neglecting defensive programming, writing thus less code.
+It is also noticeable that no pre-condition violations were detected. We might speculate that developers are likely to be concerned about fulfilling pre-conditions from the start. Pre-conditions might be as well a deliverance to developers in two ways: API clients are inclined to comply right way, before calling any method, so they soon accomplish their contract obligation; and API implementors can assume the pre-condition for neglecting defensive programming, writing thus less code.
 
 %problems with kinds of contract
 Furthermore, qualitative data from participants do not present any reported issues with pre-conditions -- eight quotes are \emph{compliments} to their clarity. On the other hand, nine participants make at least one remark about the trouble in understanding or accepting the post-conditions as they were provided.
@@ -72,24 +72,23 @@ Furthermore, qualitative data from participants do not present any reported issu
 \label{rq2}
 
 %all results
-From the assessments by the participants in our experiment, no statistical effect was perceived in using either of the three styles. All participants perceived all API specifications as having medium to high understandability (Figure~\ref{fig:ExpAnswersTotal}). 
-
+From the assessments by the participants in our experiment, no statistical effect was perceived in using either of the three styles. \emph{All participants perceived all API specifications as having medium to high understandability} (Figure~\ref{fig:ExpAnswersTotal}). 
 %first conclusion
 Nevertheless, by analysing the assessments together with the provided qualitative data, we notice a trend: Javadoc as the top approach and formal contracts as the least understandable approach. The \contractjdoc{} approach, mixing Javadoc and contract expressions, was assessed as intermediate, which is illustrated in Figure~\ref{fig:approachesEmpirical}.
 %expected
-This outcome is expected, as developers tend to favour informal styles for documentation -- a known obstacle for the adoption of DBC~\cite{Polikarpova-etal09}. In such scenarios, the approach employed in \contractjdoc{} is promising for more gradual adoption of DBC in mainstream programming languages like Java.
+This outcome is expected, as developers tend to favour informal styles for documentation -- a known obstacle for the adoption of DbC~\cite{Polikarpova-etal09}. In such scenarios, the approach employed in \contractjdoc{} is promising for more gradual adoption of DbC in mainstream programming languages like Java.
 
 %conclusion from survey
 Reinforcing this conclusion, the judgement survey with 142 respondents similar results. 
-In this case, however, differences between all groups are statistically significant -- in detail, (effect sizes and pairwise) /ldots
+\emph{In this case, however, differences between all groups are statistically significant} -- in detail, (effect sizes and pairwise) /ldots
 Larger effect sizes when formal contracts are compared with either Javadoc and \contractjdoc{}, and a smaller effect size between Javadoc and \contractjdoc{} (higher understandability for the first).
 %more on the answers
-\contractjdoc{} was considered understandable for 75\% of the answers, if regarded as such assessments $4$ and $5$.
+\contractjdoc{} was considered understandable for 75\% of the answers, if we regard $4$ and $5$ scales as such.
 
 %back to experiment, 
 If we turn our attention back to experimental simulation data, participants reported higher understandability of API specifications when they were assigned to its implementation. Nevertheless, more submitted API implementations were faulty, in comparison to API clients (Table~\ref{tab:faults}). 
 %conclusion
-We then could infer that the relationship between the perceived understandability and actual outcome from using the public contracts might be orthogonal, although statistical evidence is absent for a more credible conclusion. 
+We then infer that \emph{the relationship between the perceived understandability and actual outcome from using the public contracts might be orthogonal}, although statistical evidence is absent for a more credible conclusion. 
 
 
 \subsection{RQ3. What Kinds of Anomalies are Uncovered if Contract Expressions replace Javadoc Specifications?}
@@ -97,8 +96,8 @@ We then could infer that the relationship between the perceived understandabilit
 
 
 % applying contractjdoc
-For all systems (see Table~\ref{tab:Units}), we
-wrote more post- than pre-conditions. 
+For all systems (see Table~\ref{tab:Units}), \emph{we
+translated more post- than pre-conditions}. 
 Post-conditions are often the most significant and relevant decisions about the requirements~\cite{Rosenblum,sac2017}, so the result is expected. 
 For \texttt{ABC-Music-Player} and
 \texttt{WebProt\'{e}g\'{e}} projects, we detected and translated almost twice as many post-conditions as pre-conditions.
@@ -129,7 +128,7 @@ As example, we detected anomalies in \texttt{ABC-Mu\-sic-Player}; two of the pre
  **/  
 \end{lstlisting}
 
-One of the client classes tried to call such method with b as $0$. Another example of anomaly was found in the \texttt{WebProt\'{e}g\'{e}} system, regarding exceptional post-conditions. 
+One of the client classes tried to call such method with b as $0$ (zero). Another example of anomaly was found in the \texttt{WebProt\'{e}g\'{e}} system, regarding exceptional post-conditions. 
 The Javadoc from interface \texttt{OWLLiteralParser.parseLiteral} state the following post-conditions:
 
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,name=figxpi, frame=lines, mathescape=true]
@@ -144,12 +143,12 @@ The Javadoc from interface \texttt{OWLLiteralParser.parseLiteral} state the foll
 \end{lstlisting}
 
 In this case, the implementation for \texttt{parseLiteral} does not throw \texttt{NullPointerException} when the indicated scenario occurs.
-These examples suggest the main reason behind these anomalies: the requirements changed during the system's lifecycle, causing the Javadoc to be obsolete in comparison with the program. In this scenario, incentives to update the specification are non-existent, since they are pure text -- analysis of conformance is hardly automatable. 
+These examples suggest the main reason behind these anomalies: \emph{the requirements changed during the system's lifecycle, causing the Javadoc to be obsolete in comparison with the program}. In this scenario, incentives to update the specification are non-existent, since they are pure text -- analysis of conformance is hardly automatable. 
 
 %final conclusion
 As a proof of concept, \contractjdoc{} and its compiler (\contractjdocCompiler{}) enabled us to write runtime
 checkable code for third-party systems based on the comments in natural language.
-As expected, the quality and variety of the contracts depended strongly on the available comments. However, we were able to
+As expected, the quality and variety of the contracts depended strongly on the available comments. Nevertheless, we were able to
 detect and correct anomalies between source code and comments.
 
 \subsection{Threats to validity}
@@ -160,16 +159,16 @@ Decisions about the design of our studies were explicitly taken to mitigate thre
 %construct
 Construct validity refers to correctly measuring the
 dependent variable -- for our experimental simulation, the correctness of the implementation and understandability of contract styles.
-There is always the risk that participants present respondent bias~\cite{refSurvey}, due to their knowledge about the experiment and the researchers; we expect to mitigate this issue by providing as less information about the study as possible in the experimental package sent to the participants.
+There is always the risk that participants present \emph{respondent bias}~\cite{refSurvey}, due to their knowledge about the experiment and the researchers; we expect to mitigate this issue by providing as less information about the study as possible in the experimental package sent to the participants.
 
-Our demographics questionnaire as answered by 27 developers, we discarded three because of experience level being discrepant.
+Our demographics questionnaire as answered by 27 developers, but we discarded three submissions due to experimental balance and discrepant experience levels.
 For the judgment survey, we have made similar arrangements for recruiting developers with comparable levels of experience, although uniformity is harder to achieve in that case.
 The order in which we display the documented
 interfaces on the survey form and the absence of open-ended questions can also threaten the construct validity. For dealing with these threats, we
 performed a pilot before applying the survey and used the results from the pilot to improve the survey structure. 
 
 
-A known threat is related to the understandability construct, which is complex and not directly measurable. We limited the concept to the direct comprehension of functionalities provided by a given routine, in terms of the expected inputs and outputs~\cite{4019969}. In the questions, it is explicitly stated that readers "\emph{should grade how they were able to grasp as funcionality and restrictions from the contracts"}; yet, we assume that answers might have deviated from its original purpose, for which there is no trouble-free solution~\cite{Scalabrino2017}.
+A known threat is related to the \emph{understandability construct}, which is complex and not directly measurable. We limited the concept to the direct comprehension of functionalities provided by a given routine, in terms of the expected inputs and outputs~\cite{4019969}. In the questions, it is explicitly stated that readers "\emph{should grade how they were able to grasp as funcionality and restrictions from the contracts"}; yet, we assume that answers might have deviated from its original purpose, for which there is no trouble-free solution~\cite{Scalabrino2017}.
 
 
 %In addition, the answers from developers may not be representative of their real opinion on difficulty perception; to overcome this threat we made a space for comments available along with the Likert-scale questions, which are taken into account when collecting the answers.
@@ -178,16 +177,17 @@ For the case study, \texttt{Dishevelled} and
 \texttt{WebProt\'{e}g\'{e}} sizes set them apart from the other systems.
 For instance, \texttt{Dishevelled} is more than 56 times bigger than \texttt{ABC-Music-Player}, 43
 times bigger than \texttt{Jenerics}, and 313 times bigger than \texttt{OOP Aufgabe3}.
-Therefore, results on those two systems are much more critical to the measurement of the dependent variable (number of anomalies).
+Therefore, results on those two systems would be more critical to the measurement of the dependent variable (number of anomalies).
+Still, \texttt{WebProt\'{e}g\'{e}} did not include test cases -- we did not generate new tests, to avoid additional bias --, so only \texttt{Dishevelled} end up as a significant source of anomalies.
 
 
 %internal
-Internal validity refers to causation: are changes in the dependent variables necessarily the result of manipulations to treatments? A possible problem in our experimental design is that it is hard to determine the faults were introduced due to the assigned documentation approach. We tried to mix qualitative data with the experimental outcomes to have a more transparent view of task performing, but, despite our encouragement, developers provided less commentary than what we expected. Our speculations about the results certainly demand more experiments for inferring a causation relationship between faults and documentation approach.
+Internal validity refers to causation: are changes in the dependent variables necessarily the result of manipulations to treatments? A possible problem in our experimental design is that it is hard to determine whether faults were introduced due to the assigned contract style. We tried to mix qualitative data with the experimental outcomes to have a more transparent view of task performing, but, despite our encouragement, \emph{developers provided less commentary than what we expected}. Our speculations about the results certainly demand more experiments for inferring a causation relationship between faults and documentation approach.
 Also, all experimental and survey material was available only in English, but a large part of the respondents are likely to not have English as their first language, which may have affected their
 submissions and answers.
 
 %internal - case study
-For the case study, our translation of Javadoc comments into contract expressions may be inaccurate, which could compromise the detected anomalies. For that, two of the authors of this paper split the task of translating the comments, and one of them reviewed the translations carried out by other. 
+For the case study, our translation of Javadoc comments into contract expressions may be inaccurate, which could compromise the detected anomalies. For that, three of the authors of this paper split the task of translating the comments, and one of them reviewed the translations carried out by other. 
 
 
 
@@ -200,7 +200,7 @@ Likewise, due to its size, results from the case study cannot be generalised; it
 The sample is not representative since there is no available estimate of the Javadoc-rich project
 population in GitHub, then a probability sample is impossible. 
 Our approach is as systematic as feasible in selecting the evaluated project -- manual translation
-does not scale, then the sample contains only \totalSystems{} projects.
+does not scale, then the sample contains only five projects.
 Therefore, those systems may not be representative of the real use of Javadoc in real systems; however, we were able to detect real inconsistencies between Javadoc comments and source code.
 
 

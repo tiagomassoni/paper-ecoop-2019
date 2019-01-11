@@ -36,12 +36,12 @@
 [] Rohit's comments
 [] Gary's comments
 [x] Grammarly
-[] make terms and italics, fonts uniform
+[x] make terms and italics, fonts uniform
 [x] fix form site
-[] italics to highlight terms
+[x] italics to highlight terms
 
 [] verificar comentários dos revisores
 
 [x] term understandability: paper ase 2017 - concept and a big threat to validity
 
-[] review references
+[x] review references

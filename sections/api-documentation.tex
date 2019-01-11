@@ -6,9 +6,9 @@ In this section, we discuss issues in specifying the behaviour of public routine
 \subsection{Javadoc and textual specifications}
 
 %documentation in Javadoc - no invariant
-Javadoc~\cite{javadoc-oracle} is the usual notation (and tool) for public routines (methods) in Java; it includes special tags (with symbol \@) for structuring and pretty-printing code commentary.
-The Java Platform API specification itself~\cite{java-spec}, for instance, employs Javadoc for specifying "contract[s] between callers and implementations."
-In those terms, Javadoc may be a tool for applying the Design-by-Contract (DBC) methodology~\cite{dbc}, with its pre- and post-conditions around public methods, establishing the expected behaviour for each part (the contract). In the context of distributed software teams, for instance, this kind of documentation is of critical importance. 
+Javadoc~\cite{javadoc-oracle} is the usual notation (and tool) for public routines (methods) in Java; it includes special tags (with symbol \texttt{@}) for structuring and pretty-printing code commentary.
+The Java Platform API specification itself~\cite{java-spec}, for instance, employs Javadoc for specifying \emph{"contract[s] between callers and implementations."}
+In those terms, Javadoc may be a tool for applying the Design-by-Contract (DbC) methodology~\cite{dbc}, with its pre- and post-conditions around public methods, establishing the expected behaviour for each part (the contract). In the context of distributed software teams, for instance, this kind of documentation is of critical importance, because it adds preciseness to the communication between client and implementor roles. 
 
 
 %java interface
@@ -39,9 +39,8 @@ class BankAccount {
 
 
 %natural language
-Contracts in such style use natural language. As a consequence, consistency between specifications and actual code behaviour cannot be automatically enforced, unless one maintains test cases in synchronicity with the Javadoc contracts. However, even test cases are hardly up-to-date to code changes~\cite{Hao2013}, so it is hard to imagine that would be applicable. 
-Furthermore, the lack of formality leads to imprecision, ambiguity, and verbosity, potentially leading to program anomalies and faults, posing translation problems to use natural language description in testing or debugging.
-
+Contracts in such style use natural language. As a consequence, consistency between specifications and actual code behaviour cannot be automatically enforced, unless one maintains test cases in synchronicity with the Javadoc contracts. However, even test cases are hardly up-to-date with code changes~\cite{Hao2013}, so it is hard to imagine that it would be applicable to contracts. 
+Furthermore, the lack of formality leads to imprecision, ambiguity, and verbosity, potentially causing program anomalies and faults.
 On the other hand, using natural language does not require specialised training -- although training may be needed to communicate
 ideas about program behaviour effectively -- and allows a high degree of freedom for documentation structuring. 
 
@@ -49,7 +48,7 @@ ideas about program behaviour effectively -- and allows a high degree of freedom
 \subsection{Formal Contracts}
 
 
-DBC is supported by contruction in a few programming languages (such as Eiffel~\cite{eiffel}), or by extensions (Java Modeling Language (JML)~\cite{jml} for Java and Code Contracts~\cite{codeContractsPaper} for .NET languages) in mainstream programming languages.
+DbC is supported by contruction in a few programming languages (such as Eiffel~\cite{eiffel}), or by extensions (Java Modeling Language (JML)~\cite{jml} for Java and Code Contracts~\cite{codeContractsPaper} for .NET languages) in mainstream programming languages.
 For Java, JML contracts may be defined as also showed for a bank account, in Figure~\ref{Fig-JML-Bank}. Pre-conditions
 are defined by the clause {\lstinline!requires!} and (normal) post-conditions by {\lstinline!ensures!}. The specification
 denoted by the {\lstinline!signals!} clause
@@ -74,15 +73,15 @@ class BankAccount {
 \label{Fig-JML-Bank}
 \end{figure}
 
-In this style, formal contracts for methods, unlike natural approaches, precisely describe what must be true when the method is called, what must be true when the method return or when it returns abnormally. A critical property of such contracts is that they are machine-checkable, either by assertion testing or static analysis\~cite{Chalin06}.
+In this style, formal contracts precisely describe what must be true when the method is called, what must be true when the method return or when it returns abnormally. A critical property of such contracts is that they are machine-checkable, either by assertion testing or static analysis~\cite{Chalin06}.
 % Also for object-oriented languages, contracts can describe object invariants that must hold for an object in all of its visible states -- in this paper,.
 Nevertheless, using JML-like formal contracts might require some level of training, hence becoming, to some extent, hard to read and write, and thus is often used sparingly~\cite{Chalin06,Polikarpova-etal09,typeContracts}.
-Besides, assuming the code in Figure~\ref{Fig-JML-Bank} is an interface, with no available code, the specification is required for one to use the interface. However, usually formal contracts are only available for the interface implementors, thus becoming not useful for its clients~\cite{Parnas2011}.
+Besides, if the code in Figure~\ref{Fig-JML-Bank} were an interface, with no available code, the specification would be required. However, usually formal contracts are only available for the interface implementors, thus becoming not useful for its clients~\cite{Parnas2011}.
 
 
 %The Documentation Dilemma
-It is clear that we face a dilemma concerning program documentation. If we use JML to provide formal documentation for contracts, the result is more precise documentation, with the possibility of automatic checks. However, also results in less flexible documentation regarding using natural language to structure it.
-If we refer to a more flexible and informal documentation approach such as Javadoc, we face the lack of precision and potential ambiguity, even though Javadoc comments are more useful for third-party libraries users. This dilemma leads us to the following inquiries: is it possible to have the best of both worlds, mixing informal documentation and contract specification within a unified framework? In this case, what would be the effect of using such an approach to API usage and development? This paper tries to enhance evidence on DBC development and languages by focusing on those questions.
+Therefore, we face a dilemma concerning program documentation. If we use formal contracts, the result is more precise documentation, with the possibility of automatic checks. However, it also results in less flexible documentation than using natural language.
+If we refer to a more flexible and informal documentation approach such as Javadoc, we face the lack of precision and potential ambiguity, even though Javadoc comments are more useful for third-party libraries users. This trade-off leads us to the following inquiries: is it possible to have the best of both worlds, mixing informal documentation and contract specification within a unified framework? In this case, what would be the effect of using such an approach to API clients and implementors? This paper tries to enhance evidence on DbC development and languages by focusing on those questions.
 
 %In the following, we discuss how \contractjdoc{} provides means to combine the benefits
 % and overcome the main limitations 

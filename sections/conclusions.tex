@@ -2,20 +2,18 @@
 \label{sec:conclusions}
 
 %context - tradeoffs are clear
-It is well known that software developers are resistant to use formal contracts for public methods; for Java programs, for example, textual Javadoc prevail for documenting API behaviour ~\cite{docAnalysis}.
+In Java programs, textual Javadoc prevail for documenting API behaviour~\cite{docAnalysis}.
 Javadoc's use is widespread, serves for important purposes -- tools for generating documentation -- but lacks, of course, automatic checking of the program against its specification.
 %what we have done
 The trade-off between the pragmatics of textual descriptions and formal contracts amenability to automatic analysis is explored in this paper, by three empirical studies.
 %evaluation of styles
 We evaluated the effect on API usage and implementation tasks of three public contract styles in Java programs: textual Javadoc, JML-like formal contracts, and a third option, a small tag-based extension to Javadoc to express pre- and post-conditions among text and other standard tags, which we call \contractjdoc{}.
-
 %studies
 The first and second studies evaluated the effect of specification styles on the efficacy and understandability of contract expressions, either for API implementors or users, through an experimental simulation with 24 recruited participants, and a judgment survey with more than a hundred Java developers.
 In the third study, we evaluated the potential of detecting anomalies by manually formalising textual Javadoc contracts from open source Java systems into contract expressions, then checking conformance in runtime.
 
 
 %first question - effect on the programming task
-Participants of our experimental simulation submitted programs either using or implementing one among two simple APIs. A factorial design assigned one of the three specification styles for the API's behaviour -- for repetition purposes, two participants were subject to a single $<style,task,API>$ treatment.
 Javadoc and \contractjdoc{} groups were more successful in submitting anomaly-free programs, while half of the formal contract group violated at least one contract clause. 
 We speculate, by this outcome and by analysing the qualitative data provided by the participants, that developers, despite their awareness of the specified behaviour, were having trouble in interpreting the expressions.  
 Moreover, all anomalies happened with post-conditions, which matches conclusions from previous research~\cite{Estler-etal14,sac2017} perceiving the discomfort when dealing with this kind of contract, in comparison with pre-conditions. 
@@ -24,7 +22,7 @@ Moreover, all anomalies happened with post-conditions, which matches conclusions
 %second question - effect on understandability
 We also used the experimental setting for assessing understandability~\cite{Scalabrino2017} of three contract styles. 
 In the answers, Javadoc contracts were regarded as the most understandable, followed by the mixed \contractjdoc{} style and, as the least understandable; nevertheless, those differences were not statistically significant. As a follow-up study, we carried out a judgement survey with 142 Java developers with at least one-year experience, in which the results were the same, this time with significant pairwise-difference effect sizes between all three styles.
-This outcome is expected, as developers tend to favour informal styles for documentation~\cite{Polikarpova-etal09}. It remains to be investigated whether an intermediate approach such as \contractjdoc{} is understandable enough for fostering the use of DBC in API specifications.
+This outcome is expected, as developers tend to favour informal styles for documentation~\cite{Polikarpova-etal09}. It remains to be investigated whether an intermediate approach such as \contractjdoc{} is understandable enough for fostering the use of DbC in API specifications.
 
 %third question - can we find anomalies?
 Finally, our case study applying contract expressions in open source systems resulted in finding 381 anomalies in a single Javadoc-rich system (\emph{Dishevelled}) and ten more in other three toy systems (\emph{ABC/-Music/-Player, Jenerics and OOP Aufgabe3}), showing the potential of using contract expressions in existing Javadoc specifications.
@@ -36,11 +34,11 @@ Despite their limitations, we believe the studies presented in this paper prompt
 %h: relate perceiving understandability and correct, conforming implementation 
 Making sense of the specified behaviour in contracts is undoubtedly a necessary condition to providing a program that conforms to the specification, but it is not sufficient; other forces should be considered, such as tool support, enforcing test cases or even the developer's lack of discipline.  
 %h: how freedom to neglect defensive programming could be dangerous for conforming implementations 
-Additionally, we could investigate whether contract conformance may be undermined by the omission of defensive programming promoted by Dbc -- as it becomes pointless to add program checks to certain conditions, other important conditions might be neglected. 
+Additionally, we could investigate whether contract conformance may be undermined by the omission of defensive programming promoted by DbC -- as it becomes pointless to add program checks to certain scenarios, other important conditions might be neglected. 
 
 
 %h: how developers react to pre- and post-conditions; pre-conditions are a relief, post-conditions are neglected?
-In Dbc -- especially for public contracts --, pre-conditions seem easier to regard and fulfil, if compared to post-conditions. However, post-conditions are probably more fundamental to elaborate and useful contracts~\cite{Rosenblum}. Research could be carried out to test this hypothesis, and investigate the rationale behind the observations.   
+In DbC -- especially for public contracts --, pre-conditions seem easier to regard and fulfil, if compared to post-conditions. However, post-conditions are probably more fundamental to elaborate and useful contracts~\cite{Rosenblum}. Research could be carried out to test this hypothesis, and investigate the rationale behind the observations.   
 %h: what are the reasons for not adopting contracts? one evidence is that they are hard to maintain in sync
 Finally, the reason for the low adoption of DbC, at least for formal contracts, must be subject of further consideration. As we could observe in our case study with open-source systems, keeping the specification in sync with the program seems to be the main issue, requiring extra resources often not available in software teams with tight schedules. Automatic generation of contracts from programs~\cite{docAnalysis,atComment} seems a reasonable option to address this issue.  
 
